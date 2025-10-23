@@ -1,7 +1,10 @@
 /*
  * Globals
   */
+/*Fonts*/
   @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Outfit:wght@100..900&family=Unbounded:wght@900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Unbounded:wght@700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 .unbounded {
@@ -9,7 +12,29 @@
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
+  font-size: 30px; /* tamaño agregado */
+  text-align: left;
+}
+
+
+.font-Outfit {
+  font-family: "Unbounded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
   font-size: 50px; /* tamaño agregado */
+  line-height: 1.2; /* interlineado: puedes ajustar este valor */
+  text-align: left;
+}
+
+.font-urbanist{
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 1.1; /* interlineado: puedes ajustar este valor */
+  text-align: left;
 }
 
 // .unbounded {
@@ -19,7 +44,6 @@
 //   font-style: normal;
 //   font-size: clamp(48px, 10vw, 124px);
 // }
-
 
 /* Links */
 a,
@@ -66,12 +90,49 @@ body {
 /*
  * Header
  */
-.masthead {
-  margin-bottom: 2rem;
+
+ .encabezado {
+  display: flex;
+  justify-content: space-between; /* separa el bloque del logo y el menú */
+  align-items: center;            /* alinea verticalmente en el centro */
+  padding: 10px 40px;             /* margen interno opcional */
 }
 
-.masthead-brand {
-  margin-bottom: 0;
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* o center si quieres centrado vertical */
+}
+
+.titulo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.subtitulo {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+/* Opcional: centra los links del menú */
+.nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #a67c52; /* efecto al pasar el mouse */
+}
+
+
+.masthead {
+  margin-bottom: 2rem;
 }
 
 .nav-masthead .nav-link {
@@ -115,13 +176,6 @@ body {
 .cover .btn-lg {
   padding: .75rem 1.25rem;
   font-weight: 700;
-}
-
-/*
- * Footer
- */
-.mastfoot {
-  color: rgba(255, 255, 255, .5);
 }
 
 

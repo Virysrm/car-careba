@@ -16,6 +16,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ContactComponent } from './components/contact/contact.component';
 import { UsComponent } from './components/us/us.component';
 import { ReusedComponent } from './components/reused/reused.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ReusedComponent } from './components/reused/reused.component';
     InicioComponent,
     ContactComponent,
     UsComponent,
-    ReusedComponent
+    ReusedComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
