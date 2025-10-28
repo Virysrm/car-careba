@@ -4,7 +4,7 @@
 }
 
 .contenido {
-  max-width: 1200px;
+  max-width: 1300px; /* ancho máximo desktop */
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -127,5 +127,9 @@
   }
 }
 
-
-
+/* ✅ Mostrar solo 6 imágenes en pantallas pequeñas */
+@media (max-width: 991px) {
+  .ocultar-movil {
+    display: none !important;
+  }
+}
