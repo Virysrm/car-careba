@@ -1,5 +1,200 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Outfit:wght@100..900&family=Unbounded:wght@900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Unbounded:wght@700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// 🎨 Variables
+$brown: #B37F59;
+$black: #000000;
+$white: #ffffff;
+$gray-darkest: #393232;
+$gray-darker:  #3C3C35;
+$gray-dark:    #463F3E;
+$gray-medium:  #7C7C79;
+$gray-light:   #7C747C;
 
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Urbanist", sans-serif;
+  background-color: $white;
+  color: $gray-darkest;
+}
+
+// 🧱 Utilidades de color de fondo
+.bg-brown        { background-color: $brown; }
+.bg-black        { background-color: $black; }
+.bg-white        { background-color: $white; }
+.bg-gray-darkest { background-color: $gray-darkest; }
+.bg-gray-darker  { background-color: $gray-darker; }
+.bg-gray-dark    { background-color: $gray-dark; }
+.bg-gray-medium  { background-color: $gray-medium; }
+.bg-gray-light   { background-color: $gray-light; }
+
+// 🧾 Utilidades de color de texto (si quieres)
+.text-brown        { color: $brown; }
+.text-white        { color: $white; }
+.text-gray-darkest { color: $gray-darkest; }
+/* =========================================================
+   ✍️ Tipografías globales
+   ========================================================= */
+/*Fonts*/
+.unbounded {
+  font-family: "Unbounded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 30px; /* tamaño agregado */
+  text-align: left;
+}
+
+.font-Outfit {
+  font-family: "Unbounded", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 50px; /* tamaño agregado */
+  line-height: 1.2; /* interlineado: puedes ajustar este valor */
+  text-align: left;
+}
+
+.font-urbanist{
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 1.1; /* interlineado: puedes ajustar este valor */
+  text-align: left;
+}
+
+.font-urbanist-small{
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.6; /* interlineado: puedes ajustar este valor */
+  text-align: left;
+}
+/* =========================================================
+   🎛️ Botones globales
+   ========================================================= */
+// === BOTÓN PRINCIPAL ===
+.btn-primary {
+  color: $white;
+  text-shadow: none;
+  background-color: $brown;
+  border: 0.05rem solid $white;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: darken($brown, 10%);
+    border-color: darken($white, 15%);
+    color: $white;
+  }
+
+  &:active {
+    background-color: darken($brown, 15%);
+    border-color: darken($white, 20%);
+  }
+}
+
+// === BOTÓN SECUNDARIO ===
+.btn-secondary {
+  color: $brown;
+  text-shadow: none;
+  background-color: $white;
+  border: 0.05rem solid $brown;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: lighten($brown, 40%);
+    border-color: $brown;
+    color: $white;
+  }
+
+  &:active {
+    background-color: darken($brown, 5%);
+    color: $white;
+  }
+}
+
+/* =========================================================
+   ⚙️ Utilidades generales
+   ========================================================= */
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+.p-1 { padding: .5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+
+.m-1 { margin: .5rem; }
+.m-2 { margin: 1rem; }
+.m-3 { margin: 1.5rem; }
+
+/* =========================================================
+   Titulos y Subtitulos para cada seccción
+   ========================================================= */
+
+.section-header {
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .linea-encabezado {
+    width: 60px;
+    height: 4px;
+    background-color: $brown; // línea decorativa en tono madera
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+
+  .section-content {
+    max-width: 800px;
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    .section-subtitle {
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #7c7c79;
+      line-height: 1.2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+
+    .section-title {
+      font-size: 1.8  rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+    }
+
+    .encabezado {
+      width: 40px;
+      height: 3px;
+    }
+  }
+}
+
+.section-contenido {
+  max-width: 85em;  /* mismo ancho que la portada */
+  margin: 0 auto;   /* centra la sección */
+}

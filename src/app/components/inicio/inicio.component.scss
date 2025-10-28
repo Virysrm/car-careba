@@ -1,49 +1,4 @@
-/*
- * Globals
-  */
-/*Fonts*/
-  @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Outfit:wght@100..900&family=Unbounded:wght@900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Unbounded:wght@700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-
-
-.unbounded {
-  font-family: "Unbounded", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 30px; /* tamaño agregado */
-  text-align: left;
-}
-
-
-.font-Outfit {
-  font-family: "Unbounded", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 50px; /* tamaño agregado */
-  line-height: 1.2; /* interlineado: puedes ajustar este valor */
-  text-align: left;
-}
-
-.font-urbanist{
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 1.1; /* interlineado: puedes ajustar este valor */
-  text-align: left;
-}
-
-// .unbounded {
-//   font-family: "Unbounded", sans-serif;
-//   font-optical-sizing: auto;
-//   font-weight: 200;
-//   font-style: normal;
-//   font-size: clamp(48px, 10vw, 124px);
-// }
+  @import 'src/styles';
 
 /* Links */
 a,
@@ -51,17 +6,6 @@ a:focus,
 a:hover {
   color: #fff;
 }
-
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
-}
-
 /*
  * Base structure
  */
@@ -70,8 +14,8 @@ html,
 body {
   height: 100%;
   background: 
-    linear-gradient(rgba(51, 51, 51, 0.7), rgba(51, 51, 51, 0.7)),
-    url('/assets/img/Logo2.jpg') center center / cover no-repeat;
+    linear-gradient(rgba(31, 31, 31, 0.7), rgba(51, 51, 51, 0.7)),
+    url('/assets/img/Foto1.jpg') center center / cover no-repeat;
   background-attachment: fixed;
 }
 
@@ -86,6 +30,20 @@ body {
 .cover-container {
   max-width: 82em;
   }
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+
+
 
 /*
  * Header
@@ -165,18 +123,4 @@ body {
     float: right;
   }
 }
-
-
-/*
- * Cover
- */
-.cover {
-  padding: 0 1.5rem;
-}
-.cover .btn-lg {
-  padding: .75rem 1.25rem;
-  font-weight: 700;
-}
-
-
 

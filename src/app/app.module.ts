@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MueblesComponent } from './components/muebles/muebles.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -18,17 +17,23 @@ import { UsComponent } from './components/us/us.component';
 import { ReusedComponent } from './components/reused/reused.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { importType } from '@angular/compiler/src/output/output_ast';
+import { AttainmentComponent } from './components/attainment/attainment.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { WorksComponent } from './components/works/works.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MueblesComponent,
     InicioComponent,
     ContactComponent,
     UsComponent,
     ReusedComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    AttainmentComponent,
+    GalleryComponent,
+    WorksComponent
   ],
   imports: [
     BrowserModule,
