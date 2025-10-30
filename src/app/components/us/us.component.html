@@ -1,1 +1,40 @@
-<p>us works!</p>
+<section class="section-contenido secciones-container">
+  <section class="section-header" [@slideInLeft]="animationState">
+    <div class="linea-encabezado"></div>
+    <div class="section-content mb-3">
+      <h1 class="section-title text-left">Más de 20 años de Experiencia</h1>
+    </div>
+    <section id="info">
+      <p class="font-urbanist-medium section-subtitle text-justify">
+        Somos una empresa familiar dedicada a la carpintería artesanal desde 2005.
+        Nuestro compromiso es ofrecer productos de la más alta calidad, combinando técnicas tradicionales con las
+        herramientas más modernas. <br><br>
+
+        Cada pieza que creamos es única y está hecha a medida, adaptándonos a las necesidades específicas de nuestros
+        clientes.
+        Trabajamos con maderas nobles y sostenibles, respetando siempre el medio ambiente.</p>
+        
+      <ul class="font-urbanist-medium section-subtitle text-justify">
+        <li>Materiales de Primera Calidad</li>
+        <li>Diseños Personalizados</li>
+        <li>Garantía en Todos Nuestros Trabajos</li>
+        <li>Asesoría Profesional</li>
+      </ul>
+    </section>
+  </section>
+
+  <section id="imagenesRef" class="py-10"  [@slideInRight]="animationState">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-2 gap-6">
+        <img src="/assets/img/photos/gallery/Gallery1.jpg" alt="Taller"
+          class="rounded-2xl shadow-xl w-full h-64 object-cover" />
+        <img src="/assets/img/photos/gallery/Gallery3.jpg" alt="Herramientas"
+          class="rounded-2xl shadow-xl w-full h-64 object-cover mt-8" />
+        <img src="/assets/img/photos/gallery/Gallery11.jpg" alt="Madera"
+          class="rounded-2xl shadow-xl w-full h-64 object-cover -mt-8" />
+        <img src="/assets/img/photos/gallery/Gallery12.jpg" alt="Detalle"
+          class="rounded-2xl shadow-xl w-full h-64 object-cover" />
+      </div>
+    </div>
+  </section>
+</section>

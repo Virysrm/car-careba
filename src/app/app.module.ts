@@ -21,7 +21,6 @@ import { importType } from '@angular/compiler/src/output/output_ast';
 import { AttainmentComponent } from './components/attainment/attainment.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { WorksComponent } from './components/works/works.component';
-
 @NgModule({
   declarations: [
     AppComponent,

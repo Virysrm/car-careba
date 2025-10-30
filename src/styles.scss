@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Outfit:wght@100..900&family=Unbounded:wght@900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Unbounded:wght@700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-* {
-  outline: 1px solid red;
-}
+// * {
+//   outline: 1px solid red;
+// }
 // 🎨 Variables
 $brown: #B37F59;
 $black: #000000;
@@ -82,7 +82,19 @@ body {
   line-height: 1.6; /* interlineado: puedes ajustar este valor */
   text-align: left;
 }
-/* =========================================================
+
+.font-urbanist-medium{
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.6; /* interlineado: puedes ajustar este valor */
+  text-align: left;
+}
+/* ===
+
+======================================================
    🎛️ Botones globales
    ========================================================= */
 // === BOTÓN PRINCIPAL ===
@@ -133,6 +145,9 @@ body {
 .text-center { text-align: center; }
 .text-left   { text-align: left; }
 .text-right  { text-align: right; }
+.text-justify { text-align: justify;}
+
+.text-bold { font-weight: bold; }
 
 .p-1 { padding: .5rem; }
 .p-2 { padding: 1rem; }
@@ -146,7 +161,7 @@ body {
    Titulos y Subtitulos para cada seccción
    ========================================================= */
 .section-header {
-  padding: 4rem 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,6 +183,7 @@ body {
       font-weight: 500;
       margin-bottom: 1rem;
       color: #222;
+      line-height: 1.2; /* interlineado: puedes ajustar este valor */
     }
 
     .section-subtitle {
@@ -226,7 +242,6 @@ body {
     }
   }
 }
-
 
 .section-contenido {
   max-width: 1300px; /* ancho máximo desktop */

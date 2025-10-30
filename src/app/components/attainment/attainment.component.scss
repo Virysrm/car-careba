@@ -2,3 +2,27 @@
 background: #7C747C;
 background: linear-gradient(90deg, rgba(124, 116, 124, 1) 0%, rgba(179, 127, 89, 1) 50%, rgba(60, 60, 53, 1) 100%);
 }
+
+/* Estado inicial (oculto) */
+.stat {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Estado visible cuando entra en vista */
+.visible .stat {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Retrasos escalonados para cada columna (efecto progresivo) */
+.stat:nth-child(1) {
+  transition-delay: 0s;
+}
+.stat:nth-child(2) {
+  transition-delay: 0.5s;
+}
+.stat:nth-child(3) {
+  transition-delay: 0.8s;
+}

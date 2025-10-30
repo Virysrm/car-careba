@@ -50,25 +50,26 @@
 /* Texto centrado */
 .overlay-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 50px;      /* ajusta la posición inferior */
+  left: 30px;        /* ajusta la posición izquierda */
+  transform: translateY(20px); /* empieza ligeramente abajo */
   color: #fff;
   font-family: 'Outfit', sans-serif;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
   font-weight: 600;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  text-align: left;
+  opacity: 0;        /* inicio invisible */
+  transition: opacity 0.5s ease, transform 0.5s ease;
   z-index: 2;
-  pointer-events: none; /* evita interferir con el hover */
+  pointer-events: none;
 }
 
-/* Mostrar texto al hacer hover */
+/* Efecto hover sobre la imagen */
 .box:hover .overlay-text {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.05);
+  opacity: 1;        /* se hace visible */
+  transform: translateY(0); /* sube a su posición final */
 }
+
 
 @media (max-width: 991px) {
   .contenido {
@@ -93,19 +94,19 @@
   grid-column: span 2;
 }
 
-.box:nth-child(4) {
-  grid-column: span 2;
-}
-
-.box:nth-child(6) {
+.box:nth-child(2) {
   grid-row: span 2;
 }
 
-.box:nth-child(11) {
-  grid-column: span 2;
+.box:nth-child(4) {
+  grid-row: span 2;
 }
 
-.box:nth-child(12) {
+ .box:nth-child(5) {
+  grid-row: span 2;
+ }
+
+.box:nth-child(7) {
   grid-column: span 2;
 }
 
@@ -117,12 +118,12 @@
 
   /* ✅ usa .box en lugar de .bx */
   .box:nth-child(1),
-  .box:nth-child(4),
-  .box:nth-child(11),
-  .box:nth-child(12) {
+  .box:nth-child(7) {
     grid-column: span 1;
   }
-    .box:nth-child(6) {
+    .box:nth-child(2),
+    .box:nth-child(4),
+    .box:nth-child(5) {
     grid-row: span 1;
   }
 }
@@ -133,3 +134,34 @@
     display: none !important;
   }
 }
+
+/* Estado inicial de cada box */
+.section-contenido .box {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Cuando el contenedor entra en viewport */
+.section-contenido.visible .box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Retrasos escalonados para efecto tipo Framer Motion */
+.section-contenido.visible .box:nth-child(1) { transition-delay: 0s; }
+.section-contenido.visible .box:nth-child(2) { transition-delay: 0.1s; }
+.section-contenido.visible .box:nth-child(3) { transition-delay: 0.2s; }
+.section-contenido.visible .box:nth-child(4) { transition-delay: 0.3s; }
+.section-contenido.visible .box:nth-child(5) { transition-delay: 0.4s; }
+.section-contenido.visible .box:nth-child(6) { transition-delay: 0.5s; }
+.section-contenido.visible .box:nth-child(7) { transition-delay: 0.6s; }
+
+/* Mantener overlay y zoom hover si ya los tienes */
+.section-contenido .box img {
+  transition: transform 0.5s ease;
+}
+.section-contenido .box:hover img {
+  transform: scale(1.05);
+}
+
