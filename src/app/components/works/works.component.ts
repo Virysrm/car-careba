@@ -1,9 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from "@angular/core";
 
 @Component({
-  selector: 'app-works',
-  templateUrl: './works.component.html',
-  styleUrls: ['./works.component.scss']
+    selector: 'app-works',
+    templateUrl: './works.component.html',
+    styleUrls: ['./works.component.scss'],
+    standalone: false
 })
 export class WorksComponent implements AfterViewInit {
   @ViewChild('fadeEl') fadeEl!: ElementRef;

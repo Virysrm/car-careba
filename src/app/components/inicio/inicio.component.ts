@@ -1,9 +1,10 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 
 @Component({
-  selector: "app-inicio",
-  templateUrl: "./inicio.component.html",
-  styleUrls: ["./inicio.component.scss"],
+    selector: "app-inicio",
+    templateUrl: "./inicio.component.html",
+    styleUrls: ["./inicio.component.scss"],
+    standalone: false
 })
 export class InicioComponent implements OnInit {
   elementosVisibles: boolean[] = [];

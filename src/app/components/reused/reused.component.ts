@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-reused',
-  templateUrl: './reused.component.html',
-  styleUrls: ['./reused.component.scss']
+    selector: 'app-reused',
+    templateUrl: './reused.component.html',
+    styleUrls: ['./reused.component.scss'],
+    standalone: false
 })
 export class ReusedComponent implements OnInit {
 
