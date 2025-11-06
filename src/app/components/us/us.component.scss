@@ -96,7 +96,7 @@ ul {
 li::before {
   font-family: "bootstrap-icons";
   content: "\F270"; /* bi-check2-circle */
-  color: $brown;
+  color: #f0f0f0; //cambiar color de los iconos
   font-size: 1rem;
   margin-right: 8px;
   vertical-align: middle;

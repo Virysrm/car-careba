@@ -15,7 +15,7 @@ background: #3c3c35;
 }
 
 .formulario-contacto{
-  background: $white;
+  background: #f5f5f5;
   padding: 20px;
   border-radius: 8px;
 }
@@ -66,7 +66,7 @@ form button:hover {
   background-color: #f5f5f5;   /* color de fondo tipo botón */
   border-radius: 8px;          /* esquinas redondeadas */
   border: 1px solid #ddd;      /* borde sutil */
-  color: $black;              /* color del ícono (verde WhatsApp) */
+  color: #000;              /* color del ícono (verde WhatsApp) */
   transition: all 0.3s ease;   /* animación suave */
   cursor: pointer;             /* efecto de botón al pasar el cursor */
 }
