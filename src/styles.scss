@@ -1,20 +1,9 @@
-@import "bootstrap-icons/font/bootstrap-icons.css";
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Outfit:wght@100..900&family=Unbounded:wght@900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Unbounded:wght@700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-// * {
-//   outline: 1px solid red;
-// }
-// 🎨 Variables
-$brown: #B37F59;
-$black: #000000;
-$white: #ffffff;
-$gray-darkest: #393232;
-$gray-darker:  #3C3C35;
-$gray-dark:    #463F3E;
-$gray-medium:  #7C7C79;
-$gray-light:   #7C747C;
-
+@use "sass:color";
+@import 'src/styles/_sass-utils';
+@import 'src/styles/_fonts';
+* {
+  outline: 1px solid red;
+}
 html, body {
   height: 100%;
 }
@@ -40,61 +29,8 @@ body {
 .text-brown        { color: $brown; }
 .text-white        { color: $white; }
 .text-gray-darkest { color: $gray-darkest; }
-/* =========================================================
-   ✍️ Tipografías globales
-   ========================================================= */
-/*Fonts*/
-.unbounded {
-  font-family: "Unbounded", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 30px; /* tamaño agregado */
-  text-align: left;
-}
 
-.font-Outfit {
-  font-family: "Unbounded", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 50px; /* tamaño agregado */
-  line-height: 1.2; /* interlineado: puedes ajustar este valor */
-  text-align: left;
-}
-
-.font-urbanist{
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 30px;
-  line-height: 1.1; /* interlineado: puedes ajustar este valor */
-  text-align: left;
-}
-
-.font-urbanist-small{
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 1.6; /* interlineado: puedes ajustar este valor */
-  text-align: left;
-}
-
-.font-urbanist-medium{
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-size: 20px;
-  line-height: 1.6; /* interlineado: puedes ajustar este valor */
-  text-align: left;
-}
-/* ===
-
-======================================================
+/*==========================================================
    🎛️ Botones globales
    ========================================================= */
 // === BOTÓN PRINCIPAL ===

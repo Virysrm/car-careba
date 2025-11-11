@@ -1,0 +1,148 @@
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.titulo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15px;
+}
+
+/* Menú normal (desktop) */
+.nav-masthead {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+/* Botón menú hamburguesa */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
+}
+
+.menu-toggle span {
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Animación al abrir (X) */
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- MODO MÓVIL --- */
+@media (max-width: 768px) {
+  .encabezado {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Menú flotante sobre el contenido */
+  .nav-masthead {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // height: 100vh;
+    background: rgba(0, 0, 0, 0.4); /* transparente */
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-masthead.active {
+    display: flex;
+    animation: fadeIn 0.3s ease forwards;
+  }
+
+  .nav-masthead a {
+    color: #fff;
+    text-decoration: none;
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    transition: color 0.3s ease;
+  }
+
+  .nav-masthead a:hover {
+    color: #a67c52;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

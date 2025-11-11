@@ -1,14 +1,138 @@
-  @use 'src/styles';
+//   @use 'src/styles';
 
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #fff;
-}
-/*
- * Base structure
- */
+// /* Links */
+// a,
+// a:focus,
+// a:hover {
+//   color: #fff;
+// }
+// /*
+//  * Base structure
+//  */
+
+// html,
+// body {
+//   height: 100%;
+//   background: 
+//     linear-gradient(rgba(31, 31, 31, 0.7), rgba(51, 51, 51, 0.7)),
+//     url('/assets/img/Foto1.jpg') center center / cover no-repeat;
+//   background-attachment: fixed;
+// }
+
+// body {
+//   display: -ms-flexbox;
+//   display: flex;
+//   color: #fff;
+//   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+//   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+// }
+
+// .cover-container {
+//   max-width: 82em;
+//   }
+
+// /*
+//  * Cover
+//  */
+// .cover {
+//   padding: 0 1.5rem;
+// }
+// .cover .btn-lg {
+//   padding: .75rem 1.25rem;
+//   font-weight: 700;
+// }
+
+// /*
+//  * Header
+//  */
+
+//  .encabezado {
+//   display: flex;
+//   justify-content: space-between; /* separa el bloque del logo y el menú */
+//   align-items: center;            /* alinea verticalmente en el centro */
+//   padding: 10px 40px;             /* margen interno opcional */
+// }
+
+// .contenedor {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start; /* o center si quieres centrado vertical */
+// }
+
+// .titulo {
+//   font-size: 1.25rem;
+//   font-weight: bold;
+//   color: white;
+//   line-height: 1.1;
+//   margin-bottom: 2px;
+// }
+
+// .subtitulo {
+//   font-size: 0.875rem;
+//   color: rgba(255, 255, 255, 0.9);
+//   line-height: 1.1;
+//   margin-top: 0;
+// }
+
+// /* Opcional: centra los links del menú */
+// .nav a {
+//   color: white;
+//   margin: 0 10px;
+//   text-decoration: none;
+// }
+
+// .nav a:hover {
+//   color: #a67c52; /* efecto al pasar el mouse */
+// }
+
+
+// .masthead {
+//   margin-bottom: 2rem;
+// }
+
+// .nav-masthead .nav-link {
+//   padding: .25rem 0;
+//   font-weight: 700;
+//   color: rgba(255, 255, 255, .5);
+//   background-color: transparent;
+//   border-bottom: .25rem solid transparent;
+// }
+
+// .nav-masthead .nav-link:hover,
+// .nav-masthead .nav-link:focus {
+//   border-bottom-color: rgba(255, 255, 255, .25);
+// }
+
+// .nav-masthead .nav-link + .nav-link {
+//   margin-left: 1rem;
+// }
+
+// .nav-masthead .active {
+//   color: #fff;
+//   border-bottom-color: #fff;
+// }
+
+// @media (min-width: 48em) {
+//   .masthead-brand {
+//     float: left;
+//   }
+//   .nav-masthead {
+//     float: right;
+//   }
+// }
+
+// .fade-section {
+//   opacity: 0;
+//   transform: translateY(30px);
+//   transition: opacity 1s ease-out, transform 1s ease-out;
+// }
+
+// .fade-section.visible {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
+
+  @use 'src/styles';
 
 html,
 body {
@@ -27,110 +151,52 @@ body {
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
 
+/* Contenedor principal: centro vertical */
 .cover-container {
   max-width: 82em;
-  }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-/*
- * Cover
- */
+/* Asegura que main ocupe el espacio y centre su contenido */
+main.inner.cover {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente */
+  align-items: flex-start; /* o center si quieres centrar horizontal también */
+  padding: 0 1.5rem;
+}
+
+/* Keyframes para "fade + slide up" */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estado inicial: oculto sin animation */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+}
+
+/* Al agregar .visible, lanzamos la animación (forwards mantiene el estado final) */
+.fade-section.visible {
+  animation: fadeInUp 900ms cubic-bezier(.2,.9,.3,1) forwards;
+}
+
 .cover {
   padding: 0 1.5rem;
 }
 .cover .btn-lg {
   padding: .75rem 1.25rem;
   font-weight: 700;
-}
-
-
-
-
-/*
- * Header
- */
-
- .encabezado {
-  display: flex;
-  justify-content: space-between; /* separa el bloque del logo y el menú */
-  align-items: center;            /* alinea verticalmente en el centro */
-  padding: 10px 40px;             /* margen interno opcional */
-}
-
-.contenedor {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* o center si quieres centrado vertical */
-}
-
-.titulo {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: white;
-  line-height: 1.1;
-  margin-bottom: 2px;
-}
-
-.subtitulo {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.1;
-  margin-top: 0;
-}
-
-/* Opcional: centra los links del menú */
-.nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-}
-
-.nav a:hover {
-  color: #a67c52; /* efecto al pasar el mouse */
-}
-
-
-.masthead {
-  margin-bottom: 2rem;
-}
-
-.nav-masthead .nav-link {
-  padding: .25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255, .5);
-  background-color: transparent;
-  border-bottom: .25rem solid transparent;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
-}
-
-.nav-masthead .nav-link + .nav-link {
-  margin-left: 1rem;
-}
-
-.nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
-
-.fade-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.fade-section.visible {
-  opacity: 1;
-  transform: translateY(0);
 }

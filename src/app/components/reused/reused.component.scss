@@ -1,0 +1,247 @@
+.careba-reuse-section {
+  background-color: #f8f8f8;
+  padding: 6rem 2rem;
+
+  .careba-reuse-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap; // responsive
+
+    .careba-reuse-image {
+      flex: 1 1 45%;
+      display: flex;
+      justify-content: center;
+      animation: fadeInLeft 1.2s ease forwards;
+      opacity: 0;
+      transform: translateX(-40px);
+
+      img {
+        width: 100%;
+        max-width: 430px;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+      }
+    }
+
+    .careba-reuse-content {
+      flex: 1 1 45%;
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      animation: fadeInRight 1.2s ease forwards;
+      opacity: 0;
+      transform: translateX(40px);
+      background-image: url('/assets/img/icons/arbol-joven.png');
+background-size: 300px;         // tamaño de la imagen
+background-position: right bottom; // posición abajo a la derecha
+background-repeat: no-repeat;   // evita repeticiones
+
+      h2 {
+        font-size: 2.2rem;
+        color: #222;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      p {
+        color: #555;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+      }
+
+      .btn-discover {
+        display: inline-block;
+        background: #222;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.9rem 2rem;
+        border-radius: 2rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #4caf50;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+        }
+      }
+    }
+  }
+}
+
+// 🔹 Animaciones
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// 🔹 Responsivo
+@media (max-width: 900px) {
+  .careba-reuse-container {
+    flex-direction: column;
+
+    .careba-reuse-image,
+    .careba-reuse-content {
+      transform: none;
+      opacity: 1;
+      animation: none;
+    }
+
+    .careba-reuse-image img {
+      max-width: 100%;
+    }
+  }
+}
+
+.careba-reuse-section {
+  background-color: #f8f8f8;
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .careba-reuse-content {
+    position: relative;
+    max-width: 700px;
+    padding: 3rem 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 1.2s ease forwards;
+    opacity: 0;
+    transform: translateY(40px);
+    text-align: center;
+    overflow: hidden; // evita que la imagen sobresalga
+
+
+
+    // Capa blanca semitransparente sobre la imagen
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.8); // opacidad ajustable
+      z-index: 1;
+    }
+
+    h2, p, .btn-discover {
+      position: relative;
+      z-index: 2; // asegura que el texto esté sobre la capa
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      color: #222;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-discover {
+      display: inline-block;
+      background: #222;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #4caf50;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+      }
+    }
+  }
+}
+
+
+// .careba-reuse-section {
+//   background-color: #f8f8f8;
+//   padding: 6rem 2rem;
+//   text-align: center;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+
+//   .careba-reuse-content {
+//     max-width: 700px;
+//     background: #ffffff;
+//     padding: 3rem 2rem;
+//     border-radius: 1.5rem;
+//     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+//     animation: fadeInUp 1.2s ease forwards;
+//     opacity: 0;
+//     transform: translateY(40px);
+
+//     background-image: url('/assets/img/icons/arbol-joven.png');
+//       background-size: cover;
+//       background-position: center;
+
+//     h2 {
+//       font-size: 2.2rem;
+//       color: #222;
+//       margin-bottom: 1rem;
+//       font-weight: 700;
+//       letter-spacing: 0.5px;
+//     }
+
+//     p {
+//       color: #555;
+//       font-size: 1.1rem;
+//       line-height: 1.7;
+//       margin-bottom: 2.5rem;
+//     }
+
+//     .btn-discover {
+//       display: inline-block;
+//       background: #222;
+//       color: #fff;
+//       text-decoration: none;
+//       padding: 0.9rem 2rem;
+//       border-radius: 2rem;
+//       font-weight: 600;
+//       letter-spacing: 0.3px;
+//       transition: all 0.3s ease;
+
+//       &:hover {
+//         background: #4caf50;
+//         transform: translateY(-3px);
+//         box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+//       }
+//     }
+//   }
+// }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
