@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from "@angular/core";
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss'],
-    standalone: false
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.scss"],
+  standalone: false,
 })
 export class HeaderComponent implements OnInit {
-menuOpen = false;
-  constructor() { }
+  menuOpen = false;
+  isScrolled = false;
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    document.body.style.overflow = this.menuOpen ? "hidden" : ""; // evita scroll
   }
-
-toggleMenu() {
-  this.menuOpen = !this.menuOpen;
-  document.body.style.overflow = this.menuOpen ? 'hidden' : ''; // evita scroll
-}
-
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50; // cambia a "true" al hacer scroll
+  }
 }

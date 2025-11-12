@@ -1,9 +1,9 @@
 @use "sass:color";
 @import 'src/styles/_sass-utils';
 @import 'src/styles/_fonts';
-* {
-  outline: 1px solid red;
-}
+// * {
+//   outline: 1px solid red;
+// }
 html, body {
   height: 100%;
 }
@@ -13,6 +13,10 @@ body {
   font-family: "Urbanist", sans-serif;
   background-color: $white;
   color: $gray-darkest;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 // 🧱 Utilidades de color de fondo
@@ -75,6 +79,25 @@ body {
   }
 }
 
+.btn-navbar {
+  color: $brown;
+  text-shadow: none;
+  background-color: $white;
+  border: 0.05rem solid $brown;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: lighten($brown, 40%);
+    border-color: $brown;
+    color: $white;
+  }
+
+  &:active {
+    background-color: darken($brown, 5%);
+    color: $white;
+  }
+}
 /* =========================================================
    ⚙️ Utilidades generales
    ========================================================= */

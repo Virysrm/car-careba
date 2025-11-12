@@ -1,3 +1,6 @@
+@use "src/styles";
+@import "src/styles/_sass-utils";
+@import "src/styles/_fonts";
 a,
 a:focus,
 a:hover {
@@ -23,6 +26,8 @@ a:hover {
   color: white;
   line-height: 1.1;
   margin-bottom: 2px;
+  margin-left: 33vh;
+  padding-top: 5vh;
 }
 
 .image-wrapper {
@@ -30,6 +35,8 @@ a:hover {
   justify-content: center;
   align-items: center;
   height: 15px;
+  margin-left: 34vh;
+  padding-top: 1vh;
 }
 
 /* Menú normal (desktop) */
@@ -40,16 +47,16 @@ a:hover {
 }
 
 .nav-masthead .nav-link {
-  padding: .25rem 0;
+  padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, .5);
+  color: rgba(255, 255, 255, 0.5);
   background-color: transparent;
-  border-bottom: .25rem solid transparent;
+  border-bottom: 0.25rem solid transparent;
 }
 
 .nav-masthead .nav-link:hover,
 .nav-masthead .nav-link:focus {
-  border-bottom-color: rgba(255, 255, 255, .25);
+  border-bottom-color: $brown;
 }
 
 .nav-masthead .nav-link + .nav-link {
@@ -106,33 +113,38 @@ a:hover {
     display: none;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    // height: 100vh;
-    background: rgba(0, 0, 0, 0.4); /* transparente */
+    left: 16px;
+    width: 51vh;
+    padding-left: 14px;
+    height: 52vh;
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(8px);
     z-index: 1000;
     transition: opacity 0.3s ease;
+    margin-top: 105px;
   }
 
   .nav-masthead.active {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     animation: fadeIn 0.3s ease forwards;
   }
 
   .nav-masthead a {
     color: #fff;
     text-decoration: none;
-    margin: 1rem 0;
-    font-size: 1.4rem;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
     transition: color 0.3s ease;
   }
 
   .nav-masthead a:hover {
-    color: #a67c52;
+    color: $brown;
   }
 
   @keyframes fadeIn {
@@ -144,5 +156,58 @@ a:hover {
       opacity: 1;
       transform: scale(1);
     }
+  }
+}
+
+/* === Navbar Transparente con Cambio de Color === */
+.masthead {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  background: transparent;
+}
+
+.masthead.scrolled {
+  background-color: rgba(0, 0, 0, 0.85); // color al hacer scroll
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajuste para que el contenido de la página no se oculte detrás */
+body {
+  padding-top: 90px; // ajusta según la altura real del header
+}
+
+/* === NAVBAR TRANSPARENTE CON CAMBIO EN SCROLL === */
+.masthead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: transparent;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.masthead.scrolled {
+  background-color: rgba(0, 0, 0, 0.85); // o usa tu tono corporativo
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajusta el color de los enlaces al hacer scroll */
+.masthead.scrolled .nav-link {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.masthead.scrolled .nav-link:hover {
+  color: $brown;
+}
+
+/* En móviles mantiene el fondo semitransparente del menú desplegable */
+@media (max-width: 768px) {
+  .masthead.scrolled {
+    background-color: rgba(0, 0, 0, 0.9);
   }
 }
