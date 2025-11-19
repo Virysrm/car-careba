@@ -13,6 +13,36 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  /*Clase para desplazar hacia la siguiente sección de la pagina */
+  // scrollTo(event: Event, sectionId: string): void {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+
+  //   const target = document.getElementById(sectionId);
+
+  //   target?.scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start",
+  //   });
+  // }
+  scrollTo(event: Event, sectionId: string): void {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const target = document.getElementById(sectionId);
+
+  if (!target) return;
+
+  const navbarHeight = document.querySelector('.masthead')?.clientHeight || 0;
+
+  const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+  const offsetPosition = targetPosition - navbarHeight - 0; // Ajuste extra de 10px
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: 'smooth'
+  });
+}
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;

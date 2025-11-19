@@ -14,29 +14,30 @@ a:hover {
   padding: 10px 40px;
 }
 
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1350px; // Ajusta según tu diseño
+  margin: 0 auto; // CENTRA todo el bloque
+  padding: 10px 40px;
+}
+
 .contenedor {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; // ANTES: flex-start
+  text-align: center;
 }
 
 .titulo {
+  margin-left: 0; // ANTES: 33vh
+  padding-top: 5vh;
   font-size: 1.25rem;
   font-weight: bold;
   color: white;
   line-height: 1.1;
   margin-bottom: 2px;
-  margin-left: 33vh;
-  padding-top: 5vh;
-}
-
-.image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15px;
-  margin-left: 34vh;
-  padding-top: 1vh;
 }
 
 /* Menú normal (desktop) */
@@ -208,6 +209,6 @@ body {
 /* En móviles mantiene el fondo semitransparente del menú desplegable */
 @media (max-width: 768px) {
   .masthead.scrolled {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.15);
   }
 }

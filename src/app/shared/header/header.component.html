@@ -1,43 +1,11 @@
-<!-- <header class="masthead mb-auto">
-  <div class="encabezado">
-    <div class="contenedor">
-      <h1 class="titulo">
-        <img src="/assets/img/careba/Logo.png" alt="CAREBA" height="50px">
-        <img src="/assets/img/careba/CAREBA.png" alt="CAREBA" height="30px">
-      </h1>
-
-      <div class="image-wrapper">
-        <img src="/assets/img/careba/carpinteria.png" alt="CAREBA" height="15px">
-      </div>
-    </div>
-
-    <!-- Botón menú hamburguesa / X -->
-    <!-- <div class="menu-toggle" [class.open]="menuOpen" (click)="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div> -->
-
-    <!-- Menú principal flotante -->
-    <!-- <nav class="nav nav-masthead" [class.active]="menuOpen">
-      <a class="nav-link" href="#">Inicio</a>
-      <a class="nav-link" href="#">Servicios</a>
-      <a class="nav-link" href="#">Galería</a>
-      <a class="nav-link" href="#">Sobre Nosotros</a>
-      <a class="nav-link" href="#">Reuso by Careba</a>
-      <a class="nav-link" href="#">Contacto</a>
-      <a href="#" class="btn btn-lg btn-navbar">Solicitar Presupuesto</a>
-    </nav>
-  </div>
-</header> -->
-
-
 <header class="masthead mb-auto" [class.scrolled]="isScrolled">
   <div class="encabezado">
     <div class="contenedor">
       <h1 class="titulo">
         <img src="/assets/img/careba/Logo.png" alt="CAREBA" height="50px">
-        <img src="/assets/img/careba/CAREBA.png" alt="CAREBA" height="30px">
+        <img [src]="isScrolled ? '/assets/img/careba/PNG_CAREBA_3 - Logo.png' : '/assets/img/careba/CAREBA.png'"
+          alt="CAREBA" height="30px">
+        <!-- <img src="/assets/img/careba/CAREBA.png" alt="CAREBA" height="30px"> -->
       </h1>
 
       <div class="image-wrapper">
@@ -54,12 +22,12 @@
 
     <!-- Menú principal flotante -->
     <nav class="nav nav-masthead" [class.active]="menuOpen">
-      <a class="nav-link" href="#">Inicio</a>
-      <a class="nav-link" href="#">Servicios</a>
-      <a class="nav-link" href="#">Galería</a>
-      <a class="nav-link" href="#">Sobre Nosotros</a>
-      <a class="nav-link" href="#">Reuso by Careba</a>
-      <a class="nav-link" href="#">Contacto</a>
+      <a class="nav-link" (click)="scrollTo($event, 'inicio')">Inicio</a>
+      <a class="nav-link" (click)="scrollTo($event, 'works')">Servicios</a>
+      <a class="nav-link" (click)="scrollTo($event, 'gallery')">Galería</a>
+      <a class="nav-link" (click)="scrollTo($event, 'us')">Sobre Nosotros</a>
+      <a class="nav-link" (click)="scrollTo($event, 'reused')">Reuso by Careba</a>
+      <a class="nav-link" (click)="scrollTo($event, 'contact')">Contacto</a>
     </nav>
   </div>
 </header>
