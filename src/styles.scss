@@ -8,12 +8,12 @@ html, body {
   height: 100%;
 }
 
-body {
-  margin: 0;
-  font-family: "Urbanist", sans-serif;
-  background-color: $white;
-  color: $gray-darkest;
-}
+// body {
+//   margin: 0;
+//   font-family: "Urbanist", sans-serif;
+//   background-color: $white;
+//   color: $gray-darkest;
+// }
 
 html {
   scroll-behavior: smooth;
@@ -33,6 +33,7 @@ html {
 .text-brown        { color: $brown; }
 .text-white        { color: $white; }
 .text-gray-darkest { color: $gray-darkest; }
+.text-gray-light { color: $gray-light; }
 
 /*==========================================================
    🎛️ Botones globales
@@ -41,19 +42,19 @@ html {
 .btn-primary {
   color: $white;
   text-shadow: none;
-  background-color: $brown;
+  background-color: $gray-dark;
   border: 0.05rem solid $white;
   transition: all 0.3s ease;
 
   &:hover,
   &:focus {
-    background-color: darken($brown, 10%);
+    background-color: darken($gray-dark, 10%);
     border-color: darken($white, 15%);
     color: $white;
   }
 
   &:active {
-    background-color: darken($brown, 15%);
+    background-color: darken($gray-dark, 15%);
     border-color: darken($white, 20%);
   }
 }

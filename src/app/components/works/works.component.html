@@ -1,21 +1,56 @@
 <section id="works" class="section-header">
   <div class="linea-encabezado"></div>
   <div class="section-content">
-    <h1 class="section-title text-center">Nuestros Servicios</h1>
+    <h1 class="section-title lexend-zetta text-center">Nuestros Servicios</h1>
     <h5 class="font-urbanist section-subtitle text-center">
       Ofrecemos una amplia gama de servicios de carpintería profesional
     </h5>
   </div>
 </section>
 
-<section class="section-contenido mb-5">
+<section class="services"  #fadeEl [class.visible]="isFadeVisible">
+  <div class="service-card">
+    <div class="icon-box" style="background:#434448;">
+      <i class="bi bi-pencil-square"></i>
+    </div>
+    <h3 class="text-white">Diseño Personalizado</h3>
+    <p style="color: darkgrey;">Cada pieza es única, diseñada específicamente para tu espacio y necesidades</p>
+  </div>
+
+  <div class="service-card">
+    <div class="icon-box" style="background:#1e3a47;">
+      <i class="bi bi-rulers"></i>
+    </div>
+    <h3 class="text-white">Muebles a Medida</h3>
+    <p style="color: darkgrey;">Diseñamos y fabricamos muebles únicos adaptados a tus necesidades y espacio.</p>
+  </div>
+
+  <div class="service-card">
+    <div class="icon-box" style="background:#4b2848;">
+      <i class="bi bi-stars"></i>
+    </div>
+    <h3 class="text-white">Restauración Premium</h3>
+    <p style="color: darkgrey;">Devolvemos la vida a tus muebles con excelentes técnicas de restauracion.</p>
+  </div>
+
+  <div class="service-card">
+    <div class="icon-box" style="background:#1d442d;">
+      <i class="bi bi-hammer"></i>
+    </div>
+    <h3 class="text-white">Carpintería Integral</h3>
+    <p style="color: darkgrey;">Desde armarios hasta terrazas, todo tipo de proyectos en madera tanto interior como exterior</p>
+  </div>
+</section>
+
+
+<!-- <section class="section-contenido mb-5">
   <div class="row g-4">
     <div class="col-lg-4 col-md-6 d-flex justify-content-center">
       <div class="card h-100 w-100 position-relative custom-card">
         <div class="image-container position-relative">
           <img src="/assets/img/photos/foto-medida.jpg" class="image card-img-top" alt="Muebles a medida">
 
-          <div class="overlay"></div> <!-- oscurecimiento al pasar el mouse -->
+          <div class="overlay"></div> /*oscurecimiento al pasar el mouse -*/
 
           <div class="icon-overlay-bottom-left">
             <img src="/assets/img/icons/muebles.png" alt="Icono muebles" class="icon-img">
@@ -72,7 +107,7 @@
     </div>
   </div>
 
-  <!-- Fila 2: 2 cards centradas lado a lado -->
+/*Fila 2: 2 cards centradas lado a lado*/
   <div class="row g-4 justify-content-center mt-3">
         <div class="col-lg-4 col-md-6 d-flex justify-content-center">
       <div class="card h-100 w-100 position-relative custom-card">
@@ -132,4 +167,4 @@
     </div>
 
   </div>
-</section>
+</section> -->

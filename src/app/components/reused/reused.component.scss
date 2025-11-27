@@ -1,5 +1,6 @@
+@use "src/styles";
 .careba-reuse-section {
-  background-color: #f8f8f8;
+  // background-color: #f8f8f8;
   padding: 6rem 2rem;
 
   .careba-reuse-container {
@@ -30,17 +31,17 @@
 
     .careba-reuse-content {
       flex: 1 1 45%;
-      background: #ffffff;
+      //background: #ffffff;
       padding: 2.5rem;
       border-radius: 1.5rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       animation: fadeInRight 1.2s ease forwards;
       opacity: 0;
       transform: translateX(40px);
-      background-image: url('/assets/img/icons/arbol-joven.png');
-background-size: 300px;         // tamaño de la imagen
-background-position: right bottom; // posición abajo a la derecha
-background-repeat: no-repeat;   // evita repeticiones
+      background-image: url("/assets/img/icons/arbol-joven.png");
+      background-size: 300px; // tamaño de la imagen
+      background-position: right bottom; // posición abajo a la derecha
+      background-repeat: no-repeat; // evita repeticiones
 
       h2 {
         font-size: 2.2rem;
@@ -69,7 +70,7 @@ background-repeat: no-repeat;   // evita repeticiones
         transition: all 0.3s ease;
 
         &:hover {
-          background: #4caf50;
+          background: #dd9157;
           transform: translateY(-3px);
           box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
         }
@@ -112,7 +113,7 @@ background-repeat: no-repeat;   // evita repeticiones
 }
 
 .careba-reuse-section {
-  background-color: #f8f8f8;
+  //background-color: #f8f8f8;
   padding: 6rem 2rem;
   display: flex;
   justify-content: center;
@@ -130,8 +131,6 @@ background-repeat: no-repeat;   // evita repeticiones
     text-align: center;
     overflow: hidden; // evita que la imagen sobresalga
 
-
-
     // Capa blanca semitransparente sobre la imagen
     &::before {
       content: "";
@@ -141,7 +140,9 @@ background-repeat: no-repeat;   // evita repeticiones
       z-index: 1;
     }
 
-    h2, p, .btn-discover {
+    h2,
+    p,
+    .btn-discover {
       position: relative;
       z-index: 2; // asegura que el texto esté sobre la capa
     }
@@ -173,14 +174,13 @@ background-repeat: no-repeat;   // evita repeticiones
       transition: all 0.3s ease;
 
       &:hover {
-        background: #4caf50;
+        background: #dd9157;
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
       }
     }
   }
 }
-
 
 // .careba-reuse-section {
 //   background-color: #f8f8f8;

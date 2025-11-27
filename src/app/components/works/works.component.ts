@@ -15,7 +15,7 @@ export class WorksComponent implements AfterViewInit {
       ([entry]) => {
         if (entry.isIntersecting) {
           this.isFadeVisible = true;
-          fadeObserver.unobserve(this.fadeEl.nativeElement); // Solo una vez
+          fadeObserver.unobserve(this.fadeEl.nativeElement); // solo una vez
         }
       },
       { threshold: 0.2 }

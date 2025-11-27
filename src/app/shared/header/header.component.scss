@@ -32,7 +32,7 @@ a:hover {
 
 .titulo {
   margin-left: 0; // ANTES: 33vh
-  padding-top: 5vh;
+  padding-top: 3vh;
   font-size: 1.25rem;
   font-weight: bold;
   color: white;
@@ -45,6 +45,7 @@ a:hover {
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
+  margin-top:  22px;
 }
 
 .nav-masthead .nav-link {
@@ -172,7 +173,7 @@ a:hover {
 }
 
 .masthead.scrolled {
-  background-color: rgba(0, 0, 0, 0.85); // color al hacer scroll
+  background-color: rgba(0, 0, 0, 0.4); // color al hacer scroll
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 

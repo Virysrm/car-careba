@@ -11,23 +11,31 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { WorksComponent } from './components/works/works.component';
 
 const routes: Routes = [
-    { path: 'home', component: InicioComponent },    
-    { path: 'attainment', component: AttainmentComponent },    
-    { path: 'works', component: WorksComponent },   
-    { path: 'contacto', component: ContactComponent },    
-    { path: 'reused', component: ReusedComponent },
-    { path: 'us', component: UsComponent },
-    { path: 'gallery', component: GalleryComponent },
+  { path: 'home', component: InicioComponent },    
+  { path: 'attainment', component: AttainmentComponent },    
+  { path: 'works', component: WorksComponent },   
+  { path: 'contacto', component: ContactComponent },    
+  { path: 'reused', component: ReusedComponent },
+  { path: 'us', component: UsComponent },
+  { path: 'gallery', component: GalleryComponent },
 
-    /*Desúes los mueves */
-    { path: 'footer', component: FooterComponent },
-    { path: 'header', component: HeaderComponent },
+  // Lazy module BEFORE wildcard
+  {
+    path: 'reused-careba',
+    loadChildren: () => import('./reused-careba/reused-careba.module')
+      .then(m => m.ReusedCarebaModule)
+  },
 
+  // Estas mejor NO deben ser rutas
+  { path: 'footer', component: FooterComponent },
+  { path: 'header', component: HeaderComponent },
 
-    { path: '', pathMatch:'full', redirectTo: 'home'},
-    { path: '**', pathMatch:'full', redirectTo: 'home'}
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
 
+  // Wildcard siempre al final
+  { path: '**', redirectTo: 'home' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
