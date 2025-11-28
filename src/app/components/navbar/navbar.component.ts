@@ -1,13 +1,13 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener } from "@angular/core";
 
 @Component({
-  selector: 'app-navbar',
+  selector: "app-navbar",
   imports: [],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  templateUrl: "./navbar.component.html",
+  styleUrl: "./navbar.component.scss",
 })
 export class NavbarComponent {
- isScrolled = false;
+  isScrolled = false;
   menuOpen = false;
 
   @HostListener("window:scroll", [])

@@ -10,6 +10,7 @@ import { CategoryComponent } from "./category/category.component";
 import { ContactComponent } from "./contact/contact.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
+import { ServiciosComponent } from "./servicios/servicios.component";
 
 @NgModule({
   declarations: [],
@@ -24,6 +25,7 @@ import { FooterComponent } from "./footer/footer.component";
     ContactComponent,
     NavbarComponent,
     FooterComponent,
+    ServiciosComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

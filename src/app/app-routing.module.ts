@@ -5,7 +5,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ReusedComponent } from './components/reused/reused.component';
 import { UsComponent } from './components/us/us.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { HeaderComponent } from './shared/header/header.component';
+//import { HeaderComponent } from './shared/header/header.component';
 import { AttainmentComponent } from './components/attainment/attainment.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { WorksComponent } from './components/works/works.component';
@@ -28,7 +28,7 @@ const routes: Routes = [
 
   // Estas mejor NO deben ser rutas
   { path: 'footer', component: FooterComponent },
-  { path: 'header', component: HeaderComponent },
+  // { path: 'header', component: HeaderComponent },
 
   { path: '', pathMatch: 'full', redirectTo: 'home' },
 

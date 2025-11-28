@@ -6,6 +6,8 @@ import { ContactComponent } from "./contact/contact.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { ProductsComponent } from "./products/products.component";
+import { ServiciosComponent } from "./servicios/servicios.component";
+
 
 const routes: Routes = [
   {
@@ -17,6 +19,7 @@ const routes: Routes = [
         { path: 'footer', component: FooterComponent },
         { path: 'navbar', component: NavbarComponent },
         { path: 'products', component: ProductsComponent },
+        { path: 'servicios', component: ServiciosComponent },
     ],    
   },
 ];

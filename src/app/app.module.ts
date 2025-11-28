@@ -10,8 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { ContactComponent } from './components/contact/contact.component';
 import { UsComponent } from './components/us/us.component';
 import { ReusedComponent } from './components/reused/reused.component';
@@ -20,6 +20,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { AttainmentComponent } from './components/attainment/attainment.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { WorksComponent } from './components/works/works.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { WorksComponent } from './components/works/works.component';
     GalleryComponent,
     WorksComponent
   ],
-  imports: [
+  imports: [ /*cuando tiene standalone se alojan aqui*/
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -43,7 +44,8 @@ import { WorksComponent } from './components/works/works.component';
     MatIconModule,
     MatCardModule,
     MatStepperModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NavbarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

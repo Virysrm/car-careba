@@ -1,8 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 @Component({
   selector: 'reused-careba',
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './reused-careba.component.html',
   styleUrl: './reused-careba.component.scss',
 })

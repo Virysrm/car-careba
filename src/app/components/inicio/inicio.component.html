@@ -1,141 +1,47 @@
-<!-- <body class="text-center">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-      <div class="encabezado">
-        <div class="contenedor">
-          <h1 class="titulo">
-            <img src="/assets/img/careba/Logo.png" alt="CAREBA" height="50px">
-            <img src="/assets/img/careba/CAREBA.png" alt="CAREBA" height="30px">
-          </h1>
+<app-navbar></app-navbar>
+<section id="inicio">
+  <body class="text-center">
+    <!-- Fondo global separado -->
+    <div class="background-cover"></div>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <main role="main" class="inner cover fade-section" #fadeEl [class.visible]="isFadeVisible">
+        <h1 class="cover-heading font-Outfit">
+          Donde la Calidad y Precio <br>
+          <span class="text-gray-light">Se Hacen</span> Presentes
+        </h1>
+        <p class="cover-container-text font-urbanist">
+          Transformamos tus ideas en obras maestras de carpintería. <br>
+          Diseño y dedicación en cada proyecto.
+        </p>
+
+        <div class="d-flex justify-content-start gap-3">
+          <a class="btn btn-lg btn-primary" (click)="scrollTo($event, 'contact')">Solicitar Presupuesto &#10140;</a>
+          <a class="btn btn-lg btn-secondary" (click)="scrollTo($event, 'gallery')">Ver Proyectos</a>
         </div>
+      </main>
 
-        <nav class="nav nav-masthead">
-          <a class="nav-link active" href="#">Inicio</a>
-          <a class="nav-link" href="#">Servicios</a>
-          <a class="nav-link" href="#">Galería</a>
-          <a class="nav-link" href="#">Sobre Nosotros</a>
-          <a class="nav-link" href="#">Reuso by Careba</a>
-          <a class="nav-link" href="#">Contacto</a>
-        </nav>
-      </div>
-    </header>
+      <footer class="mt-auto text-center">
+        <svg viewBox="0 0 24 24" width="94" height="94" fill="none" style="cursor: pointer;" (click)="scrollDown()">
+          <style>
+            @keyframes mouse {
+              0% {
+                transform: translateY(8px);
+              }
 
-    <main role="main" class="inner cover fade-section" #fadeEl [class.visible]="isFadeVisible">
-      <h1 class="cover-heading font-Outfit">Donde la Calidad y Precio
-        <br><span class="text-brown">Se Hacen</span> Presentes
-      </h1>
-      <p class="cover-container-text font-urbanist">Transformamos tus ideas en obras maestras de carpintería. <br>Diseño
-        y dedicación en cada proyecto.</p>
-      <div class="d-flex justify-content-start gap-3">
-        <a href="#" class="btn btn-lg btn-primary">Solicitar Presupuesto &#10140;</a>
-        <a href="#" class="btn btn-lg btn-secondary">Ver Proyectos</a>
-      </div>
-    </main>
-    <footer class="mt-auto text-center">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="94" height="94" fill="none"
-        style="cursor: pointer;" (click)="scrollDown()">
-        <style>
-          @keyframes mouse {
-            0% {
-              transform: translateY(8px);
+              100% {
+                transform: translateY(1px);
+              }
             }
-
-            100% {
-              transform: translateY(1px);
-            }
-          }
-        </style>
-
-        <rect width="8" height="14" x="8" y="5" stroke="white" rx="4" />
-        <rect width="1.5" height="3" x="11.25" y="6.5" fill="white" rx=".75"
-          style="animation: mouse 0.5s linear infinite alternate both;" />
-      </svg>
-    </footer>
-  </div>
-</body> -->
-
-<!-- <body class="text-center">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <app-header></app-header>
-
-    <main role="main" class="inner cover fade-section" #fadeEl [class.visible]="isFadeVisible">
-      <h1 class="cover-heading font-Outfit">
-        Donde la Calidad y Precio <br>
-        <span class="text-brown">Se Hacen</span> Presentes
-      </h1>
-      <p class="cover-container-text font-urbanist">
-        Transformamos tus ideas en obras maestras de carpintería. <br>
-        Diseño y dedicación en cada proyecto.
-      </p>
-
-      <div class="d-flex justify-content-start gap-3">
-        <a href="#contacto" class="btn btn-lg btn-primary">Comenzar Proyecto &#10140;</a>
-        <a href="#works" class="btn btn-lg btn-secondary">Ver Proyectos</a>
-      </div>
-    </main>
-
-    <footer class="mt-auto text-center">
-      <svg viewBox="0 0 24 24" width="94" height="94" fill="none"
-        style="cursor: pointer;" (click)="scrollDown()">
-        <style>
-          @keyframes mouse {
-            0% { transform: translateY(8px); }
-            100% { transform: translateY(1px); }
-          }
-        </style>
-        <rect width="8" height="14" x="8" y="5" stroke="white" rx="4" />
-        <rect width="1.5" height="3" x="11.25" y="6.5" fill="white" rx=".75"
-          style="animation: mouse 0.5s linear infinite alternate both;" />
-      </svg>
-    </footer>
-
-  </div>
-</body> -->
-
-
-<app-header></app-header>
-<body class="text-center">
-  <!-- Fondo global separado -->
-  <div class="background-cover"></div>
-
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <main role="main" class="inner cover fade-section" #fadeEl [class.visible]="isFadeVisible">
-      <h1 class="cover-heading font-Outfit">
-        Donde la Calidad y Precio <br>
-        <span class="text-gray-light">Se Hacen</span> Presentes
-      </h1>
-      <p class="cover-container-text font-urbanist">
-        Transformamos tus ideas en obras maestras de carpintería. <br>
-        Diseño y dedicación en cada proyecto.
-      </p>
-
-      <div class="d-flex justify-content-start gap-3">
-        <a href="#contacto" class="btn btn-lg btn-primary">Comenzar Proyecto &#10140;</a>
-        <a href="#works" class="btn btn-lg btn-secondary">Ver Proyectos</a>
-      </div>
-    </main>
-
-    <footer class="mt-auto text-center">
-      <svg viewBox="0 0 24 24" width="94" height="94" fill="none" style="cursor: pointer;" (click)="scrollDown()">
-        <style>
-          @keyframes mouse {
-            0% {
-              transform: translateY(8px);
-            }
-
-            100% {
-              transform: translateY(1px);
-            }
-          }
-        </style>
-        <rect width="8" height="14" x="8" y="5" stroke="white" rx="4" />
-        <rect width="1.5" height="3" x="11.25" y="6.5" fill="white" rx=".75"
-          style="animation: mouse 0.5s linear infinite alternate both;" />
-      </svg>
-    </footer>
-  </div>
-</body>
-
+          </style>
+          <rect width="8" height="14" x="8" y="5" stroke="white" rx="4" />
+          <rect width="1.5" height="3" x="11.25" y="6.5" fill="white" rx=".75"
+            style="animation: mouse 0.5s linear infinite alternate both;" />
+        </svg>
+      </footer>
+    </div>
+  </body>
+</section>
 <app-attainment></app-attainment>
 <app-works></app-works>
 <app-gallery></app-gallery>

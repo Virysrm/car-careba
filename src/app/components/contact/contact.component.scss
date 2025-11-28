@@ -211,7 +211,6 @@
   background: #000;
 }
 
-
 /* ------------------- */
 /* GRID PRINCIPAL */
 /* ------------------- */
@@ -223,7 +222,6 @@
   margin: 0 auto;
   padding: 12px 20px;
 }
-
 
 /* ------------------- */
 /* FORMULARIO */
@@ -250,6 +248,7 @@ form textarea {
   border: 1px solid #dd9157;
   box-sizing: border-box;
   background-color: #000;
+  color: #fff;
 }
 
 /* -------------------------
@@ -310,7 +309,6 @@ form button:focus::after {
   left: 150%;
 }
 
-
 /* ------------------- */
 /* ICONOS */
 /* ------------------- */
@@ -339,7 +337,6 @@ form button:focus::after {
   background-color: #e0e0e0;
   transform: scale(1.05);
 }
-
 
 /* ------------------- */
 /* HORARIOS */
@@ -370,12 +367,10 @@ form button:focus::after {
   margin-top: 25%;
 }
 
-
 /* -------------------------------
    📱 RESPONSIVE
 --------------------------------*/
 @media (max-width: 992px) {
-
   .contacto-grid {
     grid-template-columns: 1fr;
     gap: 20px;

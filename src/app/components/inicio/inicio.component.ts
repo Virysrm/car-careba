@@ -1,10 +1,16 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  HostListener,
+} from "@angular/core";
 
 @Component({
-    selector: "app-inicio",
-    templateUrl: "./inicio.component.html",
-    styleUrls: ["./inicio.component.scss"],
-    standalone: false
+  selector: "app-inicio",
+  templateUrl: "./inicio.component.html",
+  styleUrls: ["./inicio.component.scss"],
+  standalone: false,
 })
 export class InicioComponent implements OnInit {
   elementosVisibles: boolean[] = [];
@@ -13,6 +19,8 @@ export class InicioComponent implements OnInit {
 
   isFadeVisible = false;
   isSectionVisible = false;
+  isScrolled = false;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -23,32 +31,6 @@ export class InicioComponent implements OnInit {
       behavior: "smooth", // 🔹 Movimiento suave
     });
   }
-
-  // ngAfterViewInit() {
-  //   // Observer para fadeEl
-  //   const fadeObserver = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) {
-  //         this.isFadeVisible = true;
-  //         fadeObserver.unobserve(this.fadeEl.nativeElement);
-  //       }
-  //     },
-  //     { threshold: 0.2 }
-  //   );
-  //   if (this.fadeEl) fadeObserver.observe(this.fadeEl.nativeElement);
-
-  //   // Observer para sectionEl
-  //   const sectionObserver = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) {
-  //         this.isSectionVisible = true;
-  //         sectionObserver.unobserve(this.sectionEl.nativeElement);
-  //       }
-  //     },
-  //     { threshold: 0.1 }
-  //   );
-  //   if (this.sectionEl) sectionObserver.observe(this.sectionEl.nativeElement);
-  // }
 
   ngAfterViewInit() {
     const fadeObserver = new IntersectionObserver(
@@ -62,5 +44,37 @@ export class InicioComponent implements OnInit {
     );
 
     if (this.fadeEl) fadeObserver.observe(this.fadeEl.nativeElement);
+  }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
+
+  scrollTo(event: Event, sectionId: string): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const target = document.getElementById(sectionId);
+    if (!target) return;
+
+    // Altura del navbar
+    const navbar = document.querySelector(".navbar") as HTMLElement;
+    const navbarHeight = navbar?.offsetHeight || 0;
+
+    // Distancia adicional si el navbar está en top 40 o top 28
+    const navbarOffset =
+      parseInt(window.getComputedStyle(navbar).top.replace("px", "")) || 0;
+
+    // Posición real del elemento
+    const targetPosition = target.offsetTop;
+
+    // Cálculo FINAL correcto
+    const offsetPosition = targetPosition - navbarHeight - navbarOffset - 10;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
   }
 }

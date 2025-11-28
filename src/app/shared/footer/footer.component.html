@@ -25,7 +25,7 @@
         </p>
         <div class="footer-social">
           <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.facebook.com/carpinteriacareba?locale=es_LA" class="social-icon"><i class="bi bi-facebook"></i></a>
         </div>
       </div>
 
@@ -33,9 +33,9 @@
       <div class="footer-links">
         <h4 class="footer-title">Enlaces</h4>
         <ul>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#proceso">Nuestro Proceso</a></li>
+          <li><a (click)="scrollTo($event, 'works')">Servicios</a></li>
+          <li><a (click)="scrollTo($event, 'gallery')">Proyectos</a></li>
+          <li><a (click)="scrollTo($event, 'contact')">Solicitar Presupuesto</a></li>
         </ul>
       </div>
 
@@ -55,8 +55,7 @@
       <p>&copy; 2025 CAREBA. Todos los derechos reservados.</p>
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Design by <a href="https://getbootstrap.com/"><code>&lt;/&gt;VRM</code></a>, by <a
-              href="https://twitter.com/mdo">&#64;<code>&lt;/&gt;VRM</code></a>.</p>
+          <p>by <a class="text-white" href="#">&#64;<code>&lt;/&gt;VRM</code></a></p>
         </div>
       </footer>
       <div class="footer-bottom-links">

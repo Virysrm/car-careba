@@ -41,7 +41,7 @@ body {
   justify-content: center;
   padding: 4rem 2rem;
   padding-top: 0rem;
-  flex-wrap: wrap;        /* 🔥 Permite que las tarjetas bajen en pantallas pequeñas */
+  flex-wrap: wrap;    
 }
 
 /* Tarjeta */
@@ -52,8 +52,8 @@ body {
   border-radius: 16px;
   border: 2px solid transparent;
   transition: 0.3s ease;
-  flex: 1 1 260px;        /* 🔥 Se adapta al espacio disponible */
-  max-width: 300px;       /* Evita que crezca demasiado */
+  flex: 1 1 260px;      
+  max-width: 300px;  
 }
 
 .service-card:hover {
