@@ -1,0 +1,112 @@
+@use "src/styles";
+
+/* Contenedor */
+.servicios {
+  margin-top: 40px;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 4rem 2rem;
+  padding-top: 0rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+/* Tarjeta */
+.service-card {
+  //background: #434448;
+  padding: 2rem;
+  width: 260px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+  flex: 1 1 260px;
+  max-width: 300px;
+}
+
+// .service-card:hover {
+//   border-color: #aa6c3c;
+//   transform: scale(1.03);
+//   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+// }
+
+/* Tarjeta destacada */
+.highlighted {
+  border-color: #aa6c3c;
+}
+
+/* Icono */
+.icon-box {
+  margin: 0 auto 1.2rem auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.icon-box i {
+  font-size: 28px;
+  color: #aa6c3c;
+}
+
+/* Títulos y textos */
+.service-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.service-card p {
+  font-size: 15px;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+/* 📱📱📱 ------------------------- */
+/*        MEDIA QUERIES MOBILE     */
+/* 📱📱📱 ------------------------- */
+
+/* 🔥 Menos de 768px (tablets / móviles grandes) */
+@media (max-width: 768px) {
+  .servicios {
+    gap: 1.5rem;
+    padding: 3rem 1rem;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 360px; /* Se centra y no se hace gigante */
+    margin: 0 auto;
+  }
+}
+
+/* 🔥 Menos de 480px (móviles pequeños) */
+@media (max-width: 480px) {
+  .servicios {
+    padding: 2rem 1rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .icon-box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-box i {
+    font-size: 24px;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+  }
+}

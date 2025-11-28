@@ -24,8 +24,8 @@ import { ServiciosComponent } from "./servicios/servicios.component";
     CategoryComponent,
     ContactComponent,
     NavbarComponent,
-    FooterComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    FooterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

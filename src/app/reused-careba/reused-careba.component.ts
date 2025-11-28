@@ -1,9 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { ServiciosComponent } from "./servicios/servicios.component";
+import { ProductsComponent } from "./products/products.component";
+import { FooterComponent } from "./footer/footer.component";
+import { ContactComponent } from "./contact/contact.component";
 
 @Component({
   selector: 'reused-careba',
-  imports: [NavbarComponent],
+  imports: [NavbarComponent, ServiciosComponent, ProductsComponent, FooterComponent, ContactComponent],
   templateUrl: './reused-careba.component.html',
   styleUrl: './reused-careba.component.scss',
 })

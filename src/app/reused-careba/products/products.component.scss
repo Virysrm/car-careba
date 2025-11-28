@@ -1,0 +1,182 @@
+@use "src/styles";
+
+/* Contenedor */
+.products {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 4rem 2rem;
+  padding-top: 0rem;
+}
+
+.card-producto {
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+
+  .card-img {
+    position: relative;
+    padding: 20px;
+
+    img {
+      margin-top: 40px;
+      width: 100%;
+      border-radius: 10px;
+    }
+    /* Disponible */
+    .tag-estado-disponible {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #398857;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* No disponible */
+    .tag-estado-no-disponible {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #d9534f; /* rojo elegante */
+      color: white;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  .card-body {
+    padding: 20px;
+
+    .titulo-precio {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        font-size: 18px;
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .precio {
+        color: #1e3a47;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+
+    .categoria {
+      margin-top: 4px;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .descripcion {
+      margin-top: 12px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .btn-consultar {
+      margin-top: 20px;
+      width: 100%;
+      background: #1e3a47;
+      color: #fff;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        background: #dd9157;
+      }
+    }
+  }
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); // ⭐ fila de 4
+  gap: 2rem;
+  padding: 1rem;
+}
+
+/* Responsive para móviles y tablet */
+@media (max-width: 1200px) {
+  .grid-productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-productos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Pagination*/
+.pagination .page-item.active .page-link {
+  background-color: #1e3a47;
+  border-color: #1e3a47;
+  color: #dd9157;
+}
+
+.pagination .page-link {
+  cursor: pointer;
+}
+
+/* PAGINACIÓN */
+.paginacion {
+  grid-column: 1 / -1; /* ← IMPORTANTE */
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.page-link {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.page-item.active .page-link {
+  background: #dd9157;
+  color: white;
+}
+
+.bg-pagination-color{
+  color: #1e3a47;
+}

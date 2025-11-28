@@ -1,0 +1,147 @@
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
+
+.footer {
+  background-color: #000;
+  color: #9ca3af; // gris medio
+  border-top: 1px solid #1f2937;
+  font-family: "Urbanist", sans-serif;
+
+  .footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  }
+
+  /* Logo y descripción */
+  .footer-brand {
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+
+      .logo-white {
+        color: #fff;
+      }
+      .logo-gold {
+        color: #aa6c3c;
+      }
+    }
+
+    .footer-description {
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      max-width: 400px;
+      color: #b0b0b0;
+     // line-height: 1.6;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+
+      .social-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #1a1a1a;
+        color: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: #aa6c3c;
+          color: #000;
+        }
+
+        i {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+
+  /* Secciones de enlaces y contacto */
+  .footer-links,
+  .footer-contact {
+    .footer-title {
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 0.6rem;
+      }
+
+      a {
+        color: #9ca3af;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #aa6c3c;
+        }
+      }
+    }
+  }
+
+  /* Parte inferior */
+  .footer-bottom {
+    border-top: 1px solid #1f2937;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 0.85rem;
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      text-align: left;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 2rem;
+
+      a {
+        color: #9ca3af;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #aa6c3c;
+        }
+      }
+    }
+  }
+}
