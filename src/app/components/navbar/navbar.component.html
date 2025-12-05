@@ -1,3 +1,37 @@
+<!-- TOPBAR (se oculta al hacer scroll)
+<div class="topbar" [class.hide]="isScrolled">
+    <div class="topbar-container">
+
+        <div class="topbar-left">
+            <span><i class="bi bi-telephone"></i>55 14513651</span>
+            <span><i class="bi bi-envelope"></i>careba_ramirez@hotmail.com</span>
+        </div>
+
+        <div class="topbar-right">
+            <p class="etiqueta">Síguenos:</p>
+            <a href="https://www.facebook.com/carpinteriacareba?locale=es_LA" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<nav [class.scrolled]="isScrolled" class="navbar">
+    <div class="navbar-container">
+        <a routerLink="/" class="logo">
+            <img src="/assets/img/careba/Logo.png" alt="Logo"/>
+        </a>
+
+        <ul class="nav-links" [class.active]="menuOpen">
+            <li><a class="nav-link" (click)="scrollTo($event, 'inicio')">INICIO</a></li>
+            <li><a class="nav-link" (click)="scrollTo($event, 'works')">SERVICIOS</a></li>
+            <li><a class="nav-link" (click)="scrollTo($event, 'gallery')">PROYECTOS</a></li>
+            <li><a class="nav-link" (click)="scrollTo($event, 'us')">NOSOTROS</a></li>
+            <li><a class="nav-link" (click)="scrollTo($event, 'contact')">CONTACTO</a></li>
+            <li><a class="nav-link" (click)="scrollTo($event, 'reused')">REUSO CAREBA</a></li>
+        </ul>
+    </div>
+</nav> -->
 <!-- TOPBAR (se oculta al hacer scroll) -->
 <div class="topbar" [class.hide]="isScrolled">
     <div class="topbar-container">
@@ -19,19 +53,43 @@
 </div>
 
 <nav [class.scrolled]="isScrolled" class="navbar">
-    <div class="navbar-container">
-        <a routerLink="/" class="logo">
-            <!-- <img src="/assets/img/careba/PNG_CAREBA_1.png" alt="Logo"/> -->
-            <img src="/assets/img/careba/Logo.png" alt="Logo"/>
-        </a>
+  <div class="navbar-container">
 
-        <ul class="nav-links" [class.active]="menuOpen">
-            <li><a class="nav-link" (click)="scrollTo($event, 'inicio')">INICIO</a></li>
-            <li><a class="nav-link" (click)="scrollTo($event, 'works')">SERVICIOS</a></li>
-            <li><a class="nav-link" (click)="scrollTo($event, 'gallery')">PROYECTOS</a></li>
-            <li><a class="nav-link" (click)="scrollTo($event, 'us')">NOSOTROS</a></li>
-            <li><a class="nav-link" (click)="scrollTo($event, 'contact')">CONTACTO</a></li>
-            <li><a class="nav-link" (click)="scrollTo($event, 'reused')">REUSO CAREBA</a></li>
-        </ul>
+    <!-- LOGO -->
+    <a routerLink="/" class="logo">
+      <img src="assets/img/careba/Logo.png" alt="Logo"/>
+    </a>
+
+    <!-- ===== MENÚ DESKTOP (visible por defecto en pantallas grandes) ===== -->
+    <ul class="nav-links">
+      <li><a class="nav-link" (click)="scrollTo($event, 'inicio')">INICIO</a></li>
+      <li><a class="nav-link" (click)="scrollTo($event, 'works')">SERVICIOS</a></li>
+      <li><a class="nav-link" (click)="scrollTo($event, 'gallery')">PROYECTOS</a></li>
+      <li><a class="nav-link" (click)="scrollTo($event, 'us')">NOSOTROS</a></li>
+      <li><a class="nav-link" (click)="scrollTo($event, 'contact')">CONTACTO</a></li>
+      <li><a class="nav-link" (click)="scrollTo($event, 'reused')">REUSO CAREBA</a></li>
+    </ul>
+
+    <!-- HAMBURGUESA (solo en móvil) -->
+    <button class="hamburger" (click)="menuOpen = true" aria-label="Abrir menú">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <!-- MENÚ MÓVIL (SIDEBAR) -->
+    <div class="mobile-menu" [class.active]="menuOpen">
+      <button class="close-btn" (click)="menuOpen = false" aria-label="Cerrar menú">
+        <i class="bi bi-x"></i>
+      </button>
+
+      <ul>
+        <li><a (click)="scrollTo($event,'inicio'); menuOpen=false">Inicio</a></li>
+        <li><a (click)="scrollTo($event,'works'); menuOpen=false">Servicios</a></li>
+        <li><a (click)="scrollTo($event,'gallery'); menuOpen=false">Proyectos</a></li>
+        <li><a (click)="scrollTo($event,'us'); menuOpen=false">Nosotros</a></li>
+        <li><a (click)="scrollTo($event,'contact'); menuOpen=false">Contacto</a></li>
+        <li><a (click)="scrollTo($event,'reused'); menuOpen=false">Reuso Careba</a></li>
+      </ul>
     </div>
+
+  </div>
 </nav>

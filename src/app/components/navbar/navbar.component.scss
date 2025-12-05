@@ -56,7 +56,6 @@
   }
 }
 
-
 /* ---------- NAVBAR ---------- */
 .navbar {
   position: fixed;
@@ -76,27 +75,24 @@
   }
 }
 
-// .navbar-container {
-//   width: 65%;
-//   margin: 10px auto;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
 .navbar-container {
   width: 65%;
-  height: 70px; /* fuerza un contenedor balanceado */
-  margin: 0 auto; /* QUITAMOS el margin-top que desalineaba todo */
+  height: 70px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* alinea verticalmente logo y menú */
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;         // 👉 se expande a todo el ancho
+    padding: 0 15px;     // 👉 da aire interno
+    height: auto;        // 👉 permite crecer si el menú baja
+    flex-wrap: wrap;     // 👉 evita desbordes (elementos pueden bajar)
+    gap: 10px;           // 👉 separa elementos
+  }
 }
 
-
 .logo img {
-  // height: 110px;
-  // width: 180px;  
   height: 50px;
   width: 50px;
   transition: 0.3s;
@@ -120,13 +116,6 @@
   }
 }
 
-/* ---------- BOTÓN PRESUPUESTO ---------- */
-.btn-quote {
-  background: #aa6c3c;
-  padding: 9px 18px;
-  border-radius: 6px;
-}
-
 dl, ol, ul {
     margin-top: 12px;
     margin-bottom: 1rem;
@@ -134,4 +123,119 @@ dl, ol, ul {
 
 .etiqueta{
   margin-top: 10px;
+}
+
+
+/* ---------- MENÚ DESKTOP ---------- */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color .2s;
+}
+
+.nav-links li a:hover {
+  color: #aa6c3c;
+}
+
+/* ---------- HAMBURGUESA ---------- */
+.hamburger {
+  display: none; /* se muestra solo en móvil vía media query */
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* ---------- MENU MÓVIL (SIDEBAR) ---------- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  height: 100vh;
+  background: #111;
+  padding: 40px 20px;
+  transition: right .35s ease;
+  display: none; /* por defecto oculto en escritorio */
+  flex-direction: column;
+  border-radius: 20px 0 0 20px;
+  z-index: 1300;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.mobile-menu ul {
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.mobile-menu li a {
+  color: white;
+  font-size: 20px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.mobile-menu li a:hover {
+  background: #2d291c; /* color café oscuro similar al de la imagen */
+  transition: background 0.25s ease;
+  padding-left: 20px; /* ligero desplazamiento opcional */
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none !important; /* ocultar menu desktop */
+  }
+  .hamburger {
+    display: block;
+  }
+  .mobile-menu {
+    display: flex;
+  }
+
+  /* navbar container adapta */
+  .navbar-container {
+    width: 100%;
+    padding: 0 40px;
+    height: auto;
+    gap: 10px;
+  }
+}
+
+/* Hide topbar on small screens */
+@media (max-width: 768px) {
+  .topbar {
+    display: none !important;
+  }
 }
