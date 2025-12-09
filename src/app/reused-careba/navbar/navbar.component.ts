@@ -7,7 +7,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
- isScrolled = false;
+  isScrolled = false;
   menuOpen = false;
 
   @HostListener("window:scroll", [])
