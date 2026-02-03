@@ -338,47 +338,18 @@ form button:focus::after {
   transform: scale(1.05);
 }
 
-/* ------------------- */
-/* HORARIOS */
-/* ------------------- */
-.horario {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  font-size: 16px;
-}
-
-.horario .dias p,
-.horario .horas p {
-  margin: 0;
-  line-height: 1.6;
-}
-
-.horario .dias {
-  text-align: left;
-}
-
-.horario .horas {
-  text-align: right;
-}
-
-.card {
-  margin-top: 25%;
-}
 
 /* -------------------------------
    📱 RESPONSIVE
 --------------------------------*/
 @media (max-width: 992px) {
-  .contacto-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    text-align: center;
+  .btn-primary{
+    font-size: small;
   }
 
   .formulario-contacto {
     width: 100%;
+    padding: 22px;
   }
 
   /* Inputs uno debajo del otro */
@@ -398,17 +369,6 @@ form button:focus::after {
 
   .icon-text .icon-img {
     margin-bottom: 6px;
-  }
-
-  .horario {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .horario .dias,
-  .horario .horas {
-    text-align: center;
   }
 
   .card {

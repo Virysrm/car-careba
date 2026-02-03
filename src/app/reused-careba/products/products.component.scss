@@ -132,9 +132,15 @@
   }
 }
 
+// @media (max-width: 600px) {
+//   .grid-productos {
+//     grid-template-columns: 1fr;
+//   }
+// }
 @media (max-width: 600px) {
   .grid-productos {
     grid-template-columns: 1fr;
+    justify-items: center; /* 👈 CENTRA LAS CARDS */
   }
 }
 
