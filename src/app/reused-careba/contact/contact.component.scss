@@ -297,7 +297,7 @@ form button:focus::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 0rem;
   padding: 4rem 17rem;
   padding-top: 0;
 }
@@ -306,7 +306,7 @@ form button:focus::after {
 @media (max-width: 992px) {
   .contacto-grid-2cols {
     grid-template-columns: 1fr;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   .info-contacto {

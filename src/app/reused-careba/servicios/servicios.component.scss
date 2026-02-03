@@ -1,7 +1,7 @@
 @use "src/styles";
 
 /* Contenedor */
-.servicios {
+.services {
   margin-top: 40px;
   display: flex;
   gap: 2rem;
@@ -71,7 +71,7 @@
 
 /* 🔥 Menos de 768px (tablets / móviles grandes) */
 @media (max-width: 768px) {
-  .servicios {
+  .services {
     gap: 1.5rem;
     padding: 3rem 1rem;
   }
@@ -85,7 +85,7 @@
 
 /* 🔥 Menos de 480px (móviles pequeños) */
 @media (max-width: 480px) {
-  .servicios {
+  .services {
     padding: 2rem 1rem;
   }
 
