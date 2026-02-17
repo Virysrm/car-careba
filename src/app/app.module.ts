@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+
+import { environment } from '../environments/environment';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -21,6 +26,7 @@ import { AttainmentComponent } from './components/attainment/attainment.componen
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { WorksComponent } from './components/works/works.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +51,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatCardModule,
     MatStepperModule,
     MatToolbarModule,
-    NavbarComponent
+    NavbarComponent,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

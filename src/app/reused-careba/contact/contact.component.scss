@@ -21,7 +21,7 @@ form textarea {
   padding: 10px;
   margin-top: 5px;
   border-radius: 10px;
-  border: 1px solid #dd9157;
+  border: 1px solid #aa6c3c;
   box-sizing: border-box;
   background-color: #fff;
   color: #fff;
@@ -50,14 +50,14 @@ form button {
 
 /* Hover (PC) */
 form button:hover {
-  background-color: #dd9157;
+  background-color: #aa6c3c;
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
 }
 
 /* Glow en móviles (simulate hover) */
 form button:active,
 form button:focus {
-  background-color: #dd9157 !important;
+  background-color: #aa6c3c !important;
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.9);
 }
 
