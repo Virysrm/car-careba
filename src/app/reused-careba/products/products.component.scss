@@ -129,18 +129,15 @@
 @media (max-width: 900px) {
   .grid-productos {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0rem;
   }
 }
 
-// @media (max-width: 600px) {
-//   .grid-productos {
-//     grid-template-columns: 1fr;
-//   }
-// }
 @media (max-width: 600px) {
   .grid-productos {
     grid-template-columns: 1fr;
-    justify-items: center; /* 👈 CENTRA LAS CARDS */
+    justify-items: center;
+    padding: 0rem;
   }
 }
 

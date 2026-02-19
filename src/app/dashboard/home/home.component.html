@@ -1,0 +1,60 @@
+<div class="header-bg">
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo-menu">
+        <img src="assets/img/careba/Logo.png" alt="Logo" class="logo-img">
+
+        <span class="logo-text">Carpintería CAREBA</span>
+      </div>
+
+      <nav class="menu">
+        <div class="menu-title">COTIZACIONES CAREBA</div>
+        <a routerLink="list" routerLinkActive="active">Lista de Cotizaciones</a>
+        <a routerLink="formulary">Nueva Cotización</a>
+
+        <div class="menu-title">REUSO CAREBA</div>
+        <a routerLink="salesused">Inventario</a>
+        <a href="#">Solicitudes Clientes</a>
+
+        <div class="menu-title">ADMIN CAREBA</div>
+        <a href="#">Usuarios</a>
+        <a href="#">Sign In</a>
+        <a href="#">Sign Up</a>
+      </nav>
+
+      <div class="help-box">
+        <p><strong>¿Necesitas Ayuda?</strong></p>
+        <p>Aquí debería ir algo, si se requiere</p>
+        <!-- <button class="btn-dark">Documentation</button>
+        <button class="btn-primary">Upgrade to pro</button> -->
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div>
+          <small>Pages / {{ pageTitle }}</small>
+          <h2>{{ pageSubtitle }}</h2>
+
+        </div>
+
+        <div class="topbar-right">
+          <!-- <input type="text" placeholder="Type here..."> -->
+          <small>Cerrar Sesión</small>
+          <!-- <a href="#">Sign In</a> -->
+        </div>
+      </div>
+
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+
+    </main>
+
+  </div>

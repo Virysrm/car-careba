@@ -9,6 +9,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AttainmentComponent } from './components/attainment/attainment.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { WorksComponent } from './components/works/works.component';
+import { HomeComponent } from './dashboard/home/home.component';
 
 const routes: Routes = [
   { path: 'home', component: InicioComponent },    
@@ -18,25 +19,18 @@ const routes: Routes = [
   { path: 'reused', component: ReusedComponent },
   { path: 'us', component: UsComponent },
   { path: 'gallery', component: GalleryComponent },
-
-  // Lazy module BEFORE wildcard
   {
     path: 'reused-careba',
-    loadChildren: () => import('./reused-careba/reused-careba.module')
-      .then(m => m.ReusedCarebaModule)
+    loadChildren: () => import('./reused-careba/reused-careba.module').then(m => m.ReusedCarebaModule)
   },
-
-  // Estas mejor NO deben ser rutas
+    {
+    path: 'home-dashboard',
+    loadChildren: () => import('./dashboard/home-dashboard.module').then(m => m.HomeDashboardModule)
+  },
   { path: 'footer', component: FooterComponent },
-  // { path: 'header', component: HeaderComponent },
-
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-
-  // Wildcard siempre al final
   { path: '**', redirectTo: 'home' }
 ];
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled'

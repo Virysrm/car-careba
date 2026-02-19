@@ -1,0 +1,105 @@
+/* CARD */
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+
+/* TABLE */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  text-align:left;
+  font-size:12px;
+  color:#999;
+  padding:10px;
+}
+
+td{
+  padding:12px 10px;
+  border-top:1px solid #eee;
+}
+
+.author-cell{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.author-cell img{
+  border-radius:50%;
+}
+
+/* BADGES */
+
+.badge{
+  padding:5px 10px;
+  border-radius:12px;
+  font-size:11px;
+  color:white;
+}
+
+.online{
+  background:#2ecc71;
+}
+
+.offline{
+  background:#95a5a6;
+}
+
+/* PROGRESS */
+
+.progress{
+  background:#eee;
+  height:6px;
+  border-radius:4px;
+}
+
+.progress-bar{
+  background:#3498db;
+  height:6px;
+  border-radius:4px;
+}
+
+.progress-bar.red{
+  background:#e74c3c;
+}
+
+/* FRANJA AZUL */
+.header-bg{
+  background: #1e3a47;
+  height: 350px;
+  padding: 20px;
+  color: white;
+  border-radius: 0 0 20px 6px;
+}
+
+/* CONTENIDO SUBE SOBRE LA FRANJA */
+.content{
+  margin-top: -60px;
+  padding: 20px;
+}
+
+/* CARDS */
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* TOPBAR TEXTO BLANCO */
+.header-bg small{
+  color: rgba(255,255,255,0.8);
+}
+
+.header-bg h2{
+  color: white;
+}
