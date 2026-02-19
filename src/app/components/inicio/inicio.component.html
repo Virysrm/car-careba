@@ -1,27 +1,34 @@
 <app-navbar></app-navbar>
-<section id="inicio">
-  <body class="text-center">
-    <!-- Fondo global separado -->
-    <div class="background-cover"></div>
+<section id="inicio" class="inicio-wrapper text-center">
 
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <main role="main" class="inner cover fade-section" #fadeEl [class.visible]="isFadeVisible">
-        <h1 class="cover-heading font-Outfit">
-          Donde la Calidad y Precio <br>
-          <span class="text-gray-light">Se Hacen</span> Presentes
-        </h1>
-        <p class="cover-container-text font-urbanist">
-          Transformamos tus ideas en obras maestras de carpintería. <br>
-          Diseño y dedicación en cada proyecto.
-        </p>
+  <!-- Fondo -->
+  <div class="background-cover"></div>
 
-        <div class="d-flex justify-content-start gap-3">
-          <a class="btn btn-lg btn-primary" (click)="scrollTo($event, 'contact')">Solicitar Presupuesto &#10140;</a>
-          <a class="btn btn-lg btn-secondary" (click)="scrollTo($event, 'gallery')">Ver Proyectos</a>
-        </div>
-      </main>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-      <footer class="mt-auto text-center">
+    <main role="main" class="inner cover fade-section" #fadeEl [class.visible]="isFadeVisible">
+
+      <h1 class="cover-heading font-Outfit">
+        Donde la Calidad y Precio <br>
+        <span class="text-gray-light">Se Hacen</span> Presentes
+      </h1>
+
+      <p class="cover-container-text font-urbanist">
+        Transformamos tus ideas en obras maestras de carpintería. <br>
+        Diseño y dedicación en cada proyecto.
+      </p>
+
+      <div class="d-flex justify-content-start gap-3">
+        <a class="btn btn-lg btn-primary" (click)="scrollTo($event, 'contact')">
+          Solicitar Presupuesto →
+        </a>
+
+        <a class="btn btn-lg btn-secondary" (click)="scrollTo($event, 'gallery')">
+          Ver Proyectos
+        </a>
+      </div>
+    </main>
+          <footer class="mt-auto text-center">
         <svg viewBox="0 0 24 24" width="94" height="94" fill="none" style="cursor: pointer;" (click)="scrollDown()">
           <style>
             @keyframes mouse {
@@ -39,8 +46,7 @@
             style="animation: mouse 0.5s linear infinite alternate both;" />
         </svg>
       </footer>
-    </div>
-  </body>
+  </div>
 </section>
 <app-attainment></app-attainment>
 <app-works></app-works>

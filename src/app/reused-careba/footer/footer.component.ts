@@ -9,6 +9,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 
 export class FooterComponent implements OnInit {
 
+  anioActual: number = new Date().getFullYear();
+
   isScrolled = false;
   constructor() { }
 

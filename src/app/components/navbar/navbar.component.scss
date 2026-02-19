@@ -30,14 +30,37 @@
 /* IZQUIERDA */
 .topbar-left {
   display: flex;
-  gap: 25px;
+  gap: 18px;
   align-items: center;
-
-  span i {
-    margin-right: 6px;
-    font-size: 14px;
-  }
 }
+
+/* item limpio */
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #eaeaea;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+
+  text-decoration: none;
+  transition: all .25s ease;
+}
+
+/* iconos */
+.topbar-item i {
+  font-size: 14px;
+  opacity: .9;
+}
+
+/* hover elegante */
+.topbar-item:hover {
+  opacity: .75;
+  transform: translateY(-1px);
+}
+
 
 /* DERECHA – redes sociales */
 .topbar-right {

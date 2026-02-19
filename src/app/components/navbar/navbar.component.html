@@ -34,22 +34,33 @@
 </nav> -->
 <!-- TOPBAR (se oculta al hacer scroll) -->
 <div class="topbar" [class.hide]="isScrolled">
-    <div class="topbar-container">
-        
-        <!-- Lado izquierdo -->
-        <div class="topbar-left">
-            <span><i class="bi bi-telephone"></i>55 14513651</span>
-            <span><i class="bi bi-envelope"></i>careba_ramirez@hotmail.com</span>
-        </div>
+  <div class="topbar-container">
 
-        <!-- Lado derecho (redes sociales) -->
-        <div class="topbar-right">
-            <p class="etiqueta">Síguenos:</p>
-            <a href="https://www.facebook.com/carpinteriacareba?locale=es_LA" target="_blank"><i class="bi bi-facebook"></i></a>
-            <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
-        </div>
+    <!-- Lado izquierdo -->
+    <div class="topbar-left">
+
+      <a class="topbar-item whatsapp"
+        href="https://wa.me/+525527204407?text=Solicito%20más%20informacion%20sobre%20como%20cotizar%20un%20trabajo">
+        <i class="bi bi-whatsapp"></i>
+        <span>55 14513651</span>
+      </a>
+
+      <a class="topbar-item mail" href="mailto:careba_ramirez@hotmail.com">
+        <i class="bi bi-envelope"></i>
+        <span>careba_ramirez@hotmail.com</span>
+      </a>
 
     </div>
+
+    <!-- Lado derecho (redes sociales) -->
+    <div class="topbar-right">
+      <p class="etiqueta">Síguenos:</p>
+      <a href="https://www.facebook.com/carpinteriacareba?locale=es_LA" target="_blank"><i
+          class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com/careba.oficial" target="_blank"><i class="bi bi-instagram"></i></a>
+    </div>
+
+  </div>
 </div>
 
 <nav [class.scrolled]="isScrolled" class="navbar">

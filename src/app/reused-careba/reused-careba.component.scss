@@ -1,19 +1,43 @@
 @use "src/styles";
 
-body {
-  height: 100%;
+
+.inicio-wrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #fff;
+}
+
+.background-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: url("/assets/img/Foto2.jpg") center / cover no-repeat;
+  transform: scale(1.05);
+}
+
+/* overlay */
+.background-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
   background:
     repeating-linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.05) 0,
-      rgba(255, 255, 255, 0.05) 8px,
-      rgba(0, 0, 0, 0.1) 8px,
-      rgba(0, 0, 0, 0.1) 16px
+      rgba(255,255,255,.05) 0,
+      rgba(255,255,255,.05) 8px,
+      rgba(0,0,0,.1) 8px,
+      rgba(0,0,0,.1) 16px
     ),
-    linear-gradient(rgba(31, 31, 31, 0.6), rgba(51, 51, 51, 0.6)),
-    url("/assets/img/Foto1.jpg") center center / cover no-repeat;
-  background-attachment: fixed;
-  color: #fff;
+    linear-gradient(rgba(31,31,31,.6), rgba(51,51,51,.6));
+}
+
+/* contenido encima del fondo */
+.cover-container {
+  position: relative;
+  z-index: 2;
 }
 
 /* Contenedor principal: centro vertical */

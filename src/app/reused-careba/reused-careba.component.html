@@ -1,10 +1,11 @@
-<section id="inicio">
-  <app-navbar></app-navbar>
-<body class="text-center">
-  <!-- Fondo global separado -->
+<app-navbar></app-navbar>
+<section id="inicio" class="inicio-wrapper text-center">
+
+  <!-- Fondo -->
   <div class="background-cover"></div>
 
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
     <main role="main" class="inner cover fade-section" #fadeEl [class.visible]="isFadeVisible">
       <h1 class="cover-heading font-Outfit">
         Reuso
@@ -14,29 +15,27 @@
        Muebles renovados para un nuevo comienzo.<br>
        Calidad, estilo y sostenibilidad al mejor precio.
       </p>
+    </main>
+          <footer class="mt-auto text-center">
+         <svg viewBox="0 0 24 24" width="94" height="94" fill="none" style="cursor: pointer;"> <!--  /*(click)="scrollDown()"*/ -->
+          <style>
+            @keyframes mouse {
+              0% {
+                transform: translateY(8px);
+              }
 
-   </main>
-
-    <footer class="mt-auto text-center">
-      <svg viewBox="0 0 24 24" width="94" height="94" fill="none" style="cursor: pointer;">
-        <style>
-          @keyframes mouse {
-            0% {
-              transform: translateY(8px);
+              100% {
+                transform: translateY(1px);
+              }
             }
-
-            100% {
-              transform: translateY(1px);
-            }
-          }
-        </style>
-        <rect width="8" height="14" x="8" y="5" stroke="white" rx="4" />
-        <rect width="1.5" height="3" x="11.25" y="6.5" fill="white" rx=".75"
-          style="animation: mouse 0.5s linear infinite alternate both;" />
-      </svg>
-    </footer>
+          </style>
+          <rect width="8" height="14" x="8" y="5" stroke="white" rx="4" />
+          <rect width="1.5" height="3" x="11.25" y="6.5" fill="white" rx=".75"
+            style="animation: mouse 0.5s linear infinite alternate both;" />
+        </svg>
+      </footer>
   </div>
-</body></section>
+</section>
 
 <app-servicios></app-servicios>
 <app-products></app-products>

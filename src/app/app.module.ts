@@ -27,6 +27,8 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { WorksComponent } from './components/works/works.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TerminosCondicionesComponent } from './shared/terminos-condiciones/terminos-condiciones.component';
+import { PoliticaPrivacidadComponent } from './shared/politica-privacidad/politica-privacidad.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     AttainmentComponent,
     GalleryComponent,
-    WorksComponent
+    WorksComponent,
+    TerminosCondicionesComponent,
+    PoliticaPrivacidadComponent
   ],
   imports: [ /*cuando tiene standalone se alojan aqui*/
     BrowserModule,
