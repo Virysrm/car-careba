@@ -6,4 +6,10 @@ import { Component } from "@angular/core";
   styleUrls: ["./terminos-condiciones.component.scss"],
   standalone: false,
 })
-export class TerminosCondicionesComponent {}
+export class TerminosCondicionesComponent {
+    tabActiva: string = 'terminos';
+
+cambiarTab(tab: string) {
+  this.tabActiva = tab;
+}
+  }

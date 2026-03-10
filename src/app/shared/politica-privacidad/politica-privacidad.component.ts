@@ -6,4 +6,10 @@ import { Component } from "@angular/core";
   styleUrls: ["./politica-privacidad.component.scss"],
   standalone: false,
 })
-export class PoliticaPrivacidadComponent {}
+export class PoliticaPrivacidadComponent {
+  tabActiva: string = 'privacidad';
+
+cambiarTab(tab: string) {
+  this.tabActiva = tab;
+}
+}

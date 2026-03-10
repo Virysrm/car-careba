@@ -1,1 +1,220 @@
-<p>politica-privacidad works!</p>
+<section class="hero">
+    <div class="logo">
+        <img src="assets/img/careba/Logo.png" alt="CAREBA">
+    </div>
+    <h1>Términos y Política de Privacidad</h1>
+</section>
+
+<div class="tabs-container">
+
+    <div class="tabs">
+
+        <button class="tab" [class.active]="tabActiva === 'terminos'" (click)="cambiarTab('terminos')">
+            <i class="icon"></i> |
+            Términos y Condiciones
+        </button>
+
+        <button class="tab" [class.active]="tabActiva === 'privacidad'" (click)="cambiarTab('privacidad')">
+            <i class="icon"></i> |
+            Política de Privacidad
+        </button>
+
+    </div>
+
+</div>
+
+<div *ngIf="tabActiva === 'terminos'">
+    <div class="content-card">
+
+        <h2>Términos Generales</h2>
+        <p class="date">Última Actualización: <span>Marzo 2026</span></p>
+
+        <p>
+            Bienvenido a Carpintería CAREBA.
+            <br>Al solicitar una cotización, contratar nuestros servicios, realizar una compra
+            o utilizar nuestros medios de contacto digitales, usted acepta los siguientes términos y condiciones.
+            <br>
+            <br>Carpintería CAREBA se dedica a la fabricación de muebles sobre diseño y especificaciones del
+            cliente, así como a
+            la venta de muebles nuevos o restaurados, previa cotización y autorización.
+        </p>
+
+        <h4>1. Cotizaciones</h4>
+        <p>
+            Todas las cotizaciones tienen carácter informativo y pueden variar según cambios en materiales, medidas,
+            diseño
+            o requerimientos del cliente.
+            La vigencia de la cotización será indicada en el documento correspondiente.
+            Los precios incluyen únicamente los conceptos especificados en la cotización.
+        </p>
+
+        <h4>2. Confirmación del Pedido</h4>
+        <p>
+            El pedido se considerará confirmado una vez que el cliente apruebe la cotización y realice el anticipo
+            acordado.
+            Cualquier modificación posterior al diseño, materiales o medidas podrá generar ajustes en precio y
+            tiempos de
+            entrega.
+        </p>
+
+        <h4>3. Fabricación de Muebles</h4>
+        <p>
+            Los muebles se elaboran conforme a las especificaciones aprobadas por el cliente.
+            Al tratarse de productos personalizados, pueden existir ligeras variaciones naturales en tonos, vetas de
+            la
+            madera y acabados.
+            El cliente es responsable de verificar medidas y condiciones del espacio donde se instalará el mueble.
+        </p>
+
+        <h4>4. Tiempos de Entrega</h4>
+        <p>
+            Los tiempos de fabricación y entrega son estimados y pueden variar por disponibilidad de materiales,
+            carga de
+            trabajo o causas externas.
+            Carpintería CAREBA informará oportunamente cualquier cambio en el tiempo de entrega.</p>
+
+        <h4>5. Pagos</h4>
+        <p>
+            Se requiere un anticipo para iniciar la fabricación.
+            El saldo restante deberá liquidarse previo a la entrega o en el momento acordado.
+            Los pagos realizados no son reembolsables en trabajos personalizados una vez iniciada la fabricación.
+        </p>
+
+        <h4>6. Cancelaciones y Cambios</h4>
+        <p>
+            Las cancelaciones solo podrán realizarse antes del inicio de fabricación.
+            Si la fabricación ya inició, el anticipo no será reembolsable debido a la compra de materiales y mano de
+            obra.
+            Los cambios solicitados por el cliente pueden generar costos adicionales.
+        </p>
+        <h4>7. Entrega e Instalación</h4>
+        <p>
+            El cliente debe garantizar accesos adecuados para la entrega e instalación.
+            Carpintería CAREBA no se responsabiliza por daños derivados de accesos reducidos, condiciones del
+            inmueble o
+            instalaciones ajenas al servicio contratado.
+
+        </p>
+        <h4>8. Garantía</h4>
+        <p>
+            Se otorga garantía únicamente por defectos de fabricación.
+            La garantía no cubre daños por mal uso, humedad, golpes, modificaciones o desgaste natural.
+            Cualquier revisión deberá solicitarse dentro del periodo de garantía acordado.
+        </p>
+
+        <h4>9. Muebles Restaurados</h4>
+        <p>
+            Los muebles restaurados pueden presentar detalles propios de su antigüedad y uso previo.
+            Dichas características no se consideran defectos.
+        </p>
+
+        <h4>10. Responsabilidad del Cliente</h4>
+        <p>El cliente se compromete a:</p>
+        <ol>
+            <li>Proporcionar información veraz sobre medidas y requerimientos.</li>
+            <li>Revisar el producto al momento de la entrega.</li>
+            <li>Realizar los pagos conforme a lo acordado.</li>
+        </ol>
+
+        <h4>11. Uso de Medios Digitales</h4>
+        <p>
+            La información proporcionada por el cliente a través de redes sociales, sitio web, teléfono o correo
+            electrónico
+            será utilizada únicamente para brindar atención, seguimiento y prestación del servicio.
+        </p>
+
+        <h4>12. Modificaciones</h4>
+        <p>
+            Carpintería CAREBA se reserva el derecho de modificar los presentes términos en cualquier momento,
+            publicando la
+            versión actualizada en sus medios oficiales.
+        </p>
+    </div>
+</div>
+
+<div *ngIf="tabActiva === 'privacidad'">
+    <div class="content-card">
+
+        <h2>Aviso de Privacidad — Carpintería CAREBA</h2>
+        <p class="date">Última Actualización: <span>Marzo 2026</span></p>
+
+        <p>
+            Carpintería CAREBA, con domicilio en Chalco de Díaz Covarrubias, Estado de México, en cumplimiento con
+            lo
+            dispuesto por la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, es
+            responsable
+            del uso, tratamiento y protección de los datos personales que recaba de sus clientes.
+            Los datos personales de identificación y contacto que el titular proporcione de manera directa, por
+            medios
+            electrónicos, telefónicos o a través de nuestro sitio web, serán tratados bajo los principios de
+            licitud,
+            consentimiento, información, calidad, finalidad, lealtad, proporcionalidad y responsabilidad, conforme a
+            la
+            legislación aplicable.
+            Carpintería CAREBA se dedica exclusivamente a la fabricación de muebles bajo especificaciones del
+            cliente, así
+            como a la venta de muebles nuevos o restaurados, previa cotización y autorización del cliente.
+        </p>
+
+        <h4>1. Finalidad del tratamiento de los datos</h4>
+        <p>Los datos personales recabados serán utilizados para:</p>
+
+        <ol>
+            <li>Elaborar y dar seguimiento a cotizaciones, pedidos y compras.</li>
+            <li>Fabricar muebles conforme a las especificaciones del cliente.</li>
+            <li>Brindar información sobre productos y servicios.</li>
+            <li>Atender dudas, quejas, aclaraciones y solicitudes.</li>
+            <li>Evaluar la calidad del servicio y mejorar la atención al cliente.</li>
+            <li>Mantener control administrativo, operativo y de seguridad de la información en nuestros sistemas y
+                sitio web.</li>
+        </ol>
+
+        <p>
+            Los datos recabados serán integrados al expediente correspondiente a cada cliente, cotización o compra,
+            con la
+            finalidad de prestar adecuadamente los servicios ofrecidos.
+        </p>
+
+        <h4>2. Protección y acceso a la información</h4>
+        <p>
+            Carpintería CAREBA implementa medidas de seguridad administrativas, técnicas y físicas para proteger los
+            datos
+            personales contra daño, pérdida, alteración, destrucción o uso indebido.
+            <br>
+            El acceso a la información estará limitado únicamente al personal autorizado y colaboradores que cuenten
+            con
+            credenciales de acceso, y solo para cumplir con las finalidades señaladas en este aviso.
+        </p>
+
+        <h4>3. Derechos del titular y limitación del uso de datos</h4>
+        <p>El titular podrá en cualquier momento:</p>
+
+        <ol>
+            <li>Solicitar el acceso, rectificación, cancelación u oposición (derechos ARCO) respecto a sus datos
+                personales.</li>
+            <li>Limitar el uso o divulgación de su información.</li>
+            <li>Revocar el consentimiento otorgado para el tratamiento de sus datos.</li>
+        </ol>
+
+        <p>
+            Para ejercer estos derechos, podrá enviar una solicitud al correo electrónico: contacto@careba.com
+            <br>
+            Si el titular no manifiesta su oposición al tratamiento de sus datos personales, se entenderá que otorga
+            su consentimiento para su uso conforme al presente aviso.
+            <br>
+            Los datos personales podrán ser compartidos con terceros únicamente cuando sea necesario para cumplir
+            con las finalidades descritas, tales como procesos de entrega, fabricación o servicios relacionados.
+        </p>
+
+        <h4>4. Uso de tecnologías en el sitio web</h4>
+        <p>
+            Nuestro sitio web puede utilizar cookies u otras tecnologías que permiten monitorear el comportamiento
+            del
+            usuario con el fin de mejorar la experiencia de navegación, optimizar nuestros servicios y ofrecer
+            información relevante.
+        </p>
+
+    </div>
+</div>
+
+<app-footer></app-footer>
