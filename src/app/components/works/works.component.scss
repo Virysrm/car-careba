@@ -1,4 +1,4 @@
-@use "src/styles";
+@use 'src/styles'  as *;
 
 body {
   background: #111;
@@ -143,7 +143,7 @@ body {
   }
 }
 
-// @use "src/styles";
+// @use 'src/styles'  as *;
 
 // body {
 //   background: #111;

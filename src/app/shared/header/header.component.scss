@@ -1,6 +1,6 @@
-@use "src/styles";
-@import "src/styles/_sass-utils";
-@import "src/styles/_fonts";
+@use 'src/styles'  as *;
+@use 'src/styles/_sass-utils' as *;
+@use 'src/styles/_fonts' as *;
 a,
 a:focus,
 a:hover {

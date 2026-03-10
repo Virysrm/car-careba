@@ -1,6 +1,7 @@
 @use "sass:color";
-@import 'src/styles/_sass-utils';
-@import 'src/styles/_fonts';
+@use 'src/styles/_sass-utils' as *;
+@use 'src/styles/_fonts' as *;
+
 /*Para Ver el Desbordamiento*/
 // * {
 //   outline: 1px solid red;

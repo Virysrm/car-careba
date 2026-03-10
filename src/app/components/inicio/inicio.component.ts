@@ -20,10 +20,24 @@ export class InicioComponent implements OnInit {
   isFadeVisible = false;
   isSectionVisible = false;
   isScrolled = false;
+  loading = true;
 
   constructor() {}
 
-  ngOnInit(): void {}
+ngOnInit(): void {
+
+  setTimeout(() => {
+    this.loading = false;
+
+    // activar animación del hero
+    setTimeout(() => {
+      this.isFadeVisible = true;
+    }, 100);
+
+  }, 2000);
+
+}
+
   /*Clase para desplazar hacia la siguiente sección de la pagina */
   scrollDown(): void {
     window.scrollBy({
@@ -32,19 +46,19 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() {
-    const fadeObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          this.isFadeVisible = true;
-          fadeObserver.unobserve(this.fadeEl.nativeElement); // solo una vez
-        }
-      },
-      { threshold: 0.2 }
-    );
+  // ngAfterViewInit() {
+  //   const fadeObserver = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         this.isFadeVisible = true;
+  //         fadeObserver.unobserve(this.fadeEl.nativeElement); // solo una vez
+  //       }
+  //     },
+  //     { threshold: 0.2 }
+  //   );
 
-    if (this.fadeEl) fadeObserver.observe(this.fadeEl.nativeElement);
-  }
+  //   if (this.fadeEl) fadeObserver.observe(this.fadeEl.nativeElement);
+  // }
 
   @HostListener("window:scroll", [])
   onWindowScroll() {

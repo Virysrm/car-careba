@@ -11,10 +11,13 @@ import { ContactComponent } from "./contact/contact.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { ServiciosComponent } from "./servicios/servicios.component";
+import { LoaderComponent } from "../loader/loader.component";
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ],
   imports: [
+    LoaderComponent,
     CommonModule,
     RouterModule,
     ReusedCarebaRoutingModule,
