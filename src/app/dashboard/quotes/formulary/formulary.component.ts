@@ -8,6 +8,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Observable } from "rxjs";
+import generatePDF from "src/app/lib/pdf";
 import { CotizacionesDbService } from "src/app/services/cotizaciones-db.service";
 
 @Component({
@@ -25,6 +26,52 @@ export class FormularyComponent {
   public cotizaciones!: Observable<any>;
   mostrarModalExito: boolean = false;
 
+onGeneratePDF(){
+
+  const products = [
+    {
+      cliente: 'Carlos Ramirez',
+      obra: 'CAREBA',
+      direccion: 'Santa Cecilia Mz 10 Lt 16',
+      concepto: 'Lista de Productos 1',
+      cantidad: 1,
+      precioUnitario: 100,
+      importe: 100,
+      subtotal: 100,
+      iva: 16,
+      total: 116
+    },
+    {
+      cliente: 'Carlos Ramirez',
+      obra: 'CAREBA',
+      direccion: 'Santa Cecilia Mz 10 Lt 16',
+      concepto: 'Lista de Productos 2',
+      cantidad: 1,
+      precioUnitario: 200,
+      importe: 200,
+      subtotal: 200,
+      iva: 32,
+      total: 232
+    },
+    {
+      cliente: 'Carlos Ramirez',
+      obra: 'CAREBA',
+      direccion: 'Santa Cecilia Mz 10 Lt 16',
+      concepto: 'Lista de Productos 3',
+      cantidad: 1,
+      precioUnitario: 300,
+      importe: 300,
+      subtotal: 300,
+      iva: 48,
+      total: 348
+    }
+  ];
+
+  const cotizacion = '01234567890';
+  const fecha = '18 de marzo de 2026';
+
+  generatePDF(products, cotizacion, fecha);
+}
   constructor(
     private form: FormBuilder,
     private cotizacionesDbService: CotizacionesDbService,

@@ -22,10 +22,10 @@
 }
 .layout{
   display:flex;
+  align-items: flex-start; /* evita estiramientos raros */
 }
 
 /* SIDEBAR */
-
 // .sidebar{
 //   width:260px;
 //   background:#fff;
@@ -37,8 +37,12 @@
 //   border: 1px solid #1e3a47;
 // }
 
+
 .sidebar{
   width:260px;
+  min-width:260px;
+  max-width:260px;
+  flex: 0 0 260px;
   background:#fff;
   padding:20px;
   display:flex;
