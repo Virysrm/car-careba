@@ -35,11 +35,7 @@ onGeneratePDF(){
       direccion: 'Santa Cecilia Mz 10 Lt 16',
       concepto: 'Lista de Productos 1',
       cantidad: 1,
-      precioUnitario: 100,
-      importe: 100,
-      subtotal: 100,
-      iva: 16,
-      total: 116
+      precioUnitario: 116.60,
     },
     {
       cliente: 'Carlos Ramirez',
@@ -48,10 +44,6 @@ onGeneratePDF(){
       concepto: 'Lista de Productos 2',
       cantidad: 1,
       precioUnitario: 200,
-      importe: 200,
-      subtotal: 200,
-      iva: 32,
-      total: 232
     },
     {
       cliente: 'Carlos Ramirez',
@@ -60,10 +52,6 @@ onGeneratePDF(){
       concepto: 'Lista de Productos 3',
       cantidad: 1,
       precioUnitario: 300,
-      importe: 300,
-      subtotal: 300,
-      iva: 48,
-      total: 348
     }
   ];
 
