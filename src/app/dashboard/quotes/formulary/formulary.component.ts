@@ -1,5 +1,5 @@
 import { DatePipe, CommonModule } from "@angular/common";
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { Component, ElementRef, ViewChild, OnInit } from "@angular/core";
 import {
   FormArray,
   FormBuilder,
@@ -18,62 +18,73 @@ import { CotizacionesDbService } from "src/app/services/cotizaciones-db.service"
   templateUrl: "./formulary.component.html",
   styleUrl: "./formulary.component.scss",
 })
-export class FormularyComponent {
+export class FormularyComponent implements OnInit {
   today: Date = new Date();
+  editandoId: string | null = null;
 
   @ViewChild("formBox") formBox!: ElementRef;
 
   public cotizaciones!: Observable<any>;
   mostrarModalExito: boolean = false;
 
-onGeneratePDF(){
+  onGeneratePDF() {
+    const form = this.formCotizaciones.getRawValue();
 
-  const products = [
-    {
-      cliente: 'Carlos Ramirez',
-      obra: 'CAREBA',
-      direccion: 'Santa Cecilia Mz 10 Lt 16',
-      concepto: 'Lista de Productos 1',
-      cantidad: 1,
-      precioUnitario: 116.60,
-    },
-    {
-      cliente: 'Carlos Ramirez',
-      obra: 'CAREBA',
-      direccion: 'Santa Cecilia Mz 10 Lt 16',
-      concepto: 'Lista de Productos 2',
-      cantidad: 1,
-      precioUnitario: 200,
-    },
-    {
-      cliente: 'Carlos Ramirez',
-      obra: 'CAREBA',
-      direccion: 'Santa Cecilia Mz 10 Lt 16',
-      concepto: 'Lista de Productos 3',
-      cantidad: 1,
-      precioUnitario: 300,
-    }
-  ];
+    // Mapear conceptos a productos
+    const products = form.conceptos.map((item: any) => ({
+      cliente: form.cliente,
+      obra: form.obra,
+      direccion: form.direccion,
+      concepto: item.concepto,
+      cantidad: item.cantidad,
+      precioUnitario: item.precioUnitario,
+    }));
 
-  const cotizacion = '01234567890';
-  const fecha = '18 de marzo de 2026';
+    const notas = form.notas;
 
-  generatePDF(products, cotizacion, fecha);
-}
+    const cotizacion = this.generarFolio(); // opcional dinámico
+    const fecha = new Date().toLocaleDateString("es-MX", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+
+    generatePDF(products, cotizacion, fecha, notas);
+  }
+  generarFolio(): string {
+    const hoy = new Date();
+    const yyyy = hoy.getFullYear();
+    const mm = String(hoy.getMonth() + 1).padStart(2, "0");
+    const dd = String(hoy.getDate()).padStart(2, "0");
+
+    const random = Math.floor(Math.random() * 1000);
+
+    return `COT-${yyyy}${mm}${dd}-${random}`;
+  }
+
   constructor(
     private form: FormBuilder,
     private cotizacionesDbService: CotizacionesDbService,
   ) {}
+  ngOnInit() {
+    const cot = history.state.cot;
 
+    if (cot) {
+      this.editandoId = cot.id;
+      this.cargarCotizacion(cot);
+    }
+  }
   /* 🔥 FORMULARIO PRINCIPAL */
   public formCotizaciones: FormGroup = this.form.group({
     cliente: ["", Validators.required],
     obra: ["", Validators.required],
     direccion: ["", Validators.required],
     conceptos: this.form.array([this.crearConcepto()]),
+    notas: [""],
     subtotal: [{ value: "", disabled: true }],
     iva: [{ value: "", disabled: true }],
     total: [{ value: "", disabled: true }],
+    fecha: [new Date()],
   });
 
   /* 🔥 GETTER CONCEPTOS */
@@ -131,22 +142,58 @@ onGeneratePDF(){
     );
   }
 
-  /* 🔥 ENVIAR */
-  enviarCotizaciones = () => {
-    if (this.formCotizaciones.valid) {
-      if (this.formCotizaciones.valid) {
-        this.cotizacionesDbService
-          .crearCotizaciones(this.formCotizaciones.value)
-          .then(() => {
-            // limpiar formulario
-            //this.formCotizaciones.reset();
+  cargarCotizacion(cot: any) {
+    this.formCotizaciones.patchValue({
+      cliente: cot.cliente,
+      obra: cot.obra,
+      direccion: cot.direccion,
+      notas: cot.notas,
+      fecha: cot.fecha?.toDate ? cot.fecha.toDate() : cot.fecha,
+    });
 
-            // mostrar modal
-            this.mostrarModalExito = true;
+    this.conceptos.clear();
+
+    cot.conceptos.forEach((item: any) => {
+      const cantidad = item.cantidad || 0;
+      const precio = item.precioUnitario || 0;
+
+      this.conceptos.push(
+        this.form.group({
+          concepto: [item.concepto],
+          cantidad: [cantidad],
+          precioUnitario: [precio],
+          importe: [{ value: cantidad * precio, disabled: true }], // 🔥 recalculado
+        }),
+      );
+    });
+
+    this.calcularTotales();
+  }
+
+  /* ENVIAR o ACTUALIZAR */
+  enviarCotizaciones = async () => {
+    if (this.formCotizaciones.valid) {
+      const data = this.formCotizaciones.getRawValue();
+
+      try {
+        if (this.editandoId) {
+          await this.cotizacionesDbService.actualizarCotizacion(
+            this.editandoId,
+            data,
+          );
+        } else {
+          await this.cotizacionesDbService.crearCotizaciones({
+            ...data,
+            fecha: new Date(),
           });
-      } else {
-        this.formCotizaciones.markAllAsTouched();
+        }
+
+        this.mostrarModalExito = true; // 🔥 ahora sí funciona
+      } catch (error) {
+        console.error(error);
       }
+    } else {
+      this.formCotizaciones.markAllAsTouched();
     }
   };
 }

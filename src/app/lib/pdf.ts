@@ -16,6 +16,7 @@ const generatePDF = (
   products: Product[],
   cotizacion: string,
   fecha: string,
+  notas: string,
 ) => {
   //Estilos de la tabla
   const styles = {
@@ -406,6 +407,7 @@ const generatePDF = (
   });
 
   // 📄 NOTAS
+  console.log("NOTAS EN PDF:", notas);
   content.push({
     columns: [
       {
@@ -418,7 +420,7 @@ const generatePDF = (
             margin: [0, 0, 0, 5],
           },
           {
-            text: "En una madera es un costo en otra baja un porcentaje / Ninguna",
+            text: notas || "NINGUNA",
             fontSize: 9,
             margin: [0, 0, 0, 0],
           },
@@ -461,7 +463,7 @@ const generatePDF = (
             text:
               "• No hay devoluciones una vez iniciado el servicio.\n" +
               "• El cliente es responsable de validar la información.\n" +
-              "• Se aplicará un cargo adicional a cualquier cambio realizado a la cotización después de haber sido autorizada.  \n" +
+              "• Se aplicará un cargo adicional a cualquier cambio realizado al diseño después de haber sido autorizado.  \n" +
               "• Garantía válida únicamente por defectos de instalación.",
             fontSize: 9,
           },

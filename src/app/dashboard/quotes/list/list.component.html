@@ -59,24 +59,46 @@
           </tbody>
         </table>
       </section> -->
-      
-      <h3 style="font-weight: bold;">Lista de Cotizaciones 2026</h3>
 
-      <section class="card">
-        <table>
-          <thead>
-            <tr>
-              <th>Cliente</th>
-              <th>Obra</th>
-              <th>Dirección</th>
-              <th>Fecha</th>
-              <th></th>
-            </tr>
-          </thead>
+<h3 style="font-weight: bold;">Lista de Cotizaciones 2026</h3>
 
-          <tbody>
+<section class="card">
+  <table>
+    <thead>
+      <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Cliente</th>
+        <th class="text-center">Obra</th>
+        <th class="text-center">Dirección</th>
+        <th class="text-center">Fecha</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
 
-            <tr>
+    <tbody class="text-center">
+      <tr *ngFor="let cot of cotizaciones$ | async; index as i">
+        <td class="text-center">{{ i + 1 }}</td>
+        <td><span class="badge online">Enviado</span></td>
+        <td><strong>{{ cot.cliente }}</strong></td>
+        <td>{{ cot.obra }}</td>
+        <td>{{ cot.direccion }}</td>
+        <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
+        <td><button class="btn btn-warning btn-sm"
+        (click)="irAEditar(cot)">
+  Editar
+</button></td>
+          <td>
+    <button class="btn btn-sm btn-primary"
+            (click)="generarPDFDesdeBD(cot)">
+      PDF
+    </button>
+  </td>
+      </tr>
+
+      <!-- <tr>
               <td class="author-cell">
                 <img src="">
                 <div>
@@ -88,36 +110,8 @@
               <td><span class="badge online">ONLINE</span></td>
               <td>23/04/18</td>
               <td><a href="#">Edit</a></td>
-            </tr>
+            </tr> -->
 
-            <tr>
-              <td class="author-cell">
-                <img src="">
-                <div>
-                  <strong>Alexa Liras</strong><br>
-                  <small>alexa@creative-tim.com</small>
-                </div>
-              </td>
-              <td>Programator<br><small>Developer</small></td>
-              <td><span class="badge offline">OFFLINE</span></td>
-              <td>11/01/19</td>
-              <td><a href="#">Edit</a></td>
-            </tr>
-
-            <tr>
-              <td class="author-cell">
-                <img src="">
-                <div>
-                  <strong>Laurent Perrier</strong><br>
-                  <small>laurent@creative-tim.com</small>
-                </div>
-              </td>
-              <td>Executive<br><small>Projects</small></td>
-              <td><span class="badge online">ONLINE</span></td>
-              <td>19/09/17</td>
-              <td><a href="#">Edit</a></td>
-            </tr>
-
-          </tbody>
-        </table>
-      </section>
+    </tbody>
+  </table>
+</section>

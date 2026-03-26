@@ -1,112 +1,115 @@
-<h3 style="font-weight: bold;">Agregar Cotización</h3>
-<button (click)="onGeneratePDF()">Generar el PDF</button>
-<img src="">
-<section class="card p-3">
-    <div class="row">
-        <div class="col-md-6">
+<h3 class="text-center fw-bold mb-4">Agregar Cotización</h3>
 
-            <form class="border rounded p-3 h-100" [formGroup]="formCotizaciones" (ngSubmit)="enviarCotizaciones()">
+<section class="d-flex justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+        <div class="card p-4">
+
+            <form [formGroup]="formCotizaciones" (ngSubmit)="enviarCotizaciones()">
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h1 class="fw-bold m-0">Datos del Cliente</h1>
+                    <h4 class="fw-bold m-0">Datos del Cliente</h4>
                     <span class="fw-bold">Fecha: {{ today | date:'dd/MM/yyyy' }}</span>
                 </div>
 
-                <div class="mb-3">
-                    <label class="fw-bold">Cliente</label>
-                    <input type="text" class="form-control" placeholder="Nombre del Cliente" formControlName="cliente">
+                <div class="row">
+                    <div class="col-md-7 mb-3">
+                        <input type="text" class="form-control input-line" placeholder="Nombre del Cliente"
+                            formControlName="cliente">
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <input type="text" class="form-control input-line" placeholder="Obra" formControlName="obra">
+                    </div>
                 </div>
 
                 <div class="mb-3">
-                    <label class="fw-bold">Obra</label>
-                    <input type="text" class="form-control" placeholder="Nombre de la Obra" formControlName="obra">
-                </div>
-
-                <div class="mb-3">
-                    <label class="fw-bold">Dirección</label>
-                    <input type="text" class="form-control" placeholder="Dirección de la Obra"
+                    <input type="text" class="form-control input-line" placeholder="Dirección"
                         formControlName="direccion">
                 </div>
 
-                <!-- CONCEPTOS DINÁMICOS -->
-                <div formArrayName="conceptos">
+                <!-- CONCEPTOS -->
+                        <div formArrayName="conceptos">
 
-                    <div *ngFor="let item of conceptos.controls; let i = index" [formGroupName]="i"
-                        class="border rounded p-3 mb-3">
+                            <div *ngFor="let item of conceptos.controls; let i = index" [formGroupName]="i"
+                                class="border rounded p-3 mb-3">
 
-                        <div class="mb-3">
-                            <label class="fw-bold">Concepto</label>
-                            <input type="text" class="form-control" placeholder="Descripción del articulo"
-                                formControlName="concepto">
+                                <div class="mb-3">
+                                    <label class="fw-bold">Concepto</label>
+                                    <input type="text" class="form-control input-line" formControlName="concepto">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label class="fw-bold">Cantidad</label>
+                                        <input type="number" class="form-control input-line" formControlName="cantidad"
+                                            (input)="calcularImporte(i)">
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label class="fw-bold">Precio Unitario</label>
+                                        <input type="number" class="form-control input-line"
+                                            formControlName="precioUnitario" (input)="calcularImporte(i)">
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                        <label class="fw-bold">Importe</label>
+                                        <input type="number" class="form-control input-line" formControlName="importe"
+                                            readonly>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-danger btn-sm" (click)="eliminarConcepto(i)"
+                                    *ngIf="conceptos.length > 1">
+                                    Eliminar
+                                </button>
+
+                            </div>
+
+                            <button type="button" class="btn btn-outline-primary w-100 mb-3"
+                                (click)="agregarConcepto()">
+                                + Agregar concepto
+                            </button>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-bold">Cantidad</label>
-                                <input type="number" class="form-control" placeholder="0" formControlName="cantidad"
-                                    (input)="calcularImporte(i)">
-                            </div>
-
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-bold">Precio Unitario</label>
-                                <input type="number" class="form-control" placeholder="$" formControlName="precioUnitario"
-                                    (input)="calcularImporte(i)">
-                            </div>
-
-                            <div class="col-md-4 mb-3">
-                                <label class="fw-bold">Importe</label>
-                                <input type="number" class="form-control" formControlName="importe" readonly>
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn btn-danger btn-sm" (click)="eliminarConcepto(i)"
-                            *ngIf="conceptos.length > 1">
-                            Eliminar
-                        </button>
-
+                <div class="row">
+                    <div class="col-md-7 mb-3">
+                        <textarea class="form-control input-line" placeholder="NOTAS"
+                            formControlName="notas" rows="2">
+                        </textarea>
                     </div>
-<button type="button" class="btn btn-outline-primary w-100 mb-3" (click)="agregarConcepto()">
-                    + Agregar concepto
-                </button>
-                </div>
 
-                <div class="row justify-content-end">
-                    <div class="col-md-4">
-
+                    <div class="col-md-5 mb-3">
                         <div class="mb-3">
                             <label class="fw-bold">Subtotal</label>
-                            <input type="number" class="form-control text-end" placeholder="$" formControlName="subtotal" readonly>
+                            <input type="number" class="form-control text-end input-line" formControlName="subtotal"
+                                readonly>
                         </div>
 
                         <div class="mb-3">
                             <label class="fw-bold">IVA</label>
-                            <input type="text" class="form-control text-end" placeholder="$" formControlName="iva" readonly>
+                            <input type="text" class="form-control text-end input-line" formControlName="iva" readonly>
                         </div>
 
                         <div class="mb-3">
                             <label class="fw-bold">Total</label>
-                            <input type="text" class="form-control text-end fw-bold" placeholder="$" formControlName="total" readonly>
+                            <input type="text" class="form-control text-end fw-bold input-line" formControlName="total"
+                                readonly>
                         </div>
-
                     </div>
+                </div>
 
-                </div>               
-
-                <div class="d-flex justify-content-end mt-3">
+                <div class="d-flex justify-content-end gap-2 mt-3">
                     <button class="btn btn-primary btn-enviar">
                         Enviar
+                    </button>
+                    <button type="button" class="btn btn-primary btn-enviar" (click)="onGeneratePDF()">
+                        Generar PDF
                     </button>
                 </div>
 
             </form>
-        </div>
-        <div class="col-md-6">
-            <form class="border rounded p-3 h-100">
-                <h5 class="mb-3">Vista Previa</h5>
-            </form>
+
         </div>
     </div>
 </section>
-
-
-<!-- Formulario 2 -->
