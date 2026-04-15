@@ -10,27 +10,36 @@ import {
 import { Observable } from "rxjs";
 import generatePDF from "src/app/lib/pdf";
 import { CotizacionesDbService } from "src/app/services/cotizaciones-db.service";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: "app-formulary",
   standalone: true,
-  imports: [CommonModule, DatePipe, ReactiveFormsModule],
+  imports: [CommonModule, DatePipe, ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule],
   templateUrl: "./formulary.component.html",
   styleUrl: "./formulary.component.scss",
 })
 export class FormularyComponent implements OnInit {
   today: Date = new Date();
   editandoId: string | null = null;
+  
 
   @ViewChild("formBox") formBox!: ElementRef;
 
   public cotizaciones!: Observable<any>;
   mostrarModalExito: boolean = false;
 
+  
+
   onGeneratePDF() {
     const form = this.formCotizaciones.getRawValue();
 
-    // Mapear conceptos a productos
+    // Mapear conceptos a productos para construir PDF
     const products = form.conceptos.map((item: any) => ({
       cliente: form.cliente,
       obra: form.obra,
@@ -39,9 +48,7 @@ export class FormularyComponent implements OnInit {
       cantidad: item.cantidad,
       precioUnitario: item.precioUnitario,
     }));
-
     const notas = form.notas;
-
     const cotizacion = this.generarFolio(); // opcional dinámico
     const fecha = new Date().toLocaleDateString("es-MX", {
       day: "2-digit",
@@ -74,17 +81,19 @@ export class FormularyComponent implements OnInit {
       this.cargarCotizacion(cot);
     }
   }
+  
   /* 🔥 FORMULARIO PRINCIPAL */
   public formCotizaciones: FormGroup = this.form.group({
     cliente: ["", Validators.required],
-    obra: ["", Validators.required],
-    direccion: ["", Validators.required],
+    obra: [""],
+    direccion: [""],
     conceptos: this.form.array([this.crearConcepto()]),
     notas: [""],
     subtotal: [{ value: "", disabled: true }],
     iva: [{ value: "", disabled: true }],
     total: [{ value: "", disabled: true }],
     fecha: [new Date()],
+    statusProceso: ["", Validators.required]
   });
 
   /* 🔥 GETTER CONCEPTOS */
@@ -144,6 +153,7 @@ export class FormularyComponent implements OnInit {
 
   cargarCotizacion(cot: any) {
     this.formCotizaciones.patchValue({
+      statusProceso: cot.statusProceso,
       cliente: cot.cliente,
       obra: cot.obra,
       direccion: cot.direccion,
@@ -196,4 +206,8 @@ export class FormularyComponent implements OnInit {
       this.formCotizaciones.markAllAsTouched();
     }
   };
+
+  setStatus(valor: string) {
+  this.formCotizaciones.get('statusProceso')?.setValue(valor);
+}
 }

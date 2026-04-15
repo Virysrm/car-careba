@@ -69,9 +69,9 @@
         <th class="text-center">#</th>
         <th class="text-center">Status</th>
         <th class="text-center">Cliente</th>
-        <th class="text-center">Obra</th>
         <th class="text-center">Dirección</th>
         <th class="text-center">Fecha</th>
+        <th class="text-center">Total</th>
         <th></th>
         <th></th>
         <th></th>
@@ -81,21 +81,29 @@
     <tbody class="text-center">
       <tr *ngFor="let cot of cotizaciones$ | async; index as i">
         <td class="text-center">{{ i + 1 }}</td>
-        <td><span class="badge online">Enviado</span></td>
-        <td><strong>{{ cot.cliente }}</strong></td>
-        <td>{{ cot.obra }}</td>
+        <td>
+          <span class="badge" [ngClass]="{
+      'online': cot.statusProceso === 'Nuevo',
+      'custom-badge': cot.statusProceso === 'PasandoExcel'
+    }">
+            {{ cot.statusProceso === 'PasandoExcel' ? 'Pasando de Excel' : cot.statusProceso }}
+          </span>
+        </td>
+
+        <td><strong>{{ cot.cliente }}</strong><br>
+          <small>{{ cot.obra }}</small>
+        </td>
         <td>{{ cot.direccion }}</td>
         <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
-        <td><button class="btn btn-warning btn-sm"
-        (click)="irAEditar(cot)">
-  Editar
-</button></td>
-          <td>
-    <button class="btn btn-sm btn-primary"
-            (click)="generarPDFDesdeBD(cot)">
-      PDF
-    </button>
-  </td>
+        <td>$ {{ cot.total | number:'1.2-2' }}</td>
+        <td><button class="btn btn-warning btn-sm" (click)="irAEditar(cot)">
+            Editar
+          </button></td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="generarPDFDesdeBD(cot)">
+            PDF
+          </button>
+        </td>
       </tr>
 
       <!-- <tr>

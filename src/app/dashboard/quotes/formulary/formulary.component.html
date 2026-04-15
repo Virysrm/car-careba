@@ -13,6 +13,17 @@
                 </div>
 
                 <div class="row">
+                    
+                    <div class="col-md-7 mb-3">
+                    <mat-form-field appearance="fill" class="status-select">
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="statusProceso">
+                            <mat-option value="Nuevo">Nuevo</mat-option>
+                            <mat-option value="PasandoExcel">Pasando de Excel</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    </div>
+                    
                     <div class="col-md-7 mb-3">
                         <input type="text" class="form-control input-line" placeholder="Nombre del Cliente"
                             formControlName="cliente">
@@ -29,53 +40,50 @@
                 </div>
 
                 <!-- CONCEPTOS -->
-                        <div formArrayName="conceptos">
+                <div formArrayName="conceptos">
 
-                            <div *ngFor="let item of conceptos.controls; let i = index" [formGroupName]="i"
-                                class="border rounded p-3 mb-3">
+                    <div *ngFor="let item of conceptos.controls; let i = index" [formGroupName]="i"
+                        class="border rounded p-3 mb-3">
 
-                                <div class="mb-3">
-                                    <label class="fw-bold">Concepto</label>
-                                    <input type="text" class="form-control input-line" formControlName="concepto">
-                                </div>
+                        <div class="mb-3">
+                            <label class="fw-bold">Concepto</label>
+                            <input type="text" class="form-control input-line" formControlName="concepto">
+                        </div>
 
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label class="fw-bold">Cantidad</label>
-                                        <input type="number" class="form-control input-line" formControlName="cantidad"
-                                            (input)="calcularImporte(i)">
-                                    </div>
-
-                                    <div class="col-md-4 mb-3">
-                                        <label class="fw-bold">Precio Unitario</label>
-                                        <input type="number" class="form-control input-line"
-                                            formControlName="precioUnitario" (input)="calcularImporte(i)">
-                                    </div>
-
-                                    <div class="col-md-4 mb-3">
-                                        <label class="fw-bold">Importe</label>
-                                        <input type="number" class="form-control input-line" formControlName="importe"
-                                            readonly>
-                                    </div>
-                                </div>
-
-                                <button type="button" class="btn btn-danger btn-sm" (click)="eliminarConcepto(i)"
-                                    *ngIf="conceptos.length > 1">
-                                    Eliminar
-                                </button>
-
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="fw-bold">Cantidad</label>
+                                <input type="number" class="form-control input-line" formControlName="cantidad"
+                                    (input)="calcularImporte(i)">
                             </div>
 
-                            <button type="button" class="btn btn-outline-primary w-100 mb-3"
-                                (click)="agregarConcepto()">
-                                + Agregar concepto
-                            </button>
+                            <div class="col-md-4 mb-3">
+                                <label class="fw-bold">Precio Unitario</label>
+                                <input type="number" class="form-control input-line" formControlName="precioUnitario"
+                                    (input)="calcularImporte(i)">
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="fw-bold">Importe</label>
+                                <input type="number" class="form-control input-line" formControlName="importe" readonly>
+                            </div>
                         </div>
+
+                        <button type="button" class="btn btn-danger btn-sm" (click)="eliminarConcepto(i)"
+                            *ngIf="conceptos.length > 1">
+                            Eliminar
+                        </button>
+
+                    </div>
+
+                    <button type="button" class="btn btn-outline-primary w-100 mb-3" (click)="agregarConcepto()">
+                        + Agregar concepto
+                    </button>
+                </div>
 
                 <div class="row">
                     <div class="col-md-7 mb-3">
-                        <textarea class="form-control input-line" placeholder="NOTAS"
-                            formControlName="notas" rows="2">
+                        <textarea class="form-control input-line" placeholder="NOTAS" formControlName="notas" rows="2">
                         </textarea>
                     </div>
 

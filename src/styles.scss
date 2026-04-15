@@ -220,3 +220,14 @@ html {
 .mail i {
   color: #eaeaea;
 }
+
+/*Para estilos de componentes de Angular Material*/
+/* Línea activa (cuando haces click) */
+.mdc-line-ripple::after {
+  border-bottom-color: #2196f3 !important; /* azul */
+}
+
+/* Línea normal */
+.mdc-line-ripple::before {
+  border-bottom-color: #90caf9 !important; /* azul claro */
+}

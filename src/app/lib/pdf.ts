@@ -71,12 +71,12 @@ const generatePDF = (
         fontSize: 10,
       },
       {
-        text: "CANTIDAD",
+        text: "CANT.",
         style: "tableHeader",
         alignment: "center",
         border: [true, true, true, true],
         fillColor: "#f5f5f5",
-        fontSize: 10,
+        fontSize: 9,
       },
       {
         text: "PRECIO UNITARIO",
@@ -84,7 +84,7 @@ const generatePDF = (
         alignment: "center",
         border: [true, true, true, true],
         fillColor: "#f5f5f5",
-        fontSize: 10,
+        fontSize: 9,
       },
       {
         text: "IMPORTE",
@@ -99,27 +99,27 @@ const generatePDF = (
       {
         text: product.concepto,
         border: [false, false, false, false],
-        fontSize: 10,
+        fontSize: 8,
       },
       {
         text: product.cantidad.toString(),
         alignment: "center",
         border: [false, false, false, false],
-        fontSize: 10,
+        fontSize: 8,
       },
 
       {
-        text: `$ ${product.precioUnitario.toFixed(2)}`,
+        text: `$${product.precioUnitario.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
         alignment: "center",
         border: [false, false, false, false],
-        fontSize: 10,
+        fontSize: 8,
       },
-
+      //importe
       {
-        text: `$ ${(product.cantidad * product.precioUnitario).toFixed(2)}`,
+        text: `$ ${(product.cantidad * product.precioUnitario).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
         alignment: "right",
         border: [false, false, false, false],
-        fontSize: 10,
+        fontSize: 8,
       },
     ]),
   ];
@@ -217,7 +217,7 @@ const generatePDF = (
                         margin: [0, 4, 0, 0], // espacio entre imagen y texto
                       },
                       {
-                        text: "55 1234 5678",
+                        text: "55 14513651",
                         fontSize: 10,
                         margin: [3, 3, 0, 0],
                         bold: true,
@@ -242,7 +242,7 @@ const generatePDF = (
                         margin: [0, 2, 0, 0], // espacio entre imagen y texto
                       },
                       {
-                        text: "contacto@careba.com",
+                        text: "careba_ramirez@hotmail.com",
                         fontSize: 10,
                         margin: [3, 0, 0, 0],
                         bold: true,
@@ -339,7 +339,7 @@ const generatePDF = (
       { width: "*", text: "" }, // 👈 separador flexible
 
       {
-        width: 162, // 👈 bloque de totales más compacto
+        width: 202, // 👈 bloque de totales más compacto
         table: {
           widths: ["auto", "auto"],
           body: [
@@ -349,11 +349,11 @@ const generatePDF = (
                 bold: true,
                 alignment: "right",
                 fillColor: "#f5f5f5",
-                fontSize: 10,
+                fontSize: 9,
                 margin: [0, 0, 3, 0],
               },
               {
-                text: `$${subtotal.toFixed(2)}`,
+                text: `$${subtotal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
                 alignment: "right",
                 fillColor: "#f5f5f5",
                 fontSize: 10,
@@ -369,7 +369,7 @@ const generatePDF = (
                 border: [false, false, false, true],
               },
               {
-                text: `$${iva.toFixed(2)}`,
+                text: `$${iva.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
                 alignment: "right",
                 fillColor: "#f5f5f5",
                 fontSize: 10,
@@ -386,7 +386,7 @@ const generatePDF = (
                 margin: [0, 0, 2, 0],
               },
               {
-                text: `$${totalGeneral.toFixed(2)}`,
+                text: `$${totalGeneral.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
                 alignment: "right",
                 fillColor: "#f5f5f5",
                 fontSize: 10,
@@ -420,7 +420,7 @@ const generatePDF = (
             margin: [0, 0, 0, 5],
           },
           {
-            text: notas || "NINGUNA",
+            text: notas || "Ninguna",
             fontSize: 9,
             margin: [0, 0, 0, 0],
           },

@@ -44,3 +44,52 @@ label {
 .btn-enviar:hover {
   transform: translateY(-2px);
 }
+
+.status-select {
+  width: 200px; /* tamaño más compacto */
+  font-size: 13px;
+}
+
+/* Reduce altura */
+.status-select .mat-mdc-text-field-wrapper {
+  height: 40px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Label más pequeño */
+.status-select .mat-mdc-floating-label {
+  font-size: 12px;
+}
+
+/* Fondo del panel (dropdown) */
+.mat-mdc-select-panel {
+  background-color: #ffffff !important; /* blanco */
+}
+
+/* Opciones normales */
+.mat-mdc-option {
+  color: #333 !important;
+  font-size: 14px;
+}
+
+/* Opción al pasar el mouse */
+.mat-mdc-option:hover {
+  background-color: #e8f5e9 !important; /* verde clarito */
+}
+
+/* Opción seleccionada */
+.mat-mdc-option.mdc-list-item--selected {
+  background-color: #c8e6c9 !important; /* verde suave */
+  color: #1b5e20 !important;
+}
+
+/* Check (palomita) */
+.mat-pseudo-checkbox {
+  color: #2e7d32 !important;
+}
+
+/* Texto del select */
+.mat-mdc-select-value {
+  color: #1b5e20 !important;
+}

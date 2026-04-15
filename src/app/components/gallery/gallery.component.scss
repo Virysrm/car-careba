@@ -183,3 +183,27 @@
   transform: scale(1.05);
 }
 
+/*Descripción Small*/
+.overlay-text small {
+  display: block;           /* baja el texto */
+  font-size: 1rem;          /* más pequeño */
+  font-weight: 300;         /* más ligero */
+  margin-top: 5px;          /* espacio con el título */
+  line-height: 1.4;         /* evita que se amontone */
+  opacity: 0.9;             /* leve transparencia elegante */
+}
+
+.overlay-text {
+  line-height: 1.2; /* controla el espaciado general */
+}
+
+.overlay-text small {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease 0.2s;
+}
+
+.box:hover .overlay-text small {
+  opacity: 1;
+  transform: translateY(0);
+}
