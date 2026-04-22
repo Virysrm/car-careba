@@ -1,8 +1,10 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  standalone: true, // 👈 ESTO FALTABA
+  imports: [RouterModule], // 👈 AQUÍ VA
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

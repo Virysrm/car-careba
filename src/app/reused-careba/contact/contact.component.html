@@ -18,22 +18,22 @@
 
         <!-- COLUMNA IZQUIERDA: FORMULARIO -->
         <div class="formulario-contacto">
-          <form class="form-contacto">
+          <form class="form-contacto" [formGroup]="formContactoReuso" (ngSubmit)="enviarContactoReuso()">
             <div class="row">
               <div class="col">
                 <label for="nombre" class="text-white font-urbanist-medium">Nombre</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                <input formControlName="nombre" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
 
                 <label for="tel" class="text-white font-urbanist-medium">Teléfono</label>
-                <input type="tel" id="tel" name="tel" placeholder="55 123 456 78" required>
+                <input formControlName="telefono" type="tel" id="tel" name="tel" placeholder="55 123 456 78" required>
               </div>
             </div>
 
             <label for="email" class="text-white font-urbanist-medium">Correo</label>
-            <input type="email" id="email" name="email" placeholder="correo@email.com" required>
+            <input formControlName="correo" type="email" id="email" name="email" placeholder="correo@email.com">
 
             <label for="mensaje" class="text-white font-urbanist-medium">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Describe tu mensaje..." required></textarea>
+            <textarea formControlName="mensaje" id="mensaje" name="mensaje" rows="5"></textarea>
 
             <button type="submit" class="btn btn-lg btn-primary">
               Enviar Mensaje &#10140;
@@ -55,11 +55,8 @@
               </button> 
             </form>
             -->
-
-        <!-- COLUMNA DERECHA: INFORMACIÓN Y HORARIO -->
         <!-- COLUMNA DERECHA: INFORMACIÓN Y HORARIO -->
         <div class="info-contacto">
-
           <!-- TARJETA -->
           <div class="info-card">
             <div class="icon-box">
@@ -112,10 +109,21 @@
           </div>
 
         </div>
-
-
       </div>
     </section>
-
+    
+        <!-- Modal Confirmación -->
+         @if (mostrarModalExito) {
+    <div class="modal-exito-overlay">
+      <div class="modal-exito-box">
+        <div class="modal-exito-icono">
+          <i class="bi bi-send-check"></i>
+        </div>
+        <h2 class="modal-exito-titulo">¡Mensaje Enviado!</h2>
+        <p class="modal-exito-texto">Nos pondremos en contacto contigo en las próximas 24 horas.</p>
+        <button class="modal-exito-boton" (click)="mostrarModalExito=false">Cerrar</button>
+      </div>
+    </div>
+  }
   </div>
 </section>
