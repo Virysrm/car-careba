@@ -1,205 +1,191 @@
-/* Contenedor del logo + texto */
+/* =======================
+   LAYOUT GENERAL
+======================= */
+.layout {
+  display: flex;
+  height: 90vh;
+}
+
+/* =======================
+   SIDEBAR
+======================= */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  max-width: 260px;
+  flex: 0 0 260px;
+
+  background: #fff;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  //justify-content: space-between;
+
+  border-radius: 14px;
+  border: 1px solid #1e3a47;
+
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+/* COLAPSADO */
+.sidebar.collapsed {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  flex: 0 0 80px;
+}
+
+
+/* =======================
+   LOGO
+======================= */
 .logo-menu {
   display: flex;
-  flex-direction: column;   /* uno debajo del otro */
-  align-items: center;      /* centrado horizontal */
-  justify-content: center;  /* centrado vertical */
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-bottom: 20px;
 }
 
-/* Imagen */
 .logo-img {
-  width: 80px;
-  height: auto;
+  width: 60px;
 }
 
-/* Texto debajo del logo */
 .logo-text {
   margin-top: 10px;
   font-weight: 600;
   color: #1e3a47;
-}
-.layout{
-  display:flex;
-  align-items: flex-start; /* evita estiramientos raros */
+  font-size: 14px;
 }
 
-/* SIDEBAR */
-// .sidebar{
-//   width:260px;
-//   background:#fff;
-//   padding:20px;
-//   display:flex;
-//   flex-direction:column;
-//   justify-content:space-between;
-//   border-radius: 14px;
-//   border: 1px solid #1e3a47;
-// }
+/* =======================
+   MENU
+======================= */
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
+  padding: 12px;
+  text-decoration: none;
+  color: #444;
 
-.sidebar{
-  width:260px;
-  min-width:260px;
-  max-width:260px;
-  flex: 0 0 260px;
-  background:#fff;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  border-radius: 14px;
-  border: 1px solid #1e3a47;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+.menu {
+  flex: 1;
+}
+.menu a:hover {
+  background: #e9ecef;
 }
 
-.menu a{
-  display:block;
-  padding:10px;
-  text-decoration:none;
-  color:#444;
-  border-radius:8px;
-  margin-bottom:5px;
+.menu a.active {
+  background: #e9ecef;
 }
 
-.menu a.active{
-  background:#e9ecef;
+.menu-title {
+  margin-top: 15px;
+  font-size: 12px;
+  color: #999;
 }
 
-.menu-title{
-  margin-top:15px;
-  font-size:12px;
-  color:#999;
+/* =======================
+   HELP BOX
+======================= */
+.help-box {
+  background: #1e3a47;
+  padding: 15px;
+  border-radius: 12px;
+  color: white;
 }
 
-.help-box{
-  background:#1e3a47;
-  padding:15px;
-  border-radius:12px;
+/* =======================
+   BOTONES
+======================= */
+.btn-dark,
+.btn-primary {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  color: white;
 }
 
-.btn-dark{
-  width:100%;
-  margin-top:10px;
-  padding:8px;
-  background:#2c3e50;
-  color:white;
-  border:none;
-  border-radius:6px;
+.btn-dark {
+  background: #2c3e50;
 }
 
-.btn-primary{
-  width:100%;
-  margin-top:10px;
-  padding:8px;
-  background:#5e72e4;
-  color:white;
-  border:none;
-  border-radius:6px;
+.btn-primary {
+  background: #5e72e4;
 }
 
-/* MAIN */
-
-.main{
-  flex:1;
-  padding:20px;
+/* =======================
+   MAIN
+======================= */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+  background: transparent; /* 🔥 */
 }
 
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
+/* =======================
+   TOPBAR
+======================= */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+
+  background: transparent; /* 🔥 quitamos franja blanca */
+  border-bottom: none;
 }
 
-.topbar input{
-  padding:8px;
-  border-radius:6px;
-  border:1px solid #ccc;
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.topbar-right{
-  display:flex;
-  align-items:center;
-  gap:15px;
+/* =======================
+   BOTÓN HAMBURGUESA
+======================= */
+.menu-toggle {
+  font-size: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  display: none;
 }
 
-/* CARD */
-
-.card{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
+/* BOTÓN COLAPSAR */
+.collapse-btn {
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-/* TABLE */
-
-table{
-  width:100%;
-  border-collapse:collapse;
+/* =======================
+   OVERLAY
+======================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
 }
 
-th{
-  text-align:left;
-  font-size:12px;
-  color:#999;
-  padding:10px;
-}
-
-td{
-  padding:12px 10px;
-  border-top:1px solid #eee;
-}
-
-.author-cell{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.author-cell img{
-  border-radius:50%;
-}
-
-/* BADGES */
-
-.badge{
-  padding:5px 10px;
-  border-radius:12px;
-  font-size:11px;
-  color:white;
-}
-
-.online{
-  background:#2ecc71;
-}
-
-.offline{
-  background:#95a5a6;
-}
-
-/* PROGRESS */
-
-.progress{
-  background:#eee;
-  height:6px;
-  border-radius:4px;
-}
-
-.progress-bar{
-  background:#3498db;
-  height:6px;
-  border-radius:4px;
-}
-
-.progress-bar.red{
-  background:#e74c3c;
-}
-
-
-
-/* FRANJA AZUL */
-.header-bg{
+/* =======================
+   HEADER AZUL
+======================= */
+.header-bg {
   background: #1e3a47;
   height: 350px;
   padding: 20px;
@@ -207,26 +193,117 @@ td{
   border-radius: 0 0 20px 6px;
 }
 
-/* CONTENIDO SUBE SOBRE LA FRANJA */
-.content{
-  margin-top: -60px;
-  padding: 20px;
-}
-
-/* CARDS */
-.card{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-
-/* TOPBAR TEXTO BLANCO */
-.header-bg small{
+.header-bg small {
   color: rgba(255,255,255,0.8);
 }
 
-.header-bg h2{
+.header-bg h2 {
   color: white;
+}
+
+/* =======================
+   CONTENIDO
+======================= */
+.page-content {
+  margin-top: 20px;
+}
+.topbar h2 {
+  margin: 25px 0 0 0;
+}
+
+.topbar small {
+  display: block;
+  margin-bottom: 5px;
+}
+/* =======================
+   CARDS
+======================= */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* =======================
+   TABLAS
+======================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 12px;
+  color: #999;
+  padding: 10px;
+}
+
+td {
+  padding: 12px 10px;
+  border-top: 1px solid #eee;
+}
+
+/* =======================
+   BADGES
+======================= */
+.badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  color: white;
+}
+
+.online {
+  background: #2ecc71;
+}
+
+.offline {
+  background: #95a5a6;
+}
+
+/* =======================
+   PROGRESS
+======================= */
+.progress {
+  background: #eee;
+  height: 6px;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  background: #3498db;
+  height: 6px;
+  border-radius: 4px;
+}
+
+.progress-bar.red {
+  background: #e74c3c;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    flex: none;
+
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
 }

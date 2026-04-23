@@ -12,7 +12,17 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 export class HomeComponent {
 
   pageTitle = '';
-  pageSubtitle = '';
+  pageSubtitle = '';isMenuOpen = false;
+
+isCollapsed = false;
+
+toggleMenu() {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
+toggleCollapse() {
+  this.isCollapsed = !this.isCollapsed;
+}
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 

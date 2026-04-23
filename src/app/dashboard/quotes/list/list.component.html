@@ -60,53 +60,54 @@
         </table>
       </section> -->
 
-<h3 style="font-weight: bold;">Lista de Cotizaciones 2026</h3>
+<h3 style="font-weight: bold;">Lista</h3>
 
 <section class="card">
-  <table>
-    <thead>
-      <tr>
-        <th class="text-center">#</th>
-        <th class="text-center">Status</th>
-        <th class="text-center">Cliente</th>
-        <th class="text-center">Dirección</th>
-        <th class="text-center">Fecha</th>
-        <th class="text-center">Total</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th class="text-center">#</th>
+          <th class="text-center">Status</th>
+          <th class="text-center">Cliente</th>
+          <th class="text-center">Dirección</th>
+          <th class="text-center">Fecha</th>
+          <th class="text-center">Total</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-    <tbody class="text-center">
-      <tr *ngFor="let cot of cotizaciones$ | async; index as i">
-        <td class="text-center">{{ i + 1 }}</td>
-        <td>
-          <span class="badge" [ngClass]="{
+      <tbody class="text-center">
+        <tr *ngFor="let cot of cotizaciones$ | async; index as i">
+          <td class="text-center">{{ i + 1 }}</td>
+          <td>
+            <span class="badge" [ngClass]="{
       'online': cot.statusProceso === 'Nuevo',
       'custom-badge': cot.statusProceso === 'PasandoExcel'
     }">
-            {{ cot.statusProceso === 'PasandoExcel' ? 'Pasando de Excel' : cot.statusProceso }}
-          </span>
-        </td>
+              {{ cot.statusProceso === 'PasandoExcel' ? 'de Excel' : cot.statusProceso }}
+            </span>
+          </td>
 
-        <td><strong>{{ cot.cliente }}</strong><br>
-          <small>{{ cot.obra }}</small>
-        </td>
-        <td>{{ cot.direccion }}</td>
-        <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
-        <td>$ {{ cot.total | number:'1.2-2' }}</td>
-        <td><button class="btn btn-warning btn-sm" (click)="irAEditar(cot)">
-            Editar
-          </button></td>
-        <td>
-          <button class="btn btn-sm btn-primary" (click)="generarPDFDesdeBD(cot)">
-            PDF
-          </button>
-        </td>
-      </tr>
+          <td><strong>{{ cot.cliente }}</strong><br>
+            <small>{{ cot.obra }}</small>
+          </td>
+          <td>{{ cot.direccion }}</td>
+          <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
+          <td>$ {{ cot.total | number:'1.2-2' }}</td>
+          <td><button class="btn btn-warning btn-sm" (click)="irAEditar(cot)">
+              Editar
+            </button></td>
+          <td>
+            <button class="btn btn-sm btn-primary" (click)="generarPDFDesdeBD(cot)">
+              PDF
+            </button>
+          </td>
+        </tr>
 
-      <!-- <tr>
+        <!-- <tr>
               <td class="author-cell">
                 <img src="">
                 <div>
@@ -120,6 +121,7 @@
               <td><a href="#">Edit</a></td>
             </tr> -->
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </section>
