@@ -290,3 +290,23 @@ body {
 // //   transform: translateY(-4px) scale(1.1);
 // //   box-shadow: 0 6px 10px rgba(0,0,0,0.2);
 // // }
+
+
+.service-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+  border: 2px solid transparent;
+}
+
+/* Cuando aparece */
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* El marco que va "recorriendo" */
+.service-card.active {
+  border: 3px solid #aa6c3c;
+  box-shadow: 0 0 0 3px rgba(170, 108, 60, 0.3);
+}

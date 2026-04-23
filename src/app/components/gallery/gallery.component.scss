@@ -1,4 +1,4 @@
-@use 'src/styles'  as *;
+@use "src/styles" as *;
 
 .bg-gallery {
   background: #e5e6ea;
@@ -26,7 +26,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease, filter 0.6s ease;
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
   display: block;
 }
 
@@ -40,7 +42,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
   opacity: 0;
   transition: opacity 0.6s ease;
 }
@@ -52,26 +54,27 @@
 /* Texto centrado */
 .overlay-text {
   position: absolute;
-  bottom: 50px;      /* ajusta la posición inferior */
-  left: 30px;        /* ajusta la posición izquierda */
+  bottom: 50px; /* ajusta la posición inferior */
+  left: 30px; /* ajusta la posición izquierda */
   transform: translateY(20px); /* empieza ligeramente abajo */
   color: #fff;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 2.4rem;
   font-weight: 600;
   text-align: left;
-  opacity: 0;        /* inicio invisible */
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0; /* inicio invisible */
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
   z-index: 2;
   pointer-events: none;
 }
 
 /* Efecto hover sobre la imagen */
 .box:hover .overlay-text {
-  opacity: 1;        /* se hace visible */
+  opacity: 1; /* se hace visible */
   transform: translateY(0); /* sube a su posición final */
 }
-
 
 @media (max-width: 991px) {
   .contenido {
@@ -80,14 +83,13 @@
   }
 }
 
-
 /* ✅ asegúrate de usar .box (faltaba el punto) */
 .box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block; /* ✅ evita espacios o saltos entre imágenes */
-    border-radius: 12px;
+  border-radius: 12px;
   border-color: #f6f4f1;
 }
 
@@ -104,9 +106,9 @@
   grid-row: span 2;
 }
 
- .box:nth-child(5) {
+.box:nth-child(5) {
   grid-row: span 2;
- }
+}
 
 .box:nth-child(7) {
   grid-column: span 2;
@@ -123,27 +125,29 @@
   .box:nth-child(7) {
     grid-column: span 1;
   }
-    .box:nth-child(2),
-    .box:nth-child(4),
-    .box:nth-child(5) {
+  .box:nth-child(2),
+  .box:nth-child(4),
+  .box:nth-child(5) {
     grid-row: span 1;
   }
 
   .overlay-text {
-  position: absolute;
-  bottom: 50px;      /* ajusta la posición inferior */
-  left: 30px;        /* ajusta la posición izquierda */
-  transform: translateY(20px); /* empieza ligeramente abajo */
-  color: #fff;
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-align: left;
-  opacity: 0;        /* inicio invisible */
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  z-index: 2;
-  pointer-events: none;
-}
+    position: absolute;
+    bottom: 50px; /* ajusta la posición inferior */
+    left: 30px; /* ajusta la posición izquierda */
+    transform: translateY(20px); /* empieza ligeramente abajo */
+    color: #fff;
+    font-family: "Outfit", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: left;
+    opacity: 0; /* inicio invisible */
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+    z-index: 2;
+    pointer-events: none;
+  }
 }
 
 /* ✅ Mostrar solo 6 imágenes en pantallas pequeñas */
@@ -157,7 +161,9 @@
 .section-contenido .box {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
 }
 
 /* Cuando el contenedor entra en viewport */
@@ -167,13 +173,27 @@
 }
 
 /* Retrasos escalonados para efecto tipo Framer Motion */
-.section-contenido.visible .box:nth-child(1) { transition-delay: 0s; }
-.section-contenido.visible .box:nth-child(2) { transition-delay: 0.1s; }
-.section-contenido.visible .box:nth-child(3) { transition-delay: 0.2s; }
-.section-contenido.visible .box:nth-child(4) { transition-delay: 0.3s; }
-.section-contenido.visible .box:nth-child(5) { transition-delay: 0.4s; }
-.section-contenido.visible .box:nth-child(6) { transition-delay: 0.5s; }
-.section-contenido.visible .box:nth-child(7) { transition-delay: 0.6s; }
+.section-contenido.visible .box:nth-child(1) {
+  transition-delay: 0s;
+}
+.section-contenido.visible .box:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.section-contenido.visible .box:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.section-contenido.visible .box:nth-child(4) {
+  transition-delay: 0.3s;
+}
+.section-contenido.visible .box:nth-child(5) {
+  transition-delay: 0.4s;
+}
+.section-contenido.visible .box:nth-child(6) {
+  transition-delay: 0.5s;
+}
+.section-contenido.visible .box:nth-child(7) {
+  transition-delay: 0.6s;
+}
 
 /* Mantener overlay y zoom hover si ya los tienes */
 .section-contenido .box img {
@@ -185,12 +205,12 @@
 
 /*Descripción Small*/
 .overlay-text small {
-  display: block;           /* baja el texto */
-  font-size: 1rem;          /* más pequeño */
-  font-weight: 300;         /* más ligero */
-  margin-top: 5px;          /* espacio con el título */
-  line-height: 1.4;         /* evita que se amontone */
-  opacity: 0.9;             /* leve transparencia elegante */
+  display: block; /* baja el texto */
+  font-size: 1rem; /* más pequeño */
+  font-weight: 300; /* más ligero */
+  margin-top: 5px; /* espacio con el título */
+  line-height: 1.4; /* evita que se amontone */
+  opacity: 0.9; /* leve transparencia elegante */
 }
 
 .overlay-text {
@@ -206,4 +226,12 @@
 .box:hover .overlay-text small {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .overlay-text small {
+    display: block;
+    max-width: 180px;
+    text-wrap: balance;
+  }
 }

@@ -9,8 +9,12 @@
 </section>
 
 <section class="services"  #fadeEl [class.visible]="isFadeVisible">
-    <div class="service-card"
-       *ngFor="let item of cards">
+    <div 
+  class="service-card"
+  *ngFor="let item of cards; let i = index"
+  [class.visible]="item.isTouched"
+  [class.active]="i === activeIndex"
+>
     <div class="icon-box" [style.background]="item.bg">
       <i class="{{ item.icon }}"></i>
     </div>
