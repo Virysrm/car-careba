@@ -1,4 +1,4 @@
-import pdfMake from "pdfmake/build/pdfmake";
+import pdfMake, { fonts } from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 
 (pdfMake as any).vfs = (pdfFonts as any).vfs;
@@ -307,128 +307,96 @@ const generatePDF = (
   });
 
   content.push({
-    margin: [0, 10, 0, 0],
-    columns: [
-      {
-        width: "auto",
-        stack: [
-          { text: "" }, // espacio SUBTOTAL
-          {
-            text: "Si requiere factura será más el .16%",
-            fontSize: 10,
-            alignment: "left",
-            margin: [0, 0, 0, 6],
-            bold: true,
-          },
-          {
-            canvas: [
-              {
-                type: "line",
-                x1: 0,
-                y1: 0,
-                x2: 350,
-                y2: 0,
-                lineWidth: 1,
-                lineColor: "#cccccc",
-              },
-            ],
-          },
+  margin: [0, 0, 0, 0],
+  columns: [
+    { width: "*", text: "" },
+
+    {
+      width: 180, // 👈 más ancho para evitar salto de línea
+      table: {
+        widths: [110, 70], // 👈 ancho fijo para texto y total
+        body: [
+          [
+            {
+              text: "TOTAL CARPINTERÍA:",
+              bold: true,
+              alignment: "right",
+              fillColor: "#f5f5f5",
+              fontSize: 9,
+              noWrap: true, // 👈 evita salto de línea
+            },
+            {
+              text: `$${subtotal.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}`,
+              alignment: "right",
+              fillColor: "#f5f5f5",
+              fontSize: 10,
+              noWrap: true,
+            },
+          ],
         ],
       },
-
-      { width: "*", text: "" }, // 👈 separador flexible
-
-      {
-        width: 202, // 👈 bloque de totales más compacto
-        table: {
-          widths: ["auto", "auto"],
-          body: [
-            [
-              {
-                text: "SUBTOTAL CARPINTERÍA: ",
-                bold: true,
-                alignment: "right",
-                fillColor: "#f5f5f5",
-                fontSize: 9,
-                margin: [0, 0, 3, 0],
-              },
-              {
-                text: `$${subtotal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-                alignment: "right",
-                fillColor: "#f5f5f5",
-                fontSize: 10,
-              },
-            ],
-            [
-              {
-                text: "IVA:",
-                bold: true,
-                alignment: "right",
-                fillColor: "#f5f5f5",
-                fontSize: 10,
-                border: [false, false, false, true],
-              },
-              {
-                text: `$${iva.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-                alignment: "right",
-                fillColor: "#f5f5f5",
-                fontSize: 10,
-                border: [false, false, false, true],
-              },
-            ],
-            [
-              {
-                text: "TOTAL: ",
-                bold: true,
-                alignment: "right",
-                fillColor: "#f5f5f5",
-                fontSize: 10,
-                margin: [0, 0, 2, 0],
-              },
-              {
-                text: `$${totalGeneral.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-                alignment: "right",
-                fillColor: "#f5f5f5",
-                fontSize: 10,
-                bold: true,
-              },
-            ],
-          ],
-        },
-        layout: {
-          hLineWidth: (i: number) => (i === 2 ? 0.5 : 0),
-          vLineWidth: () => 0,
-          hLineColor: () => "#cccccc",
-          paddingLeft: () => 0,
-          paddingRight: () => 0,
-        },
+      layout: {
+        hLineWidth: (i: number) => (i === 2 ? 0.5 : 0),
+        vLineWidth: () => 0,
+        hLineColor: () => "#cccccc",
+        paddingLeft: () => 0,
+        paddingRight: () => 0,
       },
-    ],
-  });
-
+    },
+  ],
+});
   // 📄 NOTAS
   console.log("NOTAS EN PDF:", notas);
-  content.push({
-    columns: [
-      {
-        width: "*",
-        stack: [
-          {
-            text: "NOTAS",
-            bold: true,
-            fontSize: 11,
-            margin: [0, 0, 0, 5],
-          },
-          {
-            text: notas || "Ninguna",
-            fontSize: 9,
-            margin: [0, 0, 0, 0],
-          },
-        ],
-      },
-    ],
-    margin: [0, 30, 0, 0],
-  });
+ content.push({
+  columns: [
+    {
+      width: "*",
+      stack: [
+        {
+          text: "NOTAS",
+          bold: true,
+          fontSize: 11,
+          margin: [0, 0, 0, 5],
+        },
+        {
+          text: notas || "Ninguna",
+          fontSize: 9,
+          margin: [0, 0, 0, 0],
+        },
+
+        // IVA en la misma línea
+        {
+          columns: [
+            {
+              fillColor: "#f5f5f5",
+              text: "Si requiere factura, se agregará el 16% de IVA correspondiente a:",
+              fontSize: 9,
+              bold: true,
+              margin: [0, 5, 5, 0],
+              width: "auto"
+            },
+            {
+              text: `$${iva.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              })}`,
+              fontSize: 9,
+              bold: true,
+              fillColor: "#f5f5f5",
+              border: [false, false, false, true],
+              margin: [0, 5, 0, 0],
+              width: "auto"
+            }
+          ]
+        }
+      ],
+    },
+  ],
+  margin: [0, 30, 0, 0],
+});
 
   //LINEA DE SEPARACIÓN
   content.push({
