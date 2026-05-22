@@ -37,7 +37,6 @@
   flex: 0 0 80px;
 }
 
-
 /* =======================
    LOGO
 ======================= */
@@ -62,33 +61,129 @@
 /* =======================
    MENU
 ======================= */
-.menu a {
+
+.menu {
+  flex: 1;
+  padding-top: 10px;
+}
+
+/* ===== GRUPO ===== */
+
+.menu-group {
+  margin-bottom: 10px;
+}
+
+/* ===== TITULO PRINCIPAL ===== */
+
+.menu-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 16px;
+
+  margin-top: 8px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: 0.2s;
+}
+
+.menu-section-title:hover {
+  background: #f3f4f6;
+}
+
+/* TEXTO TITULO */
+
+.menu-section-title span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .5px;
+
+  color: #000;
+}
+
+/* ===== FLECHA ===== */
+
+.arrow {
+  font-size: 11px;
+  color: #777;
+
+  transition: transform .2s ease;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+/* FLECHA PEQUEÑA */
+.arrow.small {
+  font-size: 9px;
+}
+
+/* GRUPO INTERNO */
+.submenu-group {
+  margin-top: 5px;
+}
+/* ===== SUBTITULO ===== */
+
+.menu-subtitle {
+  padding: 6px 16px 6px 18px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  color: #999;
+}
+
+/* ===== CONTENEDOR SUBMENU ===== */
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ===== LINKS ===== */
+
+.menu a,
+.submenu-item {
   display: flex;
   align-items: center;
   gap: 10px;
 
-  padding: 12px;
+  padding: 12px 16px 12px 45px;
+
   text-decoration: none;
+
   color: #444;
 
   border-radius: 8px;
+
   transition: 0.2s;
+
+  font-size: 14px;
+  font-weight: 500;
 }
-.menu {
-  flex: 1;
-}
-.menu a:hover {
+
+/* ===== HOVER ===== */
+
+.menu a:hover,
+.submenu-item:hover {
   background: #e9ecef;
 }
 
-.menu a.active {
-  background: #e9ecef;
-}
+/* ===== ACTIVE ===== */
 
-.menu-title {
-  margin-top: 15px;
-  font-size: 12px;
-  color: #999;
+.menu a.active,
+.submenu-item.active {
+  background: #e9ecef;
+  font-weight: 600;
 }
 
 /* =======================
@@ -178,7 +273,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 900;
 }
 
@@ -186,7 +281,9 @@
    HEADER AZUL
 ======================= */
 .header-bg {
-  background: #1e3a47;
+  background: #141e30;
+  background: -webkit-linear-gradient(to top, #243b55, #141e30);
+  background: linear-gradient(to top, #243b55, #141e30);
   height: 350px;
   padding: 20px;
   color: white;
@@ -194,7 +291,7 @@
 }
 
 .header-bg small {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .header-bg h2 {
@@ -214,6 +311,7 @@
 .topbar small {
   display: block;
   margin-bottom: 5px;
+  margin-right: 8px;
 }
 /* =======================
    CARDS
@@ -223,7 +321,7 @@
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* =======================
@@ -287,7 +385,6 @@ td {
    RESPONSIVE
 ======================= */
 @media (max-width: 768px) {
-
   .menu-toggle {
     display: block;
   }
@@ -305,5 +402,9 @@ td {
   .sidebar.open {
     transform: translateX(0);
   }
-
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }

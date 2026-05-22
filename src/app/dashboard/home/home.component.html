@@ -13,70 +13,236 @@
       <div class="logo-menu">
         <img src="assets/img/careba/Logo.png" class="logo-img">
 
-        @if (!isCollapsed) {
+        <!-- @if (!isCollapsed) {
         <span class="logo-text">Carpintería CAREBA</span>
-        }
+        } -->
       </div>
 
       <!-- MENU -->
       <nav class="menu">
-        @if (!isCollapsed) {
-        <div class="menu-title">COTIZACIONES</div>
-        }
+        <!-- CAREBA (RETRAIBLE) -->
+        <div class="menu-group">
+          <!-- TITULO PRINCIPAL -->
+          <div class="menu-section-title d-flex align-items-center justify-content-between" (click)="showCareba = !showCareba">
 
-        <a routerLink="list">
-          <i class="bi bi-list"></i>
-          @if (!isCollapsed) { <span>Lista</span> }
-        </a>
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black fw-bold">CAREBA</span>
+            </div>
 
-        <a routerLink="formulary">
-          <i class="bi bi-plus-circle"></i>
-          @if (!isCollapsed) { <span>Nueva</span> }
-        </a>
+            @if (!isCollapsed) {
+            <span class="arrow" [class.rotate]="showCareba"> ▼ </span>
+            }
 
-        <a routerLink="formulary">
-          <i class="bi bi-plus-circle"></i>
-          @if (!isCollapsed) { <span>Solicitudes de Clientes</span> }
-        </a>
+          </div>
 
-        @if (!isCollapsed) {
-        <div class="menu-title">REUSO</div>
-        }
-        <a routerLink="salesused">
-          <i class="bi bi-box"></i>
-          @if (!isCollapsed) { <span>Nuevo Producto</span> }
-        </a>
+          <!-- CONTENIDO CAREBA -->
+          @if (showCareba && !isCollapsed) {
 
-        <a routerLink="salesused">
-          <i class="bi bi-box"></i>
-          @if (!isCollapsed) { <span>Lista de Productos</span> }
-        </a>
+          <!--CLIENTES (RETRAIBLE)-->
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"  (click)="showClientes = !showClientes">
+              <span>Clientes</span>
+              <span class="arrow small" [class.rotate]="showClientes"> ▼ </span>
+            </div>
 
-        <a routerLink="salesused">
-          <i class="bi bi-box"></i>
-          @if (!isCollapsed) { <span>Solicitudes de Clientes</span> }
-        </a>
+            <!-- OPCIONES -->
+            @if (showClientes) {
+            <div class="submenu">
+              <a routerLink="list" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Lista de Clientes" width="18" height="18" />
+                <span>Lista de Clientes</span>
+              </a>
 
-        <a routerLink="salesused">
-          <i class="bi bi-box"></i>
-          @if (!isCollapsed) { <span>Ventas</span> }
-        </a>
+              <a routerLink="formulary" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Add Cliente" width="18" height="18" />
+                <span>Add Cliente</span>
+              </a>
 
-        @if (!isCollapsed) {
-        <div class="menu-title">ADMIN CAREBA</div>
-        }
-        <a routerLink="salesused">
-          <i class="bi bi-box"></i>
-          @if (!isCollapsed) { <span>Usuarios</span> }
-        </a>
-        <a routerLink="salesused">
-          <i class="bi bi-box"></i>
-          @if (!isCollapsed) { <span>Altas</span> }
-        </a>
-        <a routerLink="salesused">
-          <i class="bi bi-box"></i>
-          @if (!isCollapsed) { <span>Reestablecer Contraseña</span> }
-        </a>
+            </div>
+
+            }
+
+          </div>
+
+          <!--PRESUPUESTOS (RETRAIBLE)-->
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"  (click)="showPresupuestos = !showPresupuestos">
+              <span>Presupuestos</span>
+              <span class="arrow small" [class.rotate]="showPresupuestos"> ▼ </span>
+            </div>
+
+            @if (showPresupuestos) {
+            <div class="submenu">
+              <a routerLink="list" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Lista de Presupuestos" width="18" height="18" />
+                <span>Lista de Presupuestos</span>
+              </a>
+
+              <a routerLink="formulary" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Add Presupuesto" width="18" height="18" />
+                <span>Add Presupuesto</span>
+              </a>
+
+            </div>
+
+            }
+
+          </div>
+
+          }
+
+        </div>
+
+        <!-- REUSO CAREBA (RETRAIBLE) -->
+        <div class="menu-group">
+          <!-- TITULO PRINCIPAL -->
+          <div class="menu-section-title d-flex align-items-center justify-content-between" (click)="showReusoCareba = !showReusoCareba">
+
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black fw-bold">REUSO CAREBA</span>
+            </div>
+
+            @if (!isCollapsed) {
+            <span class="arrow" [class.rotate]="showReusoCareba"> ▼ </span>
+            }
+
+          </div>
+
+          <!-- CONTENIDO CAREBA -->
+          @if (showReusoCareba && !isCollapsed) {
+
+          <!--CLIENTES (RETRAIBLE)-->
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"  (click)="showClientes = !showClientes">
+              <span>Clientes</span>
+              <span class="arrow small" [class.rotate]="showClientes"> ▼ </span>
+            </div>
+
+            <!-- OPCIONES -->
+            @if (showClientes) {
+            <div class="submenu">
+              <a routerLink="list" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Lista de Clientes" width="18" height="18" />
+                <span>Lista de Clientes</span>
+              </a>
+
+              <a routerLink="formulary" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Add Cliente" width="18" height="18" />
+                <span>Add Cliente</span>
+              </a>
+
+            </div>
+
+            }
+
+          </div>
+
+          <!--PRESUPUESTOS (RETRAIBLE)-->
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"  (click)="showPresupuestos = !showPresupuestos">
+              <span>Presupuestos</span>
+              <span class="arrow small" [class.rotate]="showPresupuestos"> ▼ </span>
+            </div>
+
+            @if (showPresupuestos) {
+            <div class="submenu">
+              <a routerLink="list" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Lista de Presupuestos" width="18" height="18" />
+                <span>Lista de Presupuestos</span>
+              </a>
+
+              <a routerLink="formulary" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Add Presupuesto" width="18" height="18" />
+                <span>Add Presupuesto</span>
+              </a>
+
+            </div>
+
+            }
+
+          </div>
+
+          }
+
+        </div>
+
+        <!-- FINANZAS (RETRAIBLE) -->
+        <div class="menu-group">
+          <!-- TITULO PRINCIPAL -->
+          <div class="menu-section-title d-flex align-items-center justify-content-between" (click)="showFinanzas = !showFinanzas">
+
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black fw-bold">FINANZAS</span>
+            </div>
+
+            @if (!isCollapsed) {
+            <span class="arrow" [class.rotate]="showFinanzas"> ▼ </span>
+            }
+
+          </div>
+
+          <!-- CONTENIDO FINANZAS -->
+          @if (showFinanzas && !isCollapsed) {
+
+          <!--CLIENTES (RETRAIBLE)-->
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"  (click)="showFinanzas = !showFinanzas">
+              <span>Ingresos</span>
+              <span class="arrow small" [class.rotate]="showFinanzas"> ▼ </span>
+            </div>
+
+            <!-- OPCIONES -->
+            @if (showFinanzas) {
+            <div class="submenu">
+              <a routerLink="list" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Lista de Ingresos" width="18" height="18" />
+                <span>Lista de Ingresos</span>
+              </a>
+
+              <a routerLink="formulary" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Add Cliente" width="18" height="18" />
+                <span>Add Ingreso</span>
+              </a>
+
+            </div>
+
+            }
+
+          </div>
+
+          <!--Egresos (RETRAIBLE)-->
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"  (click)="showFinanzas = !showFinanzas">
+              <span>Egresos</span>
+              <span class="arrow small" [class.rotate]="showFinanzas"> ▼ </span>
+            </div>
+
+            @if (showFinanzas) {
+            <div class="submenu">
+              <a routerLink="list" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Lista de Egresos" width="18" height="18" />
+                <span>Lista de Egresos</span>
+              </a>
+
+              <a routerLink="formulary" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Add Egreso" width="18" height="18" />
+                <span>Add Egreso</span>
+              </a>
+
+            </div>
+
+            }
+
+          </div>
+
+          }
+
+        </div>
+
+
+
+
+
 
       </nav>
 
@@ -97,6 +263,7 @@
         </div>
 
         <div class="right">
+          <small class="fw-bold">¡Bienvenida @Virys!</small> |
           <small>Cerrar Sesión</small>
         </div>
 
@@ -111,3 +278,19 @@
 
   </div>
 </div>
+
+
+
+
+
+
+
+<a routerLink="list">
+  <i class="bi bi-list"></i>
+  @if (!isCollapsed) { <span>Lista</span> }
+</a>
+
+<a routerLink="formulary">
+  <i class="bi bi-plus-circle"></i>
+  @if (!isCollapsed) { <span>Nueva</span> }
+</a>

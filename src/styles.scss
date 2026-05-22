@@ -1,12 +1,13 @@
 @use "sass:color";
-@use 'src/styles/_sass-utils' as *;
-@use 'src/styles/_fonts' as *;
+@use "src/styles/_sass-utils" as *;
+@use "src/styles/_fonts" as *;
 
 /*Para Ver el Desbordamiento*/
 // * {
 //   outline: 1px solid red;
 // }
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -22,20 +23,44 @@ html {
 }
 
 // 🧱 Utilidades de color de fondo
-.bg-brown        { background-color: $brown; }
-.bg-black        { background-color: $black; }
-.bg-white        { background-color: $white; }
-.bg-gray-darkest { background-color: $gray-darkest; }
-.bg-gray-darker  { background-color: $gray-darker; }
-.bg-gray-dark    { background-color: $gray-dark; }
-.bg-gray-medium  { background-color: $gray-medium; }
-.bg-gray-light   { background-color: $gray-light; }
+.bg-brown {
+  background-color: $brown;
+}
+.bg-black {
+  background-color: $black;
+}
+.bg-white {
+  background-color: $white;
+}
+.bg-gray-darkest {
+  background-color: $gray-darkest;
+}
+.bg-gray-darker {
+  background-color: $gray-darker;
+}
+.bg-gray-dark {
+  background-color: $gray-dark;
+}
+.bg-gray-medium {
+  background-color: $gray-medium;
+}
+.bg-gray-light {
+  background-color: $gray-light;
+}
 
 // 🧾 Utilidades de color de texto (si quieres)
-.text-brown        { color: $brown; }
-.text-white        { color: $white; }
-.text-gray-darkest { color: $gray-darkest; }
-.text-gray-light { color: $gray-light; }
+.text-brown {
+  color: $brown;
+}
+.text-white {
+  color: $white;
+}
+.text-gray-darkest {
+  color: $gray-darkest;
+}
+.text-gray-light {
+  color: $gray-light;
+}
 
 /*==========================================================
    🎛️ Botones globales
@@ -104,20 +129,42 @@ html {
 /* =========================================================
    ⚙️ Utilidades generales
    ========================================================= */
-.text-center { text-align: center; }
-.text-left   { text-align: left; }
-.text-right  { text-align: right; }
-.text-justify { text-align: justify;}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-justify {
+  text-align: justify;
+}
 
-.text-bold { font-weight: bold; }
+.text-bold {
+  font-weight: bold;
+}
 
-.p-1 { padding: .5rem; }
-.p-2 { padding: 1rem; }
-.p-3 { padding: 1.5rem; }
+.p-1 {
+  padding: 0.5rem;
+}
+.p-2 {
+  padding: 1rem;
+}
+.p-3 {
+  padding: 1.5rem;
+}
 
-.m-1 { margin: .5rem; }
-.m-2 { margin: 1rem; }
-.m-3 { margin: 1.5rem; }
+.m-1 {
+  margin: 0.5rem;
+}
+.m-2 {
+  margin: 1rem;
+}
+.m-3 {
+  margin: 1.5rem;
+}
 
 /* =========================================================
    Titulos y Subtitulos para cada seccción
@@ -214,7 +261,7 @@ html {
 
 /* colores iconos */
 .whatsapp i {
-  color: #25D366;
+  color: #25d366;
 }
 
 .mail i {
@@ -230,4 +277,42 @@ html {
 /* Línea normal */
 .mdc-line-ripple::before {
   border-bottom-color: #90caf9 !important; /* azul claro */
+}
+
+/*Paginación*/
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 0;
+}
+
+.page-dot {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 50px;
+  border: none;
+  background: #e5e7eb;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-dot:hover:not(:disabled) {
+  transform: scale(1.08);
+}
+
+.page-dot.active {
+  background: #141e30;
+  color: white;
+  transform: scale(1.1);
+}
+
+.page-dot:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

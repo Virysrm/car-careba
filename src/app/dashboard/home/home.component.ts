@@ -1,40 +1,51 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 
 @Component({
-  selector: 'home-dashboard',
-  standalone: true,  
+  selector: "home-dashboard",
+  standalone: true,
   imports: [RouterModule],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  templateUrl: "./home.component.html",
+  styleUrl: "./home.component.scss",
 })
 export class HomeComponent {
+  pageTitle = "";
+  pageSubtitle = "";
+  isMenuOpen = false;
+  showCareba: boolean = true;
+  showClientes: boolean = true;
+  showPresupuestos: boolean = true;
+  showMateriales: boolean = true;
+  showProveedores: boolean = true;
+  showPersonal: boolean = true;
+  showProyectos: boolean = true;
+  showContacto: boolean = true;
+  showReusoCareba: boolean = true;
+  showFinanzas: boolean = true;
+  showUsuarios: boolean = true;
+  isCollapsed = false;
 
-  pageTitle = '';
-  pageSubtitle = '';isMenuOpen = false;
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
-isCollapsed = false;
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 
-toggleMenu() {
-  this.isMenuOpen = !this.isMenuOpen;
-}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
-toggleCollapse() {
-  this.isCollapsed = !this.isCollapsed;
-}
+  ngOnInit(): void {
+    //cOLOCAR RUTAS DE LAS PAGINAS
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
-
-ngOnInit(): void {
-  //cOLOCAR RUTAS DE LAS PAGINAS
-
-  this.route.firstChild?.data.subscribe(data => {
-    this.pageTitle = data['title'] || '';
-    this.pageSubtitle = data['subtitle'] || '';
-    console.log(data);
-  });
-
-}
-
+    this.route.firstChild?.data.subscribe((data) => {
+      this.pageTitle = data["title"] || "";
+      this.pageSubtitle = data["subtitle"] || "";
+      console.log(data);
+    });
+  }
 }

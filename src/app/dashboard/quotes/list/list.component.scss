@@ -1,5 +1,6 @@
-/* CARD */
+@use 'src/styles'  as *;
 
+/* CARD */
 .card {
   background: white;
   padding: 20px;
@@ -15,24 +16,27 @@ table {
 }
 
 th {
-  text-align: left;
+  text-align: center;
   font-size: 12px;
-  color: #999;
+  color: #353535;
   padding: 10px;
 }
 
 td {
   padding: 12px 10px;
   border-top: 1px solid #eee;
+  color: #999696;
 }
 
 td strong {
-  font-size: 13px;
+  font-size: 12px;
+  color: #777777;
+  font-weight: 500;
 }
 
 td small {
   font-size: 11px;
-  color: #777;
+  color: #999696;
 }
 
 .author-cell {
@@ -62,17 +66,20 @@ td small {
 
 .badge {
   padding: 5px 10px;
-  border-radius: 12px;
   font-size: 11px;
   color: white;
 }
 
-.online {
-  background: #2ecc71;
+.new {
+background: #81ff8a;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #64965e, #81ff8a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #64965e, #81ff8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.offline {
-  background: #95a5a6;
+.exist {
+background: #FDC830;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 /* PROGRESS */
@@ -124,10 +131,6 @@ td small {
 
 .header-bg h2 {
   color: white;
-}
-.custom-badge {
-  background-color: #f39c12; /* naranja */
-  color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -187,4 +190,17 @@ td small {
   color: white;
   border-radius: 0 0 20px 6px;
 }
+}
+
+
+/*Lo que se queda*/
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-icon {
+  margin-left: 4px;
+  vertical-align: middle;
+  opacity: .6;
 }
