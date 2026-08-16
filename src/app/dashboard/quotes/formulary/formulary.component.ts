@@ -8,6 +8,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Observable } from "rxjs";
+//import generatePDF from "src/app/lib/pdfCompleto";
 import generatePDF from "src/app/lib/pdf";
 import { CotizacionesDbService } from "src/app/services/cotizaciones-db.service";
 import { MatFormFieldModule } from '@angular/material/form-field';

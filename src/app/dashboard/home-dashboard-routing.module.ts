@@ -6,6 +6,7 @@ import { ListComponent } from "./quotes/list/list.component";
 import { SalesreusedComponent } from "./salesreused/salesreused.component";
 import { UsersComponent } from "./users/users.component";
 import { FormularyComponent } from "./quotes/formulary/formulary.component";
+import { IniciosComponent } from "./inicios/inicios.component";
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     children: [
-      { path: "", redirectTo: "home", pathMatch: "full" },
+      { path: "", redirectTo: "inicios", pathMatch: "full" },
       { 
         path: "quotes", 
         component: QuotesComponent,
@@ -30,6 +31,7 @@ const routes: Routes = [
       },
       { path: "salesused", component: SalesreusedComponent },
       { path: "users", component: UsersComponent },
+      { path: "inicios", component: IniciosComponent },
     ],
   },
 ];

@@ -8,6 +8,7 @@ import { SalesreusedComponent } from "./salesreused/salesreused.component";
 import { UsersComponent } from "./users/users.component";
 import { HomeComponent } from "./home/home.component";
 import { HomeDashboardRoutingModule } from "./home-dashboard-routing.module";
+import { IniciosComponent } from "./inicios/inicios.component";
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { HomeDashboardRoutingModule } from "./home-dashboard-routing.module";
     HomeComponent,
     QuotesComponent,
     SalesreusedComponent,
-    UsersComponent
+    UsersComponent, 
+    IniciosComponent
   ]
 })
 export class HomeDashboardModule {}

@@ -362,7 +362,7 @@ const generatePDF = (
           margin: [0, 0, 0, 5],
         },
         {
-          text: notas || "Ninguna",
+          text: notas || "",
           fontSize: 9,
           margin: [0, 0, 0, 0],
         },

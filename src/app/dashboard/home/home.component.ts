@@ -10,20 +10,28 @@ import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
   styleUrl: "./home.component.scss",
 })
 export class HomeComponent {
-  pageTitle = "";
+  pageTitle = "Dashboard";
   pageSubtitle = "";
   isMenuOpen = false;
-  showCareba: boolean = true;
-  showClientes: boolean = true;
-  showPresupuestos: boolean = true;
-  showMateriales: boolean = true;
-  showProveedores: boolean = true;
-  showPersonal: boolean = true;
-  showProyectos: boolean = true;
-  showContacto: boolean = true;
-  showReusoCareba: boolean = true;
-  showFinanzas: boolean = true;
-  showUsuarios: boolean = true;
+  showCareba: boolean = false;
+  showDirectorio: boolean = false;
+  showPresupuestos: boolean = false;
+  showContactoCareba: boolean = false;
+  showFinanzas: boolean = false;
+  showInventario: boolean = false;
+  showReusoCareba: boolean = false;
+  showVentas: boolean = false;
+  showContactoReusoCareba: boolean = false;
+  showOtrosServicios: boolean = false;
+  showPisos: boolean = false;
+  showLambrin: boolean = false;
+  showAdministracion: boolean = false;
+  showUsuarios: boolean = false;
+  showAutenticacion: boolean = false;
+  showListaUsuarios: boolean = false;
+  // showProveedores: boolean = false;
+  // showPersonal: boolean = false;
+  // showProyectos: boolean = false;
   isCollapsed = false;
 
   toggleMenu() {
@@ -41,7 +49,6 @@ export class HomeComponent {
 
   ngOnInit(): void {
     //cOLOCAR RUTAS DE LAS PAGINAS
-
     this.route.firstChild?.data.subscribe((data) => {
       this.pageTitle = data["title"] || "";
       this.pageSubtitle = data["subtitle"] || "";

@@ -1,0 +1,531 @@
+@use 'src/styles' as *;
+
+
+/* ========================================
+   CARD PRINCIPAL
+======================================== */
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.dashboard-wrapper {
+  width: 100%;
+  padding: 15px;
+  background: #f5f6f8;
+}
+
+.dashboard-card-main {
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-card-main .card-body {
+  padding: 15px;
+}
+
+
+/* ========================================
+   TARJETAS SUPERIORES
+======================================== */
+
+.stat-card {
+  min-height: 88px;
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  border: 1px solid #f0f2f5;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-title {
+  display: block;
+
+  margin-bottom: 2px;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  color: #344767;
+}
+
+.stat-card h4 {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  color: #172b4d;
+}
+
+.stat-description {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 10px;
+
+  color: #67748e;
+}
+
+.text-success {
+  color: #2dce89 !important;
+}
+
+.text-danger {
+  color: #f5365c !important;
+}
+
+.text-warning {
+  color: #ffb300 !important;
+}
+
+
+/* ========================================
+   ICONOS TARJETAS
+======================================== */
+
+.stat-icon {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+
+  font-size: 15px;
+}
+
+.icon-blue {
+  background: #2196f3;
+}
+
+.icon-red {
+  background: #f5365c;
+}
+
+.icon-green {
+  background: #20c997;
+}
+
+.icon-orange {
+  background: #ff8235;
+}
+
+
+/* ========================================
+   TODO LIST
+======================================== */
+
+.todo-card {
+  width: 100%;
+  height: 100%;
+
+  background: #fff;
+
+  border-radius: 12px;
+
+  border: 1px solid #f0f2f5;
+
+  padding: 16px;
+
+  box-shadow: none;
+}
+
+
+/* ========================================
+   TODO HEADER
+======================================== */
+
+.todo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+.todo-header h6 {
+  margin: 0;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  color: #344767;
+}
+
+.btn-add {
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #2196f3;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btn-add i {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.btn-add:hover {
+  background: #1976d2;
+  transform: scale(1.05);
+}
+
+
+/* ========================================
+   TODO LIST
+======================================== */
+
+.todo-list {
+  width: 100%;
+}
+
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 12px 0;
+
+  border-bottom: 1px solid #edf0f2;
+}
+
+.todo-item:first-child {
+  padding-top: 5px;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+
+/* ========================================
+   TODO CHECK
+======================================== */
+
+.todo-check {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  padding-top: 1px;
+}
+
+.todo-check i {
+  font-size: 18px;
+
+  color: #dce1e5;
+}
+
+.todo-item.completed .todo-check i {
+  color: #2196f3;
+}
+
+
+/* ========================================
+   TODO CONTENT
+======================================== */
+
+.todo-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-title {
+  margin-bottom: 6px;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  color: #344767;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.todo-info {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.todo-date {
+  font-size: 9px;
+
+  color: #67748e;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   TODO COMPLETADO
+======================================== */
+
+.todo-item.completed .todo-title,
+.todo-item.completed .todo-date {
+  text-decoration: line-through;
+
+  color: #67748e;
+}
+
+
+/* ========================================
+   TODO ESTADOS
+======================================== */
+
+.todo-status {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  border-radius: 6px;
+
+  font-size: 9px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.todo-status.done {
+  background: #e3f8ef;
+  color: #2dce89;
+}
+
+.todo-status.due {
+  background: #fff3d6;
+  color: #b8860b;
+}
+
+.todo-status.expired {
+  background: #ffe5e5;
+  color: #f5365c;
+}
+
+
+/* ========================================
+   PROMO
+======================================== */
+
+.promo-card {
+  position: relative;
+
+  height: 100%;
+  min-height: 280px;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle,
+      #a4a2a2 0%,
+      #a4a2a2 45%,
+      #a4a2a2 80%
+    );
+}
+
+.promo-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 150px;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-8deg);
+
+  border-radius: 50%;
+
+  border: 18px solid #000;
+
+  box-shadow:
+    0 0 25px #aa6c3c,
+    0 0 45px #434448;
+}
+
+.promo-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 150px;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(25deg);
+
+  border-radius: 50%;
+
+  border: 14px solid #aa6c3c;
+
+  box-shadow:
+    0 0 25px #434448;
+}
+
+
+/* ========================================
+   PROMO FLECHAS
+======================================== */
+
+.promo-arrows {
+  position: absolute;
+
+  right: 20px;
+  top: 20px;
+
+  z-index: 3;
+
+  display: flex;
+
+  gap: 25px;
+
+  color: #fff;
+
+  font-size: 12px;
+}
+
+
+/* ========================================
+   PROMO CONTENIDO
+======================================== */
+
+.promo-content {
+  position: absolute;
+
+  left: 35px;
+  right: 25px;
+  bottom: 25px;
+
+  z-index: 3;
+
+  color: #fff;
+}
+
+.promo-icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background: #fff;
+
+  color: #344767;
+
+  margin-bottom: 10px;
+
+  font-size: 11px;
+}
+
+.promo-content h5 {
+  margin: 0 0 6px;
+
+  font-size: 13px;
+}
+
+.promo-content p {
+  margin: 0;
+
+  font-size: 10px;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .dashboard-wrapper {
+    padding: 8px;
+  }
+
+  .dashboard-card-main .card-body {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 10px;
+    margin: 0;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .todo-card {
+    padding: 12px;
+  }
+
+  .promo-card {
+    min-height: 260px;
+  }
+
+  .todo-title {
+    font-size: 10px;
+  }
+
+  .todo-date,
+  .todo-status {
+    font-size: 8px;
+  }
+
+  .todo-info {
+    gap: 8px;
+  }
+
+  .todo-status {
+    padding: 3px 6px;
+  }
+}
