@@ -1,128 +1,120 @@
-<section class="card">
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th class="sortable">
-            #
+<section class="form-card-container">
 
-          </th>
-          <th class="sortable" (click)="ordenar('cliente')">
-            CLIENTE
-            <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px"
-              fill="currentColor" class="sort-icon">
-              <path
-                d="M480-80 240-320l57-57 183 183 183-183 57 57L480-80ZM298-584l-58-56 240-240 240 240-58 56-182-182-182 182Z" />
-            </svg>
-          </th>
+  <!-- CAPA 1: DELIMITACIÓN -->
+  <div class="form-card-border">
 
-          <th class="sortable" (click)="ordenar('direccion')">
-            DIRECCIÓN
-            <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px"
-              fill="currentColor" class="sort-icon">
-              <path
-                d="M480-80 240-320l57-57 183 183 183-183 57 57L480-80ZM298-584l-58-56 240-240 240 240-58 56-182-182-182 182Z" />
-            </svg>
-          </th>
+    <!-- CAPA 2: DEGRADADO -->
+    <div class="form-card-gradient">
 
-          <th class="sortable" (click)="ordenar('origen')">
-            ORIGEN
-            <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px"
-              fill="currentColor" class="sort-icon">
-              <path
-                d="M480-80 240-320l57-57 183 183 183-183 57 57L480-80ZM298-584l-58-56 240-240 240 240-58 56-182-182-182 182Z" />
-            </svg>
-          </th>
+      <!-- CAPA 3: FORMULARIO -->
+      <div class="form-card-content">
+        <section id="controls">
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div class="form-group mb-4">
+                <label style="font-weight: bold;" class="text-black">Ordenar por:</label>
+                <select class="form-control" (change)="ordenarCotizaciones($event)">
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="cliente">Cliente</option>
+                  <option value="direccion">Dirección</option>
+                  <option value="fecha">Fecha</option>
+                </select>
+              </div>
+            </div>
 
-          <th class="sortable" (click)="ordenar('fecha')">
-            FECHA
-            <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px"
-              fill="currentColor" class="sort-icon">
-              <path
-                d="M480-80 240-320l57-57 183 183 183-183 57 57L480-80ZM298-584l-58-56 240-240 240 240-58 56-182-182-182 182Z" />
-            </svg>
-          </th>
+          </div>
+        </section>
 
-          <th class="sortable" (click)="ordenar('totalCarpinteria')">
-            TOTAL CARPINTERÍA
-          </th>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th class="sortable">#</th>
+                <th class="sortable">Cliente</th>
+                <th class="sortable direccion-col">Dirección</th>
+                <th class="sortable">Origen</th>
+                <th class="sortable">Fecha</th>
+                <th class="sortable">Total Carpintería</th>
+                <th class="sortable">Total con IVA</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
 
-          <th class="sortable" (click)="ordenar('totalIVA')">
-            TOTAL CON IVA INCLUIDO
-          </th>
+            <tbody class="text-center">
+              <tr *ngFor="let cot of cotizacionesPaginadas; index as i">
+                <td class="text-center">
+                  {{ ((paginaActual - 1) * registrosPorPagina) + i + 1 }}
+                </td>
+                <td><strong>{{ cot.cliente }}</strong><br>
+                  <small>{{ cot.obra }}</small>
+                </td>
+                <td class="direccion-col">
+                  {{ cot.direccion }}
+                </td>
+                <td>
+                  <span class="badge" [ngClass]="{
+                      'new': cot.statusProceso?.toLowerCase().includes('nuevo'),
+                      'exist': cot.statusProceso === 'PasandoExcel'
+                    }">
+                    {{ cot.statusProceso?.toLowerCase().includes('nuevo')
+                    ? 'N'
+                    : cot.statusProceso === 'PasandoExcel'
+                    ? 'xls'
+                    : cot.statusProceso
+                    }}
+                  </span>
+                </td>
+                <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
+                <td>$ {{ cot.subtotal | number:'1.2-2' }}</td>
+                <td>$ {{ cot.total | number:'1.2-2' }}</td>
 
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
+                <td>
+                  <button class="btn btn-link text-body-tertiary p-0" (click)="irAEditar(cot)">
+                    <i class="bi bi-pencil-square fs-5"></i>
+                  </button>
+                </td>
+                <td>
+                  <button class="btn btn-link text-body-tertiary p-0" (click)="generarPDFDesdeBD(cot)">
+                    <i class="bi bi-file-earmark-arrow-down-fill fs-5"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <tbody class="text-center">
-        <tr *ngFor="let cot of cotizacionesPaginadas; index as i">
-          <td class="text-center">
-  {{ ((paginaActual - 1) * registrosPorPagina) + i + 1 }}
-</td>
-          <td><strong>{{ cot.cliente }}</strong><br>
-            <small>{{ cot.obra }}</small>
-          </td>
-          <td>{{ cot.direccion }}</td>
-          <td>
-            <span class="badge" [ngClass]="{
-            'new': cot.statusProceso === 'Nuevo', 'exist': cot.statusProceso === 'PasandoExcel' }">
-              {{ cot.statusProceso === 'PasandoExcel' ? 'de Excel' : cot.statusProceso }}
-            </span>
-          </td>
-          <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
-          <td>$ {{ cot.subtotal | number:'1.2-2' }}</td>
-          <td>$ {{ cot.total | number:'1.2-2' }}</td>
+        <div class="pagination-container">
 
-          <td>
-            <button class="btn btn-link text-body-tertiary p-0" (click)="irAEditar(cot)">
-              <i class="bi bi-pencil-square fs-5"></i>
-            </button>
-          </td>
-          <td>
-            <button class="btn btn-link text-body-tertiary p-0" (click)="generarPDFDesdeBD(cot)">
-              <i class="bi bi-file-earmark-arrow-down-fill fs-5"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <!-- Anterior -->
+          <button class="page-dot" (click)="paginaAnterior()" [disabled]="paginaActual === 1">
+
+            &lt;&lt;
+
+          </button>
+
+          <!-- Páginas -->
+          <button class="page-dot" *ngFor="let page of paginasVisibles" [class.active]="paginaActual === page"
+            (click)="cambiarPagina(page)">
+
+            {{ page }}
+
+          </button>
+
+          <!-- Siguiente -->
+          <button class="page-dot" (click)="paginaSiguiente()" [disabled]="paginaActual === totalPaginas">
+
+            &gt;&gt;
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-<div class="pagination-container">
-
-  <!-- Anterior -->
-  <button 
-    class="page-dot"
-    (click)="paginaAnterior()"
-    [disabled]="paginaActual === 1">
-
-    &lt;&lt;
-
-  </button>
-
-  <!-- Páginas -->
-  <button
-    class="page-dot"
-    *ngFor="let page of paginasVisibles"
-    [class.active]="paginaActual === page"
-    (click)="cambiarPagina(page)">
-
-    {{ page }}
-
-  </button>
-
-  <!-- Siguiente -->
-  <button 
-    class="page-dot"
-    (click)="paginaSiguiente()"
-    [disabled]="paginaActual === totalPaginas">
-
-    &gt;&gt;
-
-  </button>
-
-</div>
 </section>
