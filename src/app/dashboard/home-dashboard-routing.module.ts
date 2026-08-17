@@ -14,28 +14,83 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     children: [
-      { path: "", redirectTo: "inicios", pathMatch: "full" },
-      { 
-        path: "quotes", 
-        component: QuotesComponent,
-        data: { title: 'Cotizaciones', subtitle: 'Cotizaciones 2026' }
+
+      {
+        path: "",
+        redirectTo: "inicios",
+        pathMatch: "full"
       },
-      { path: "list", 
+
+      // =========================
+      // COTIZACIONES
+      // =========================
+      {
+        path: "list",
         component: ListComponent,
-        data: { title: 'Lista de Cotizaciones', subtitle: 'Cotizaciones 2026'}
+        data: {
+          title: "PRESUPUESTOS",
+          subtitle: "Lista de cotizaciones",
+          description: "Desgloce de Presupuestos y Status",
+          icon: "bi-hammer"
+        }
       },
-      { 
-        path: "formulary", 
-        component: FormularyComponent, 
-        data: { title: 'Agregar Cotizaciones', subtitle: 'Cotizaciones 2026'}
+
+      {
+        path: "formulary",
+        component: FormularyComponent,
+        data: {
+          title: "PRESUPUESTOS",
+          subtitle: "Agregar cotización",
+          description: "Ingresa los datos correspondoentes, el PDF se descargará con o Sin IVA",
+          icon: "bi-hammer"
+        }
       },
-      { path: "salesused", component: SalesreusedComponent },
-      { path: "users", component: UsersComponent },
-      { path: "inicios", component: IniciosComponent },
+
+      // =========================
+      // VENTAS
+      // =========================
+      {
+        path: "salesused",
+        component: SalesreusedComponent,
+        data: {
+          title: "VENTAS",
+          subtitle: "Ventas realizadas de REUSO CAREBA y otros Servicios",
+          description: "Desgloce de ingresos por otros canales de Venta y Srvicio",
+          icon: "bi-grid-fill"
+        }
+      },
+
+      // =========================
+      // USUARIOS
+      // =========================
+      {
+        path: "users",
+        component: UsersComponent,
+        data: {
+          title: "USUARIOS",
+          subtitle: "Lista de usuarios registrados",
+            description: "Desgloce de ingresos por otros canales de Venta y Srvicio",
+          icon: "bi-gear-fill"
+        }
+      },
+
+      // =========================
+      // INICIO
+      // =========================
+      {
+        path: "inicios",
+        component: IniciosComponent,
+        data: {
+          title: "DASHBOARD",
+          subtitle: "Información General",
+          description: "Desgloce de Montos y Proyectos al Día",
+          icon: "bi-house-fill"
+        }
+      }
+
     ],
   },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

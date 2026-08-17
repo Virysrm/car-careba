@@ -1,18 +1,28 @@
-import { Component } from "@angular/core";
-import { RouterModule } from "@angular/router";
-import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { NgClass } from "@angular/common";
+import {
+  RouterModule,
+  ActivatedRoute,
+  Router,
+  NavigationEnd,
+} from "@angular/router";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: "home-dashboard",
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, NgClass],
   templateUrl: "./home.component.html",
   styleUrl: "./home.component.scss",
 })
-export class HomeComponent {
-  pageTitle = "Dashboard";
-  pageSubtitle = "";
+export class HomeComponent implements OnInit {
+  pageTitle: string = "Hola";
+  pageSubtitle: string = "";
+  pageDescription: string = "Descripcion de la pagína";
+  pageIcon: string = "bi-house-fill";
+
   isMenuOpen = false;
+
   showCareba: boolean = false;
   showDirectorio: boolean = false;
   showPresupuestos: boolean = false;
@@ -29,10 +39,17 @@ export class HomeComponent {
   showUsuarios: boolean = false;
   showAutenticacion: boolean = false;
   showListaUsuarios: boolean = false;
+
   // showProveedores: boolean = false;
   // showPersonal: boolean = false;
   // showProyectos: boolean = false;
+
   isCollapsed = false;
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -42,17 +59,32 @@ export class HomeComponent {
     this.isCollapsed = !this.isCollapsed;
   }
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {}
-
   ngOnInit(): void {
-    //cOLOCAR RUTAS DE LAS PAGINAS
-    this.route.firstChild?.data.subscribe((data) => {
-      this.pageTitle = data["title"] || "";
-      this.pageSubtitle = data["subtitle"] || "";
-      console.log(data);
+    this.router.events
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd,
+        ),
+      )
+      .subscribe(() => {
+        this.actualizarEncabezado();
+      });
+
+    this.actualizarEncabezado();
+  }
+
+  actualizarEncabezado(): void {
+    let route = this.activatedRoute;
+
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+
+    route.data.subscribe((data) => {
+      this.pageTitle = data["title"] || "INICIO";
+      this.pageSubtitle = data["subtitle"] || "Dashboard";
+      this.pageDescription = data["description"] || "Descripción";
+      this.pageIcon = data["icon"] || "bi-house-fill";
     });
   }
 }

@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './inicios.component.html',
   styleUrl: './inicios.component.scss',
 })
-export class IniciosComponent {
 
+
+export class IniciosComponent {
+  public textTitlePage: string = "Dashboard";
 }

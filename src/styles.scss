@@ -316,3 +316,72 @@ html {
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+// ========================================
+// CONTENEDOR PRINCIPAL CAPAS DE CARDS
+// ========================================
+
+.form-card-container {
+  width: 100%;
+
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  padding-bottom: 20px;
+}
+
+
+// ========================================
+// CAPA 1 - DELIMITACIÓN
+// ========================================
+
+.form-card-border {
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+
+// ========================================
+// CAPA 2 - DEGRADADO
+// ========================================
+
+.form-card-gradient {
+  width: 100%;
+
+  padding: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #f1f1f1 0%,
+    #dcdcdc 50%,
+    #f7f7f7 100%
+  );
+
+  border-radius: 11px;
+
+  box-sizing: border-box;
+}
+
+
+// ========================================
+// CAPA 3 - FORMULARIO
+// ========================================
+
+.form-card-content {
+  width: 100%;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border-radius: 10px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
