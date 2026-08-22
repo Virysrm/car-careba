@@ -6,7 +6,7 @@
 
 .card {
   background: #fff;
-  padding: 20px;
+  //padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
   border: none;
@@ -66,15 +66,28 @@ label {
 
 /* BOTONES MÁS PRO */
 .btn-enviar {
-  font-weight: 600;
-  padding: 10px 26px;
-  border-radius: 10px;
-  box-shadow: 0 6px 14px rgba(173, 14, 14, 0.15);
-  transition: .25s;
+    font-weight: 600;
+    padding: 10px 26px;
+    border-radius: 10px;
+background-color: #a4a2a2;
+    border-color: #a4a2a2;    
+    color: #fff;
+
+    box-shadow: 0 6px 14px rgba(25, 135, 84, 0.25);
+
+    transition: .25s;
 }
 
 .btn-enviar:hover {
-  transform: translateY(-2px);
+background-color: #aa6c3c;
+    border-color: #aa6c3c;
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+.btn-enviar:active {
+    transform: translateY(0);
 }
 
 .status-select {
@@ -142,4 +155,25 @@ label {
 
 .input-money .input-line {
   padding-left: 15px;
+}
+
+.cliente-card {
+    width: 100%;
+    box-sizing: border-box;
+
+    border: 1px solid #dad1d1;
+    border-radius: 8px;
+
+    background: #fff;
+
+    padding: 20px;
+}
+
+.cliente-card .row {
+    width: 100%;
+}
+
+.cliente-card .form-control,
+.cliente-card mat-form-field {
+    width: 100%;
 }

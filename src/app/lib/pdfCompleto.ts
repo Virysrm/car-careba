@@ -559,7 +559,35 @@ const generatePDF = (
     },
   };
 
-  pdfMake.createPdf(docDefinition).open();
+  const meses: { [key: string]: string } = {
+    enero: "01",
+    febrero: "02",
+    marzo: "03",
+    abril: "04",
+    mayo: "05",
+    junio: "06",
+    julio: "07",
+    agosto: "08",
+    septiembre: "09",
+    octubre: "10",
+    noviembre: "11",
+    diciembre: "12",
+  };
+
+  const partes = fecha.split(" de ");
+
+  const dia = partes[0].padStart(2, "0");
+  const mes = meses[partes[1].toLowerCase()];
+  const año = partes[2];
+
+  const fechaArchivo = `${dia}-${mes}-${año}`;
+
+  const nombreArchivo =
+    `Cotización ${cliente} Obra ${obra} ${fechaArchivo}`
+      .replace(/[\\/:*?"<>|]/g, "-")
+      .trim() + ".pdf";
+
+  pdfMake.createPdf(docDefinition).download(nombreArchivo);
 };
 
 export default generatePDF;

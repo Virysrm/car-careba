@@ -307,96 +307,96 @@ const generatePDF = (
   });
 
   content.push({
-  margin: [0, 0, 0, 0],
-  columns: [
-    { width: "*", text: "" },
+    margin: [0, 0, 0, 0],
+    columns: [
+      { width: "*", text: "" },
 
-    {
-      width: 180, // 👈 más ancho para evitar salto de línea
-      table: {
-        widths: [110, 70], // 👈 ancho fijo para texto y total
-        body: [
-          [
-            {
-              text: "TOTAL CARPINTERÍA:",
-              bold: true,
-              alignment: "right",
-              fillColor: "#f5f5f5",
-              fontSize: 9,
-              noWrap: true, // 👈 evita salto de línea
-            },
-            {
-              text: `$${subtotal.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}`,
-              alignment: "right",
-              fillColor: "#f5f5f5",
-              fontSize: 10,
-              noWrap: true,
-            },
+      {
+        width: 180, // 👈 más ancho para evitar salto de línea
+        table: {
+          widths: [110, 70], // 👈 ancho fijo para texto y total
+          body: [
+            [
+              {
+                text: "TOTAL CARPINTERÍA:",
+                bold: true,
+                alignment: "right",
+                fillColor: "#f5f5f5",
+                fontSize: 9,
+                noWrap: true, // 👈 evita salto de línea
+              },
+              {
+                text: `$${subtotal.toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}`,
+                alignment: "right",
+                fillColor: "#f5f5f5",
+                fontSize: 10,
+                noWrap: true,
+              },
+            ],
           ],
-        ],
+        },
+        layout: {
+          hLineWidth: (i: number) => (i === 2 ? 0.5 : 0),
+          vLineWidth: () => 0,
+          hLineColor: () => "#cccccc",
+          paddingLeft: () => 0,
+          paddingRight: () => 0,
+        },
       },
-      layout: {
-        hLineWidth: (i: number) => (i === 2 ? 0.5 : 0),
-        vLineWidth: () => 0,
-        hLineColor: () => "#cccccc",
-        paddingLeft: () => 0,
-        paddingRight: () => 0,
-      },
-    },
-  ],
-});
+    ],
+  });
   // 📄 NOTAS
   console.log("NOTAS EN PDF:", notas);
- content.push({
-  columns: [
-    {
-      width: "*",
-      stack: [
-        {
-          text: "NOTAS",
-          bold: true,
-          fontSize: 11,
-          margin: [0, 0, 0, 5],
-        },
-        {
-          text: notas || "",
-          fontSize: 9,
-          margin: [0, 0, 0, 0],
-        },
+  content.push({
+    columns: [
+      {
+        width: "*",
+        stack: [
+          {
+            text: "NOTAS",
+            bold: true,
+            fontSize: 11,
+            margin: [0, 0, 0, 5],
+          },
+          {
+            text: notas || "",
+            fontSize: 9,
+            margin: [0, 0, 0, 0],
+          },
 
-        // IVA en la misma línea
-        {
-          columns: [
-            {
-              fillColor: "#f5f5f5",
-              text: "Si requiere factura, se agregará el 16% de IVA correspondiente a:",
-              fontSize: 9,
-              bold: true,
-              margin: [0, 5, 5, 0],
-              width: "auto"
-            },
-            {
-              text: `$${iva.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-              })}`,
-              fontSize: 9,
-              bold: true,
-              fillColor: "#f5f5f5",
-              border: [false, false, false, true],
-              margin: [0, 5, 0, 0],
-              width: "auto"
-            }
-          ]
-        }
-      ],
-    },
-  ],
-  margin: [0, 30, 0, 0],
-});
+          // IVA en la misma línea
+          {
+            columns: [
+              {
+                fillColor: "#f5f5f5",
+                text: "Si requiere factura, se agregará el 16% de IVA correspondiente a:",
+                fontSize: 9,
+                bold: true,
+                margin: [0, 5, 5, 0],
+                width: "auto",
+              },
+              {
+                text: `$${iva.toLocaleString("en-US", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}`,
+                fontSize: 9,
+                bold: true,
+                fillColor: "#f5f5f5",
+                border: [false, false, false, true],
+                margin: [0, 5, 0, 0],
+                width: "auto",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    margin: [0, 30, 0, 0],
+  });
 
   //LINEA DE SEPARACIÓN
   content.push({
@@ -525,7 +525,35 @@ const generatePDF = (
     },
   };
 
-  pdfMake.createPdf(docDefinition).open();
+  const meses: { [key: string]: string } = {
+    enero: "01",
+    febrero: "02",
+    marzo: "03",
+    abril: "04",
+    mayo: "05",
+    junio: "06",
+    julio: "07",
+    agosto: "08",
+    septiembre: "09",
+    octubre: "10",
+    noviembre: "11",
+    diciembre: "12",
+  };
+
+  const partes = fecha.split(" de ");
+
+  const dia = partes[0].padStart(2, "0");
+  const mes = meses[partes[1].toLowerCase()];
+  const año = partes[2];
+
+  const fechaArchivo = `${dia}-${mes}-${año}`;
+
+  const nombreArchivo =
+    `Cotización ${cliente} Obra ${obra} ${fechaArchivo}`
+      .replace(/[\\/:*?"<>|]/g, "-")
+      .trim() + ".pdf";
+
+  pdfMake.createPdf(docDefinition).download(nombreArchivo);
 };
 
 export default generatePDF;

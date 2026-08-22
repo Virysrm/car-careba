@@ -1,40 +1,90 @@
-<section class="card">
-    <div class="dashboard-wrapper">
-        <div class="dashboard-card-main">
-            <div class="card-body">
+<section class="form-card-container">
+
+    <!-- CAPA 1: DELIMITACIÓN -->
+    <div class="form-card-border">
+
+        <!-- CAPA 2: DEGRADADO -->
+        <div class="form-card-gradient">
+
+            <!-- CAPA 3: FORMULARIO -->
+            <div class="form-card-content">
                 <form [formGroup]="formCotizaciones" (ngSubmit)="enviarCotizaciones()">
 
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="fw-bold m-0">Datos del Cliente</h4>
-                        <span class="fw-bold">Fecha: {{ today | date:'dd/MM/yyyy' }}</span>
+                        <h4 class="fw-bold m-0 text-black">Datos del Cliente</h4>
+                        <span class="fw-bold text-black">Fecha: {{ today | date:'dd/MM/yyyy' }}</span>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-7 mb-3">
-                            <mat-form-field appearance="fill" class="status-select">
-                                <mat-label>Status</mat-label>
-                                <mat-select formControlName="statusProceso">
-                                    <mat-option value="Nuevo">Nuevo</mat-option>
-                                    <mat-option value="PasandoExcel">Pasando de Excel</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
+                    <div class="col-md-12 mb-3">
 
-                        <div class="col-md-7 mb-3">
-                            <input type="text" class="form-control input-line" placeholder="Nombre del Cliente"
-                                formControlName="cliente">
-                        </div>
+    <div class="cliente-card">
 
-                        <div class="col-md-5 mb-3">
-                            <input type="text" class="form-control input-line" placeholder="Obra"
-                                formControlName="obra">
-                        </div>
-                    </div>
+        <!-- STATUS -->
+        <div class="row">
+            <div class="col-md-3 mb-3">
 
-                    <div class="mb-3">
-                        <input type="text" class="form-control input-line" placeholder="Dirección"
-                            formControlName="direccion">
-                    </div>
+                <mat-form-field
+                    appearance="fill"
+                    class="status-select w-100">
+
+                    <mat-label>Status</mat-label>
+
+                    <mat-select formControlName="statusProceso">
+
+                        <mat-option value="Nuevo">
+                            Nuevo
+                        </mat-option>
+
+                        <mat-option value="PasandoExcel">
+                            Pasando de Excel
+                        </mat-option>
+
+                    </mat-select>
+
+                </mat-form-field>
+
+            </div>
+        </div>
+
+        <!-- CLIENTE + OBRA -->
+        <div class="row align-items-end">
+
+            <!-- CLIENTE -->
+            <div class="col-md-7 mb-3">
+                <input
+                    type="text"
+                    class="form-control input-line"
+                    placeholder="Nombre del Cliente"
+                    formControlName="cliente">
+            </div>
+
+            <!-- OBRA -->
+            <div class="col-md-5 mb-3">
+                <input
+                    type="text"
+                    class="form-control input-line"
+                    placeholder="Obra"
+                    formControlName="obra">
+            </div>
+
+        </div>
+
+        <!-- DIRECCIÓN -->
+        <div class="row">
+
+            <div class="col-md-12 mb-3">
+                <input
+                    type="text"
+                    class="form-control input-line"
+                    placeholder="Dirección"
+                    formControlName="direccion">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
                     <!-- CONCEPTOS -->
                     <div formArrayName="conceptos">
@@ -153,25 +203,4 @@
             </div>
         </div>
     </div>
-</section>
-
-<section class="form-card-container">
-
-  <!-- CAPA 1: DELIMITACIÓN -->
-  <div class="form-card-border">
-
-    <!-- CAPA 2: DEGRADADO -->
-    <div class="form-card-gradient">
-
-      <!-- CAPA 3: FORMULARIO -->
-      <div class="form-card-content">
-
-        
-
-      </div>
-
-    </div>
-
-  </div>
-
 </section>
