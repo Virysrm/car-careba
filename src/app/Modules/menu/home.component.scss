@@ -1,0 +1,1250 @@
+/* =========================================================
+   LAYOUT GENERAL
+========================================================= */
+
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  position: relative;
+
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
+
+  height: calc(100vh - 20px);
+
+  flex: 0 0 240px;
+
+  margin: 10px;
+
+  background: #fff;
+
+  padding: 14px 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 14px;
+  border: 1px solid #1e3a47;
+
+  transition:
+    width 0.25s ease,
+    min-width 0.25s ease,
+    max-width 0.25s ease,
+    flex 0.25s ease,
+    transform 0.3s ease;
+
+  z-index: 1000;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   SIDEBAR COLAPSADO
+========================================================= */
+
+.sidebar.collapsed {
+  width: 72px;
+  min-width: 72px;
+  max-width: 72px;
+
+  flex: 0 0 72px;
+
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+
+/* =========================================================
+   HEADER DEL SIDEBAR
+========================================================= */
+
+.sidebar-header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 55px;
+
+  margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-menu {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 55px;
+
+  margin: 0;
+}
+
+
+.logo-img {
+  width: 36px;
+  height: auto;
+
+  display: block;
+}
+
+
+.logo-text {
+  margin-top: 6px;
+
+  font-weight: 600;
+
+  color: #1e3a47;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   LOGO COLAPSADO
+========================================================= */
+
+.sidebar.collapsed .logo-menu {
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  margin: 0;
+}
+
+
+.sidebar.collapsed .logo-img {
+  width: 34px;
+}
+
+
+.sidebar.collapsed .logo-text {
+  display: none;
+}
+
+
+/* =========================================================
+   BOTÓN COLAPSAR
+========================================================= */
+
+.collapse-btn {
+  position: absolute;
+
+  right: 0;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 6px;
+
+  color: #7b8186;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.collapse-btn:hover {
+  background: #f1f3f4;
+
+  color: #1e3a47;
+}
+
+
+.collapse-btn i {
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   BOTÓN COLAPSADO
+========================================================= */
+
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+}
+
+
+.sidebar.collapsed .collapse-btn {
+  right: -6px;
+}
+
+
+/* =========================================================
+   MENU PRINCIPAL
+========================================================= */
+
+.menu {
+  flex: 1;
+
+  min-height: 0;
+
+  padding-top: 4px;
+
+  overflow-y: auto;
+  overflow-x: visible;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #d5d9dc
+    transparent;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+.menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.menu::-webkit-scrollbar-thumb {
+  background: #d5d9dc;
+
+  border-radius: 10px;
+}
+
+
+.menu::-webkit-scrollbar-thumb:hover {
+  background: #b8bec3;
+}
+
+
+/* =========================================================
+   GRUPOS
+========================================================= */
+
+.menu-group {
+  position: relative;
+
+  margin-bottom: 4px;
+}
+
+
+/* =========================================================
+   TITULOS PRINCIPALES
+========================================================= */
+
+.menu-section-title {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 34px;
+
+  padding: 7px 10px;
+
+  margin-top: 3px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.menu-section-title:hover {
+  background: #f4f5f6;
+}
+
+
+/* =========================================================
+   TEXTO TITULO
+========================================================= */
+
+.menu-section-title span {
+  font-size: 12px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.2px;
+
+  color: #1f2933;
+}
+
+
+/* =========================================================
+   ICONOS TITULO
+========================================================= */
+
+.menu-section-title i {
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   FLECHAS
+========================================================= */
+
+.arrow {
+  font-size: 10px;
+
+  color: #8a8f94;
+
+  transition: transform 0.2s ease;
+}
+
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+
+
+.arrow.small {
+  font-size: 8px;
+}
+
+
+/* =========================================================
+   SUBGRUPOS
+========================================================= */
+
+.submenu-group {
+  margin-top: 2px;
+}
+
+
+/* =========================================================
+   SUBTITULOS
+========================================================= */
+
+.menu-subtitle {
+  min-height: 28px;
+
+  padding: 5px 10px 5px 18px;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+
+  color: #92979b;
+
+  cursor: pointer;
+
+  border-radius: 6px;
+
+  transition: background 0.2s ease;
+}
+
+
+.menu-subtitle:hover {
+  background: #f7f7f7;
+}
+
+
+/* =========================================================
+   SUBMENU NORMAL
+========================================================= */
+
+.submenu {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1px;
+
+  margin-bottom: 2px;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.menu a,
+.submenu-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  min-height: 32px;
+
+  padding: 7px 10px 7px 32px;
+
+  text-decoration: none;
+
+  color: #4b5258;
+
+  border-radius: 7px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   ICONOS SUBMENU
+========================================================= */
+
+.submenu-item img {
+  width: 15px;
+  height: 15px;
+
+  object-fit: contain;
+
+  opacity: 0.75;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.menu a:hover,
+.submenu-item:hover {
+  background: #f1f3f4;
+
+  color: #1e3a47;
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.menu a.active,
+.submenu-item.active {
+  background: #e9ecef;
+
+  color: #1e3a47;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SIDEBAR COLAPSADO - TITULOS
+========================================================= */
+
+.sidebar.collapsed .menu-section-title {
+  position: relative;
+
+  justify-content: center;
+
+  width: 100%;
+
+  padding: 9px 0;
+
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   OCULTAR TEXTO
+========================================================= */
+
+.sidebar.collapsed .menu-section-title span {
+  font-size: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  gap: 0;
+}
+
+
+/* =========================================================
+   MANTENER ICONOS
+========================================================= */
+
+.sidebar.collapsed .menu-section-title span i {
+  font-size: 17px;
+
+  margin: 0;
+
+  display: block;
+}
+
+
+/* =========================================================
+   OCULTAR FLECHAS
+========================================================= */
+
+.sidebar.collapsed .arrow {
+  display: none;
+}
+
+
+/* =========================================================
+   OCULTAR SUBMENUS NORMALES
+========================================================= */
+
+.sidebar.collapsed .menu-subtitle,
+.sidebar.collapsed .submenu {
+  display: none;
+}
+
+
+/* =========================================================
+   SEPARACION COMPACTA
+========================================================= */
+
+.sidebar.collapsed .menu-group {
+  margin-bottom: 3px;
+}
+
+
+/* =========================================================
+   TOOLTIP ICONOS COLAPSADOS
+========================================================= */
+
+.sidebar.collapsed .menu-section-title:hover::after {
+  content: attr(title);
+
+  position: absolute;
+
+  left: 62px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  white-space: nowrap;
+
+  background: #1e3a47;
+
+  color: #fff;
+
+  padding: 6px 9px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  z-index: 4000;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   SUBMENU FLOTANTE
+========================================================= */
+
+.collapsed-submenu {
+  position: absolute;
+
+  left: calc(100% + 10px);
+
+  top: 0;
+
+  width: 235px;
+
+  max-height: calc(100vh - 30px);
+
+  padding: 10px;
+
+  background: #fff;
+
+  border: 1px solid #dfe3e6;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.14),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+
+  color: #1f2933;
+
+  z-index: 5000;
+
+  overflow-y: auto;
+
+  animation: collapsedSubmenuIn 0.18s ease;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    #d5d9dc
+    transparent;
+}
+
+
+/* =========================================================
+   ANIMACION SUBMENU
+========================================================= */
+
+@keyframes collapsedSubmenuIn {
+
+  from {
+    opacity: 0;
+
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+
+}
+
+
+/* =========================================================
+   SCROLLBAR SUBMENU FLOTANTE
+========================================================= */
+
+.collapsed-submenu::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.collapsed-submenu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.collapsed-submenu::-webkit-scrollbar-thumb {
+  background: #d5d9dc;
+
+  border-radius: 10px;
+}
+
+
+.collapsed-submenu::-webkit-scrollbar-thumb:hover {
+  background: #b8bec3;
+}
+
+
+/* =========================================================
+   TITULO SUBMENU FLOTANTE
+========================================================= */
+
+.collapsed-submenu-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 8px 10px 11px;
+
+  margin-bottom: 4px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #1e3a47;
+
+  border-bottom: 1px solid #edf0f2;
+}
+
+
+.collapsed-submenu-title i {
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   GRUPOS SUBMENU FLOTANTE
+========================================================= */
+
+.collapsed-submenu-group {
+  margin-bottom: 2px;
+}
+
+
+/* =========================================================
+   SECCIONES SUBMENU FLOTANTE
+========================================================= */
+
+.collapsed-submenu-section {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  min-height: 34px;
+
+  padding: 7px 9px;
+
+  border-radius: 7px;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  color: #4b5258;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.collapsed-submenu-section:hover {
+  background: #f1f3f4;
+
+  color: #1e3a47;
+}
+
+
+.collapsed-submenu-section i {
+  font-size: 10px;
+
+  color: #8a8f94;
+}
+
+
+/* =========================================================
+   ITEMS SUBMENU FLOTANTE
+========================================================= */
+
+.collapsed-submenu-items {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1px;
+
+  padding: 2px 0 5px 8px;
+}
+
+
+/* =========================================================
+   LINKS SUBMENU FLOTANTE
+========================================================= */
+
+.collapsed-submenu-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  min-height: 31px;
+
+  padding: 6px 9px;
+
+  border-radius: 6px;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  color: #5b6268;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.collapsed-submenu-item:hover {
+  background: #f1f3f4;
+
+  color: #1e3a47;
+}
+
+
+.collapsed-submenu-item img {
+  width: 15px;
+  height: 15px;
+
+  object-fit: contain;
+
+  opacity: 0.75;
+}
+
+
+.collapsed-submenu-item span {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100vh;
+
+  padding: 20px;
+
+  overflow-y: auto;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+
+  background: transparent;
+
+  border-bottom: none;
+}
+
+
+/* =========================================================
+   TOPBAR LEFT
+========================================================= */
+
+.topbar .left {
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   TOPBAR RIGHT
+========================================================= */
+
+.topbar-right,
+.right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+/* =========================================================
+   BOTÓN HAMBURGUESA
+========================================================= */
+
+.menu-toggle {
+  font-size: 22px;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  margin-right: 10px;
+
+  display: none;
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  z-index: 900;
+}
+
+
+/* =========================================================
+   HEADER BACKGROUND
+========================================================= */
+
+.header-bg {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      to top,
+      #312f2f,
+      #000
+    );
+
+  color: white;
+
+  border-radius:
+    0 0 20px 6px;
+}
+
+
+.header-bg small {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+.header-bg h2 {
+  color: white;
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.page-content {
+  margin-top: 20px;
+}
+
+
+.topbar h2 {
+  margin: 25px 0 0 0;
+}
+
+
+.topbar small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  margin-right: 8px;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   TABLAS
+========================================================= */
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+
+th {
+  text-align: left;
+
+  font-size: 12px;
+
+  color: #999;
+
+  padding: 10px;
+}
+
+
+td {
+  padding: 12px 10px;
+
+  border-top: 1px solid #eee;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge {
+  padding: 5px 10px;
+
+  border-radius: 12px;
+
+  font-size: 11px;
+
+  color: white;
+}
+
+
+.online {
+  background: #2ecc71;
+}
+
+
+.offline {
+  background: #95a5a6;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress {
+  background: #eee;
+
+  height: 6px;
+
+  border-radius: 4px;
+}
+
+
+.progress-bar {
+  background: #3498db;
+
+  height: 6px;
+
+  border-radius: 4px;
+}
+
+
+.progress-bar.red {
+  background: #e74c3c;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* -------------------------------------------------------
+     BOTON MENU
+  ------------------------------------------------------- */
+
+  .menu-toggle {
+    display: block;
+  }
+
+
+  /* -------------------------------------------------------
+     SIDEBAR MOVIL
+  ------------------------------------------------------- */
+
+  .sidebar {
+
+    position: fixed;
+
+    top: 10px;
+    left: 10px;
+
+    height: calc(100vh - 20px);
+
+    width: 240px;
+
+    min-width: 240px;
+    max-width: 240px;
+
+    flex: none;
+
+    transform: translateX(-120%);
+
+    margin: 0;
+
+    z-index: 2000;
+
+    overflow: visible;
+  }
+
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+
+  /* -------------------------------------------------------
+     EN MOVIL NO SE USA EL MODO COLAPSADO
+  ------------------------------------------------------- */
+
+  .sidebar.collapsed {
+
+    width: 240px;
+
+    min-width: 240px;
+    max-width: 240px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  .sidebar.collapsed .menu-section-title {
+
+    justify-content: space-between;
+
+    padding: 7px 10px;
+  }
+
+
+  .sidebar.collapsed .menu-section-title span {
+
+    font-size: 12px;
+
+    justify-content: flex-start;
+
+    width: auto;
+
+    gap: 8px;
+  }
+
+
+  .sidebar.collapsed .menu-section-title span i {
+
+    font-size: 13px;
+  }
+
+
+  .sidebar.collapsed .arrow {
+    display: block;
+  }
+
+
+  .sidebar.collapsed .menu-subtitle,
+  .sidebar.collapsed .submenu {
+
+    display: block;
+  }
+
+
+  .sidebar.collapsed .logo-text {
+    display: block;
+  }
+
+
+  .sidebar.collapsed .logo-img {
+    width: 36px;
+  }
+
+
+  /* -------------------------------------------------------
+     OCULTAR SUBMENU FLOTANTE EN MOVIL
+  ------------------------------------------------------- */
+
+  .collapsed-submenu {
+    display: none;
+  }
+
+
+  /* -------------------------------------------------------
+     MAIN
+  ------------------------------------------------------- */
+
+  .main {
+    padding: 15px;
+  }
+
+
+  /* -------------------------------------------------------
+     TOPBAR
+  ------------------------------------------------------- */
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+
+  .topbar .right {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   FUENTES
+========================================================= */
+
+@import url(
+  'https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&family=Quicksand:wght@100..900&display=swap'
+);
+
+
+/* =========================================================
+   GRUPPO
+========================================================= */
+
+.gruppo-regular {
+  font-family: "Gruppo", sans-serif;
+
+  font-weight: 100;
+
+  font-style: normal;
+}

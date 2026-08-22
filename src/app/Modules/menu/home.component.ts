@@ -22,7 +22,9 @@ export class HomeComponent implements OnInit {
   pageIcon: string = "bi-house-fill";
 
   isMenuOpen = false;
+  isCollapsed = false;
 
+  menuAbierto: string | null = null;
   showCareba: boolean = false;
   showDirectorio: boolean = false;
   showPresupuestos: boolean = false;
@@ -43,8 +45,6 @@ export class HomeComponent implements OnInit {
   // showProveedores: boolean = false;
   // showPersonal: boolean = false;
   // showProyectos: boolean = false;
-
-  isCollapsed = false;
 
   constructor(
     private router: Router,

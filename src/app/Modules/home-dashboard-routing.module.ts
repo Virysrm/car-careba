@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { QuotesComponent } from "./quotes/quotes.component";
-import { ListComponent } from "./quotes/list/list.component";
-import { SalesreusedComponent } from "./salesreused/salesreused.component";
-import { UsersComponent } from "./users/users.component";
-import { FormularyComponent } from "./quotes/formulary/formulary.component";
-import { IniciosComponent } from "./inicios/inicios.component";
+import { HomeComponent } from "./menu/home.component";
+import { QuotesComponent } from "./careba/quotes/quotes.component";
+import { ListComponent } from "./careba/quotes/list/list.component";
+import { SalesreusedComponent } from "./reuse-careba/salesreused/salesreused.component";
+import { UsersComponent } from "./settings/users/users.component";
+import { FormularyComponent } from "./careba/quotes/formulary/formulary.component";
+import { IniciosComponent } from "./dashboard/inicios.component";
 
 
 const routes: Routes = [

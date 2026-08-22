@@ -28,9 +28,9 @@ const routes: Routes = [
       ),
   },
   {
-    path: "home-dashboard",
+    path: "home-modules",
     loadChildren: () =>
-      import("./dashboard/home-dashboard.module").then(
+      import("./Modules/home-dashboard.module").then(
         (m) => m.HomeDashboardModule,
       ),
   },

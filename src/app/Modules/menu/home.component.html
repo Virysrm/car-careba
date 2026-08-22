@@ -1,0 +1,579 @@
+<div class="header-bg">
+  <div class="layout">
+    <!-- =====================================================
+         OVERLAY
+    ====================================================== -->
+
+    @if (isMenuOpen) {
+    <div class="overlay" (click)="toggleMenu()"></div>
+    }
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" [class.open]="isMenuOpen" [class.collapsed]="isCollapsed">
+      <!-- ===================================================
+           HEADER DEL SIDEBAR
+      ==================================================== -->
+
+      <div class="sidebar-header">
+        <!-- LOGO -->
+
+        <div class="logo-menu">
+          <img src="assets/img/careba/Logo.png" class="logo-img" alt="CAREBA" />
+        </div>
+
+        <!-- BOTÓN COLAPSAR -->
+
+        <button type="button" class="collapse-btn" (click)="toggleCollapse()"
+          [attr.title]="isCollapsed ? 'Expandir menú' : 'Contraer menú'">
+          <i class="bi" [ngClass]="isCollapsed ? 'bi-chevron-right' : 'bi-chevron-left'">
+          </i>
+        </button>
+      </div>
+
+      <!-- ===================================================
+           MENU
+      ==================================================== -->
+
+      <nav class="menu">
+        <!-- =================================================
+             INICIO
+        ================================================== -->
+
+        <div class="menu-group">
+          <div class="menu-section-title" title="Dashboard" routerLink="./inicios" style="cursor: pointer">
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black gruppo-regular">
+                <i class="bi bi-house-fill"></i>
+
+                Dashboard
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- =================================================
+             CAREBA
+        ================================================== -->
+
+        <div class="menu-group">
+          <!-- TITULO -->
+
+          <div class="menu-section-title" title="CAREBA" (click)="showCareba = !showCareba">
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black gruppo-regular">
+                <i class="bi bi-hammer"></i>
+
+                CAREBA
+              </span>
+            </div>
+
+            @if (!isCollapsed) {
+            <span class="arrow" [class.rotate]="showCareba">
+              <i class="bi bi-chevron-compact-down"></i>
+            </span>
+            }
+          </div>
+
+          <!-- CONTENIDO CAREBA -->
+
+          @if (showCareba && !isCollapsed) {
+          <!-- =============================================
+                 DIRECTORIO
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showDirectorio = !showDirectorio">
+              <span> Directorio </span>
+
+              <span class="arrow small" [class.rotate]="showDirectorio">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showDirectorio) {
+            <div class="submenu">
+              <!-- CLIENTES -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Clientes" width="15" height="15" />
+
+                <span> Clientes </span>
+              </a>
+
+              <!-- PROVEEDORES -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Proveedores" width="15" height="15" />
+
+                <span> Proveedores </span>
+              </a>
+
+              <!-- PERSONAL -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Personal" width="15" height="15" />
+
+                <span> Personal </span>
+              </a>
+            </div>
+            }
+          </div>
+
+          <!-- =============================================
+                 PRESUPUESTOS
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showPresupuestos = !showPresupuestos">
+              <span> Presupuestos </span>
+
+              <span class="arrow small" [class.rotate]="showPresupuestos">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showPresupuestos) {
+            <div class="submenu">
+              <!-- LISTA -->
+
+              <a routerLink="list" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Lista de Presupuestos" width="15" height="15" />
+
+                <span> Lista </span>
+              </a>
+
+              <!-- AGREGAR -->
+
+              <a routerLink="formulary" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Agregar Presupuesto" width="15" height="15" />
+
+                <span> Add Presupuesto </span>
+              </a>
+            </div>
+            }
+          </div>
+
+          <!-- =============================================
+                 INVENTARIO
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showInventario = !showInventario">
+              <span> Inventario </span>
+
+              <span class="arrow small" [class.rotate]="showInventario">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showInventario) {
+            <div class="submenu">
+              <!-- MATERIALES -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Materiales" width="15" height="15" />
+
+                <span> Materiales </span>
+              </a>
+
+              <!-- EXISTENCIA -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Existencia" width="15" height="15" />
+
+                <span> Existencia </span>
+              </a>
+            </div>
+            }
+          </div>
+
+          <!-- =============================================
+                 FINANZAS
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showFinanzas = !showFinanzas">
+              <span> Finanzas </span>
+
+              <span class="arrow small" [class.rotate]="showFinanzas">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showFinanzas) {
+            <div class="submenu">
+              <!-- INGRESOS -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Ingresos" width="15" height="15" />
+
+                <span> Ingresos </span>
+              </a>
+
+              <!-- GASTOS -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Gastos y Compras" width="15" height="15" />
+
+                <span> Gastos / Compras </span>
+              </a>
+
+              <!-- FACTURACION -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Facturación" width="15" height="15" />
+
+                <span> Facturación </span>
+              </a>
+            </div>
+            }
+          </div>
+
+          <!-- =============================================
+                 CONTACTO
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showContactoCareba = !showContactoCareba">
+              <span> Contacto </span>
+
+              <span class="arrow small" [class.rotate]="showContactoCareba">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showContactoCareba) {
+            <div class="submenu">
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Mensajes" width="15" height="15" />
+
+                <span> Mensajes </span>
+              </a>
+            </div>
+            }
+          </div>
+          }
+        </div>
+
+        <!-- =================================================
+             REUSO CAREBA
+        ================================================== -->
+
+        <div class="menu-group">
+          <!-- TITULO -->
+
+          <div class="menu-section-title" title="Reuso CAREBA" (click)="showReusoCareba = !showReusoCareba">
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black gruppo-regular">
+                <i class="bi bi-recycle"></i>
+
+                Reuso CAREBA
+              </span>
+            </div>
+
+            @if (!isCollapsed) {
+            <span class="arrow" [class.rotate]="showReusoCareba">
+              <i class="bi bi-chevron-compact-down"></i>
+            </span>
+            }
+          </div>
+
+          <!-- CONTENIDO -->
+
+          @if (showReusoCareba && !isCollapsed) {
+          <!-- VENTAS -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showVentas = !showVentas">
+              <span> Ventas </span>
+
+              <span class="arrow small" [class.rotate]="showVentas">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showVentas) {
+            <div class="submenu">
+              <!-- HISTORIAL -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Historial" width="15" height="15" />
+
+                <span> Historial </span>
+              </a>
+
+              <!-- PRODUCTOS -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Productos" width="15" height="15" />
+
+                <span> Productos </span>
+              </a>
+
+              <!-- INVENTARIOS -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Inventarios" width="15" height="15" />
+
+                <span> Inventarios </span>
+              </a>
+            </div>
+            }
+          </div>
+
+          <!-- CONTACTO -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showContactoReusoCareba = !showContactoReusoCareba">
+              <span> Contacto </span>
+
+              <span class="arrow small" [class.rotate]="showContactoReusoCareba">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showContactoReusoCareba) {
+            <div class="submenu">
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Mensajes" width="15" height="15" />
+
+                <span> Mensajes </span>
+              </a>
+            </div>
+            }
+          </div>
+          }
+        </div>
+
+        <!-- =================================================
+             OTROS SERVICIOS
+        ================================================== -->
+
+        <div class="menu-group">
+          <!-- TITULO -->
+
+          <div class="menu-section-title" title="Otros Servicios" (click)="showOtrosServicios = !showOtrosServicios">
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black gruppo-regular">
+                <i class="bi bi-grid-fill"></i>
+
+                Otros Servicios
+              </span>
+            </div>
+
+            @if (!isCollapsed) {
+            <span class="arrow" [class.rotate]="showOtrosServicios">
+              <i class="bi bi-chevron-compact-down"></i>
+            </span>
+            }
+          </div>
+
+          <!-- CONTENIDO -->
+
+          @if (showOtrosServicios && !isCollapsed) {
+          <!-- =============================================
+                 PISOS
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showPisos = !showPisos">
+              <span> Pisos </span>
+
+              <span class="arrow small" [class.rotate]="showPisos">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showPisos) {
+            <div class="submenu">
+              <!-- CATALOGO -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Catálogo" width="15" height="15" />
+
+                <span> Catálogo </span>
+              </a>
+
+              <!-- VENTAS -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Ventas" width="15" height="15" />
+
+                <span> Ventas </span>
+              </a>
+            </div>
+            }
+          </div>
+
+          <!-- =============================================
+                 LAMBRIN
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showLambrin = !showLambrin">
+              <span> Lambrin </span>
+
+              <span class="arrow small" [class.rotate]="showLambrin">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showLambrin) {
+            <div class="submenu">
+              <!-- CATALOGO -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Catálogo" width="15" height="15" />
+
+                <span> Catálogo </span>
+              </a>
+
+              <!-- VENTAS -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Ventas" width="15" height="15" />
+
+                <span> Ventas </span>
+              </a>
+            </div>
+            }
+          </div>
+          }
+        </div>
+
+        <!-- =================================================
+             CONFIGURACIÓN
+        ================================================== -->
+
+        <div class="menu-group">
+          <!-- TITULO -->
+
+          <div class="menu-section-title" title="Configuración" (click)="showAdministracion = !showAdministracion">
+            <div class="d-flex align-items-center gap-2">
+              <span class="text-black gruppo-regular">
+                <i class="bi bi-gear-fill"></i>
+
+                Configuración
+              </span>
+            </div>
+
+            @if (!isCollapsed) {
+            <span class="arrow" [class.rotate]="showAdministracion">
+              <i class="bi bi-chevron-compact-down"></i>
+            </span>
+            }
+          </div>
+
+          <!-- CONTENIDO -->
+
+          @if (showAdministracion && !isCollapsed) {
+          <!-- =============================================
+                 USUARIOS
+            ============================================== -->
+
+          <div class="submenu-group">
+            <div class="menu-subtitle d-flex align-items-center justify-content-between"
+              (click)="showUsuarios = !showUsuarios">
+              <span> Usuarios </span>
+
+              <span class="arrow small" [class.rotate]="showUsuarios">
+                <i class="bi bi-chevron-compact-down"></i>
+              </span>
+            </div>
+
+            @if (showUsuarios) {
+            <div class="submenu">
+              <!-- AUTENTICACION -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/listas.svg" alt="Autenticación" width="15" height="15" />
+
+                <span> Autenticación </span>
+              </a>
+
+              <!-- LISTA -->
+
+              <a routerLink="" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Lista de Usuarios" width="15" height="15" />
+
+                <span> Lista </span>
+              </a>
+            </div>
+            }
+          </div>
+          }
+        </div>
+      </nav>
+    </aside>
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main">
+      <!-- ===================================================
+           TOPBAR
+      ==================================================== -->
+
+      <div class="topbar">
+        <!-- IZQUIERDA -->
+
+        <div class="left">
+          <!-- BOTÓN MENU MÓVIL -->
+
+          <button class="menu-toggle" type="button" (click)="toggleMenu()">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <!-- INFORMACIÓN DE PÁGINA -->
+
+          <div>
+            <small>
+              <i class="bi" [ngClass]="pageIcon"> </i>
+
+              / {{ pageTitle }}
+            </small>
+
+            <h2>
+              {{ pageSubtitle }}
+            </h2>
+
+            <small>
+              {{ pageDescription }}
+            </small>
+          </div>
+        </div>
+
+        <!-- DERECHA -->
+
+        <div class="right">
+          <small class="fw-bold"> ¡Bienvenida @Virys! </small>
+
+          <span>|</span>
+
+          <small> Cerrar Sesión </small>
+        </div>
+      </div>
+
+      <!-- ===================================================
+           CONTENIDO
+      ==================================================== -->
+
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>
