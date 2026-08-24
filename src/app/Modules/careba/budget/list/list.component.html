@@ -8,6 +8,10 @@
 
       <!-- CAPA 3: FORMULARIO -->
       <div class="form-card-content">
+        <div *ngIf="showDeleteAlert" class="alert alert-success" role="alert">
+          El presupuesto <strong>{{ cotizacionEliminada }}</strong> ha sido eliminado correctamente.
+        </div>
+
         <section id="controls">
           <div class="row">
             <div class="col-12 col-md-4">
@@ -18,6 +22,7 @@
                   <option value="cliente">Cliente</option>
                   <option value="direccion">Dirección</option>
                   <option value="fecha">Fecha</option>
+                  <option value="fechaModificacion">Fecha Modificación</option>
                 </select>
               </div>
             </div>
@@ -34,6 +39,7 @@
                 <th class="sortable direccion-col">Dirección</th>
                 <th class="sortable">Origen</th>
                 <th class="sortable">Fecha</th>
+                <th class="sortable">Modificación</th>
                 <th class="sortable">Total Carpintería</th>
                 <th class="sortable">Total con IVA</th>
                 <th></th>
@@ -67,6 +73,7 @@
                   </span>
                 </td>
                 <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
+                <td>{{ cot.fechaModificacion?.seconds ? (cot.fechaModificacion.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
                 <td>$ {{ cot.subtotal | number:'1.2-2' }}</td>
                 <td>$ {{ cot.total | number:'1.2-2' }}</td>
 
@@ -80,6 +87,13 @@
                     <i class="bi bi-file-earmark-arrow-down-fill fs-5"></i>
                   </button>
                 </td>
+
+                <td>
+                  <button type="button" class="btn btn-link text-body-tertiary p-0" (click)="eliminarCotizacion(cot)">
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                </td>
+
               </tr>
             </tbody>
           </table>

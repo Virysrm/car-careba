@@ -1,11 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./menu/home.component";
-import { QuotesComponent } from "./careba/quotes/quotes.component";
-import { ListComponent } from "./careba/quotes/list/list.component";
+import { ListComponent } from "./careba/budget/list/list.component";
 import { SalesreusedComponent } from "./reuse-careba/salesreused/salesreused.component";
 import { UsersComponent } from "./settings/users/users.component";
-import { FormularyComponent } from "./careba/quotes/formulary/formulary.component";
+import { FormularyComponent } from "./careba/budget/formulary/formulary.component";
 import { IniciosComponent } from "./dashboard/inicios.component";
 
 

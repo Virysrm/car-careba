@@ -4,7 +4,7 @@ import { ServiciosComponent } from "./servicios/servicios.component";
 import { ProductsComponent } from "./products/products.component";
 import { FooterComponent } from "./footer/footer.component";
 import { ContactComponent } from "./contact/contact.component";
-import { LoaderComponent } from "../loader/loader.component";
+import { LoaderComponent } from "../shared/loader/loader.component";
 @Component({
   selector: 'reused-careba',
   imports: [NavbarComponent, ServiciosComponent, ProductsComponent, FooterComponent, ContactComponent, LoaderComponent],

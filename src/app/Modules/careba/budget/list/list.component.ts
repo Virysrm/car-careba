@@ -13,25 +13,11 @@ import generatePDF from "src/app/lib/pdf";
   styleUrls: ["./list.component.scss"],
 })
 export class ListComponent implements OnInit {
-  // =========================================================
-  // COTIZACIONES
-  // =========================================================
-
   cotizaciones: any[] = [];
-
-  // =========================================================
-  // ORDENAMIENTO
-  // =========================================================
-
   sortColumn: string = "";
-
-  // =========================================================
-  // PAGINACIÓN
-  // =========================================================
-
   paginaActual: number = 1;
-
-  registrosPorPagina: number = 9;
+  registrosPorPagina: number = 10;
+  showDeleteAlert = false;
 
   // =========================================================
   // CONSTRUCTOR
@@ -57,7 +43,11 @@ export class ListComponent implements OnInit {
   obtenerCotizaciones(): void {
     this.cotizacionesDbService.obtenerCotizaciones().subscribe({
       next: (data: any[]) => {
-        this.cotizaciones = data;
+        this.cotizaciones = data
+          .sort((a: any, b: any) => {
+            return this.convertirFecha(a.fecha) - this.convertirFecha(b.fecha);
+          })
+          .reverse();
 
         // Comenzar siempre en la primera página
         this.paginaActual = 1;
@@ -69,6 +59,72 @@ export class ListComponent implements OnInit {
     });
   }
 
+  convertirFecha(fecha: any): number {
+    // -----------------------------------------------
+    // No existe fecha
+    // -----------------------------------------------
+
+    if (!fecha) {
+      return 0;
+    }
+
+    // -----------------------------------------------
+    // Firestore Timestamp
+    // -----------------------------------------------
+
+    if (typeof fecha.toDate === "function") {
+      return fecha.toDate().getTime();
+    }
+
+    // -----------------------------------------------
+    // Objeto Firestore serializado
+    // { seconds, nanoseconds }
+    // -----------------------------------------------
+
+    if (typeof fecha.seconds === "number") {
+      return fecha.seconds * 1000;
+    }
+
+    // -----------------------------------------------
+    // Objeto con _seconds
+    // -----------------------------------------------
+
+    if (typeof fecha._seconds === "number") {
+      return fecha._seconds * 1000;
+    }
+
+    // -----------------------------------------------
+    // Fecha como string dd/MM/yyyy
+    // -----------------------------------------------
+
+    if (typeof fecha === "string" && fecha.includes("/")) {
+      const partes = fecha.split("/");
+
+      if (partes.length === 3) {
+        return new Date(
+          Number(partes[2]),
+          Number(partes[1]) - 1,
+          Number(partes[0]),
+        ).getTime();
+      }
+    }
+
+    // -----------------------------------------------
+    // Fecha como Date
+    // -----------------------------------------------
+
+    if (fecha instanceof Date) {
+      return fecha.getTime();
+    }
+
+    // -----------------------------------------------
+    // Último intento
+    // -----------------------------------------------
+
+    const fechaConvertida = new Date(fecha).getTime();
+
+    return isNaN(fechaConvertida) ? 0 : fechaConvertida;
+  }
   // ORDENAR COTIZACIONES
 
   ordenarCotizaciones = ({ target }: any) => {
@@ -266,7 +322,7 @@ export class ListComponent implements OnInit {
   irAEditar(cot: any): void {
     console.log("Voy a editar:", cot);
 
-    this.router.navigate(["/home-dashboard/formulary"], {
+    this.router.navigate(["/home-modules/formulary"], {
       state: {
         cot: cot,
       },
@@ -397,6 +453,33 @@ export class ListComponent implements OnInit {
 
       .catch((error) => {
         console.error("Error al actualizar la cotización:", error);
+      });
+  }
+
+  // ==========================================
+  // ELIMINAR
+  // ==========================================
+  cotizacionEliminada = "";
+
+  eliminarCotizacion(cot: any): void {
+    if (!cot?.id) {
+      console.error("La cotización no tiene ID");
+      return;
+    }
+
+    this.cotizacionesDbService
+      .eliminarCotizacion(cot.id)
+      .then(() => {
+        this.cotizacionEliminada = `${cot.cliente} ${cot.obra}`;
+
+        this.showDeleteAlert = true;
+
+        setTimeout(() => {
+          this.showDeleteAlert = false;
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error("Error al eliminar la cotización:", error);
       });
   }
 

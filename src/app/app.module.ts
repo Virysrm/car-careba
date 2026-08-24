@@ -29,7 +29,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TerminosCondicionesComponent } from './shared/terminos-condiciones/terminos-condiciones.component';
 import { PoliticaPrivacidadComponent } from './shared/politica-privacidad/politica-privacidad.component';
-import { LoaderComponent } from './loader/loader.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,

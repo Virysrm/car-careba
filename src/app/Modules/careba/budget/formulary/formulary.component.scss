@@ -90,16 +90,67 @@ background-color: #aa6c3c;
     transform: translateY(0);
 }
 
+/* ========================================
+   STATUS COMO INPUT-LINE
+======================================== */
+
 .status-select {
-  width: 200px; /* tamaño más compacto */
-  font-size: 13px;
+  width: 100% !important;
 }
 
-/* Reduce altura */
-.status-select .mat-mdc-text-field-wrapper {
-  height: 40px;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+/* Quitar apariencia de caja de Angular Material */
+:host ::ng-deep .status-select .mat-mdc-text-field-wrapper {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Contenedor interno */
+:host ::ng-deep .status-select .mat-mdc-form-field-flex {
+  padding: 0 !important;
+}
+
+/* Altura */
+:host ::ng-deep .status-select .mat-mdc-form-field-infix {
+  min-height: auto !important;
+  padding: 8px 0 !important;
+}
+
+/* Línea inferior */
+:host ::ng-deep .status-select .mat-mdc-text-field-wrapper {
+  border-bottom: 2px solid #ccc !important;
+}
+
+/* Línea azul al seleccionar */
+:host ::ng-deep .status-select.mat-focused .mat-mdc-text-field-wrapper {
+  border-bottom: 2px solid #0d6efd !important;
+}
+
+/* Quitar línea propia de Material */
+:host ::ng-deep .status-select .mdc-line-ripple {
+  display: none !important;
+}
+
+/* Label */
+:host ::ng-deep .status-select .mat-mdc-floating-label {
+  font-size: 13px !important;
+  color: #555 !important;
+}
+
+/* Texto del Status */
+:host ::ng-deep .status-select .mat-mdc-select-value {
+  color: #333 !important;
+  font-size: 16px !important;
+}
+
+/* Flecha */
+:host ::ng-deep .status-select .mat-mdc-select-arrow {
+  color: #777 !important;
+}
+
+/* Elimina espacio inferior */
+:host ::ng-deep .status-select .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
 }
 
 /* Label más pequeño */
@@ -176,4 +227,119 @@ background-color: #aa6c3c;
 .cliente-card .form-control,
 .cliente-card mat-form-field {
     width: 100%;
+}
+
+//Modal de exito
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal-exito {
+  width: 420px;
+  max-width: 90%;
+
+  background: #ffffff;
+  border-radius: 18px;
+
+  padding: 35px 30px;
+
+  text-align: center;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+
+  animation: aparecerModal 0.25s ease-out;
+}
+
+.modal-icono {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 20px;
+
+  border-radius: 50%;
+
+  background: #e8f7ee;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 38px;
+    color: #28a745;
+  }
+}
+
+.modal-exito h2 {
+  margin-bottom: 10px;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+.modal-exito p {
+  margin-bottom: 25px;
+
+  font-size: 16px;
+  color: #666;
+}
+
+.btn-modal-exito {
+  border: none;
+
+  background: #28a745;
+  color: white;
+
+  padding: 11px 30px;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.btn-modal-exito:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aparecerModal {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
