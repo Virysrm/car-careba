@@ -330,7 +330,6 @@ html {
   padding-bottom: 20px;
 }
 
-
 // ========================================
 // CAPA 1 - DELIMITACIÓN
 // ========================================
@@ -345,7 +344,6 @@ html {
   box-sizing: border-box;
 }
 
-
 // ========================================
 // CAPA 2 - DEGRADADO
 // ========================================
@@ -355,18 +353,12 @@ html {
 
   padding: 20px;
 
-  background: linear-gradient(
-    135deg,
-    #f1f1f1 0%,
-    #dcdcdc 50%,
-    #f7f7f7 100%
-  );
+  background: linear-gradient(135deg, #f1f1f1 0%, #dcdcdc 50%, #f7f7f7 100%);
 
   border-radius: 11px;
 
   box-sizing: border-box;
 }
-
 
 // ========================================
 // CAPA 3 - FORMULARIO
@@ -384,4 +376,135 @@ html {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   box-sizing: border-box;
+}
+
+// ========================================
+// MODALES
+// ========================================
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal-exito {
+  width: 420px;
+  max-width: 90%;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 35px 30px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  animation: aparecerModal 0.25s ease-out;
+}
+
+.modal-icono {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 38px;
+  }
+}
+
+.modal-icono-eliminar {
+  background: #f5dada;
+
+  i {
+    line-height: 1;
+    color: #e53131;
+  }
+}
+
+.modal-icono-exito {
+  background: #e8f7ee;
+  i {
+    line-height: 1;
+    color: #28a745;
+  }
+}
+
+//Modal Eliminación
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-exito h2 {
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #222;
+}
+
+.modal-exito p {
+  margin-bottom: 25px;
+  font-size: 16px;
+  color: #666;
+}
+
+.btn-modal {
+  border: none;
+  color: white;
+  padding: 11px 30px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-modal-aceptar {
+  background: #28a745;
+
+  &:hover {
+    background: #218838;
+    transform: translateY(-1px);
+  }
+}
+
+.btn-modal-denegar {
+  background: #a72828;
+
+  &:hover {
+    background: #882121;
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aparecerModal {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

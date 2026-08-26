@@ -214,20 +214,25 @@
   </div>
 </section>
 
+
 @if (mostrarModalExito) {
-<div class="modal-overlay">
-  <div class="modal-exito">
-    <div class="modal-icono">
-      <i class="bi bi-check-lg"></i>
+  <div class="modal-overlay">
+    <div class="modal-exito text-black">
+      <div class="modal-icono modal-icono-exito">
+        <i class="bi bi-check-lg"></i>
+      </div>
+
+      <h2>¡Éxito!</h2>
+
+      <p>{{ mensajeExito }}</p>
+
+      <button
+        type="button"
+        class="btn-modal btn-modal-aceptar"
+        (click)="cerrarModalExito()"
+      >
+        Aceptar
+      </button>
     </div>
-
-    <h2>¡Éxito!</h2>
-
-    <p>{{ mensajeExito }}</p>
-
-    <button type="button" class="btn-modal-exito" (click)="cerrarModalExito()">
-      Aceptar
-    </button>
   </div>
-</div>
 }

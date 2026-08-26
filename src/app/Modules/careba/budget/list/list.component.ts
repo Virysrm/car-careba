@@ -17,7 +17,6 @@ export class ListComponent implements OnInit {
   sortColumn: string = "";
   paginaActual: number = 1;
   registrosPorPagina: number = 10;
-  showDeleteAlert = false;
 
   // =========================================================
   // CONSTRUCTOR
@@ -460,27 +459,55 @@ export class ListComponent implements OnInit {
   // ELIMINAR
   // ==========================================
   cotizacionEliminada = "";
+  cotizacionPendiente: any = null;
 
+  showDeleteModal = false;
   eliminarCotizacion(cot: any): void {
     if (!cot?.id) {
+      //"Si cot no tiene un ID, detén el proceso."
+      console.error("La cotización no tiene ID");
+      return;
+    }
+
+    this.cotizacionPendiente = cot;
+    this.showDeleteModal = true;
+  }
+
+  confirmarEliminacion(): void {
+    if (this.cotizacionPendiente === null) {
       console.error("La cotización no tiene ID");
       return;
     }
 
     this.cotizacionesDbService
-      .eliminarCotizacion(cot.id)
+      .eliminarCotizacion(this.cotizacionPendiente.id)
       .then(() => {
-        this.cotizacionEliminada = `${cot.cliente} ${cot.obra}`;
+        this.showDeleteModal = false;
 
-        this.showDeleteAlert = true;
+        this.cotizacionPendiente = null;
+        this.mensajeExito = "Registro eliminado correctamente.";
 
-        setTimeout(() => {
-          this.showDeleteAlert = false;
-        }, 5000);
+        this.mostrarModalExito = true;
       })
       .catch((error) => {
         console.error("Error al eliminar la cotización:", error);
       });
+  }
+
+  cancelarEliminacion(): void {
+    this.showDeleteModal = false;
+    this.cotizacionPendiente = null;
+  }
+
+  // ============================================================
+  // MODAL
+  // ============================================================
+
+  mostrarModalExito = false;
+  mensajeExito = "";
+
+  cerrarModalExito() {
+    this.mostrarModalExito = false;
   }
 
   // =========================================================

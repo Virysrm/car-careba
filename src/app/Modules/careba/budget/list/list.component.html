@@ -1,22 +1,15 @@
 <section class="form-card-container">
-
   <!-- CAPA 1: DELIMITACIÓN -->
   <div class="form-card-border">
-
     <!-- CAPA 2: DEGRADADO -->
     <div class="form-card-gradient">
-
       <!-- CAPA 3: FORMULARIO -->
       <div class="form-card-content">
-        <div *ngIf="showDeleteAlert" class="alert alert-success" role="alert">
-          El presupuesto <strong>{{ cotizacionEliminada }}</strong> ha sido eliminado correctamente.
-        </div>
-
         <section id="controls">
           <div class="row">
             <div class="col-12 col-md-4">
               <div class="form-group mb-4">
-                <label style="font-weight: bold;" class="text-black">Ordenar por:</label>
+                <label style="font-weight: bold" class="text-black">Ordenar por:</label>
                 <select class="form-control" (change)="ordenarCotizaciones($event)">
                   <option value="" selected disabled>Seleccione</option>
                   <option value="cliente">Cliente</option>
@@ -26,7 +19,6 @@
                 </select>
               </div>
             </div>
-
           </div>
         </section>
 
@@ -51,9 +43,10 @@
             <tbody class="text-center">
               <tr *ngFor="let cot of cotizacionesPaginadas; index as i">
                 <td class="text-center">
-                  {{ ((paginaActual - 1) * registrosPorPagina) + i + 1 }}
+                  {{ (paginaActual - 1) * registrosPorPagina + i + 1 }}
                 </td>
-                <td><strong>{{ cot.cliente }}</strong><br>
+                <td>
+                  <strong>{{ cot.cliente }}</strong><br />
                   <small>{{ cot.obra }}</small>
                 </td>
                 <td class="direccion-col">
@@ -61,21 +54,35 @@
                 </td>
                 <td>
                   <span class="badge" [ngClass]="{
-                      'new': cot.statusProceso?.toLowerCase().includes('nuevo'),
-                      'exist': cot.statusProceso === 'PasandoExcel'
+                      new: cot.statusProceso?.toLowerCase().includes('nuevo'),
+                      exist: cot.statusProceso === 'PasandoExcel',
                     }">
-                    {{ cot.statusProceso?.toLowerCase().includes('nuevo')
-                    ? 'N'
-                    : cot.statusProceso === 'PasandoExcel'
-                    ? 'xls'
+                    {{
+                    cot.statusProceso?.toLowerCase().includes("nuevo")
+                    ? "N"
+                    : cot.statusProceso === "PasandoExcel"
+                    ? "xls"
                     : cot.statusProceso
                     }}
                   </span>
                 </td>
-                <td>{{ cot.fecha?.seconds ? (cot.fecha.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
-                <td>{{ cot.fechaModificacion?.seconds ? (cot.fechaModificacion.seconds * 1000 | date:'dd/MM/yyyy') : '—' }}</td>
-                <td>$ {{ cot.subtotal | number:'1.2-2' }}</td>
-                <td>$ {{ cot.total | number:'1.2-2' }}</td>
+                <td>
+                  {{
+                  cot.fecha?.seconds
+                  ? (cot.fecha.seconds * 1000 | date: "dd/MM/yyyy")
+                  : "—"
+                  }}
+                </td>
+                <td>
+                  {{
+                  cot.fechaModificacion?.seconds
+                  ? (cot.fechaModificacion.seconds * 1000
+                  | date: "dd/MM/yyyy")
+                  : "—"
+                  }}
+                </td>
+                <td>$ {{ cot.subtotal | number: "1.2-2" }}</td>
+                <td>$ {{ cot.total | number: "1.2-2" }}</td>
 
                 <td>
                   <button class="btn btn-link text-body-tertiary p-0" (click)="irAEditar(cot)">
@@ -93,42 +100,73 @@
                     <i class="bi bi-trash3"></i>
                   </button>
                 </td>
-
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="pagination-container">
-
           <!-- Anterior -->
           <button class="page-dot" (click)="paginaAnterior()" [disabled]="paginaActual === 1">
-
             &lt;&lt;
-
           </button>
 
           <!-- Páginas -->
           <button class="page-dot" *ngFor="let page of paginasVisibles" [class.active]="paginaActual === page"
             (click)="cambiarPagina(page)">
-
             {{ page }}
-
           </button>
 
           <!-- Siguiente -->
           <button class="page-dot" (click)="paginaSiguiente()" [disabled]="paginaActual === totalPaginas">
-
             &gt;&gt;
-
           </button>
-
         </div>
-
       </div>
+    </div>
+  </div>
+</section>
 
+<div *ngIf="showDeleteModal" class="modal-overlay">
+  <div class="modal-exito text-black">
+    <div class="modal-icono modal-icono-eliminar">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+    </div>
+    <h2>Eliminar Cotización</h2>
+
+    <p>
+      ¿Deseas eliminar esta cotización del Cliente:
+      <strong>{{ cotizacionPendiente.cliente }}</strong>
+      - Obra:
+      <strong>{{ cotizacionPendiente.obra }}</strong>?
+    </p>
+
+    <div class="modal-actions">
+      <button class="btn-modal btn-modal-aceptar" (click)="confirmarEliminacion()">
+        SÍ
+      </button>
+
+      <button class="btn-modal btn-modal-denegar" (click)="cancelarEliminacion()">
+        NO
+      </button>
+    </div>
+  </div>
+</div>
+
+@if (mostrarModalExito) {
+<div class="modal-overlay">
+  <div class="modal-exito text-black">
+    <div class="modal-icono modal-icono-exito">
+      <i class="bi bi-check-lg"></i>
     </div>
 
-  </div>
+    <h2>¡Éxito!</h2>
 
-</section>
+    <p>{{ mensajeExito }}</p>
+
+    <button type="button" class="btn-modal btn-modal-aceptar" (click)="cerrarModalExito()">
+      Aceptar
+    </button>
+  </div>
+</div>
+}

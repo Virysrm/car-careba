@@ -1,4 +1,4 @@
-@use 'src/styles'  as *;
+@use "src/styles" as *;
 
 /* CARD */
 .card {
@@ -78,15 +78,31 @@ td small {
 }
 
 .new {
-background: #81ff8a;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #64965e, #81ff8a);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #64965e, #81ff8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #81ff8a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #64965e,
+    #81ff8a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #64965e,
+    #81ff8a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .exist {
-background: #FDC830;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #fdc830; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #f37335,
+    #fdc830
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #f37335,
+    #fdc830
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 /* PROGRESS */
@@ -191,14 +207,13 @@ background: linear-gradient(to top, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Fir
     background: transparent;
   }
   .header-bg {
-  background: #1e3a47;
-  height: 350px;
-  padding: 10px;
-  color: white;
-  border-radius: 0 0 20px 6px;
+    background: #1e3a47;
+    height: 350px;
+    padding: 10px;
+    color: white;
+    border-radius: 0 0 20px 6px;
+  }
 }
-}
-
 
 /*Lo que se queda*/
 .sortable {
@@ -209,5 +224,5 @@ background: linear-gradient(to top, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Fir
 .sort-icon {
   margin-left: 4px;
   vertical-align: middle;
-  opacity: .6;
+  opacity: 0.6;
 }
