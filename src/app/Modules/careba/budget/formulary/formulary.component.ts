@@ -8,15 +8,12 @@ import {
   Validators,
 } from "@angular/forms";
 import { Observable } from "rxjs";
-
-// import generatePDF from "src/app/lib/pdfCompleto";
-import generatePDF from "src/app/lib/pdf";
-
 import { CotizacionesDbService } from "src/app/services/cotizaciones-db.service";
-
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
+
+import generatePDFSinIVA from "src/app/lib/pdf";
 
 @Component({
   selector: "app-formulary",
@@ -609,8 +606,7 @@ export class FormularyComponent implements OnInit {
   // ============================================================
   // GENERAR PDF
   // ============================================================
-
-  onGeneratePDF() {
+  onGeneratePDFSinIVA() {
     const form = this.formCotizaciones.getRawValue();
 
     // ========================================================
@@ -657,6 +653,6 @@ export class FormularyComponent implements OnInit {
     // GENERAR
     // ========================================================
 
-    generatePDF(products, cotizacion, fecha, notas);
+    generatePDFSinIVA(products, cotizacion, fecha, notas);
   }
 }

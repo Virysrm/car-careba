@@ -3,7 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { CotizacionesDbService } from "src/app/services/cotizaciones-db.service";
-import generatePDF from "src/app/lib/pdf";
+import generatePDFConIVA from "src/app/lib/pdfCompleto";
+import generatePDFSinIVA from "src/app/lib/pdf";
 
 @Component({
   selector: "app-list",
@@ -332,7 +333,7 @@ export class ListComponent implements OnInit {
   // GENERAR PDF DESDE FIRESTORE
   // =========================================================
 
-  generarPDFDesdeBD(cot: any): void {
+  generarPDFConIVADesdeBD(cot: any): void {
     // ==========================================
     // VALIDAR COTIZACIÓN
     // ==========================================
@@ -411,9 +412,90 @@ export class ListComponent implements OnInit {
     // GENERAR PDF
     // ==========================================
 
-    generatePDF(products, cotizacion, fecha, notas);
+    generatePDFConIVA(products, cotizacion, fecha, notas);
   }
 
+  generarPDFSinIVADesdeBD(cot: any): void {
+    // ==========================================
+    // VALIDAR COTIZACIÓN
+    // ==========================================
+
+    if (!cot) {
+      console.error("No se recibió la cotización.");
+
+      return;
+    }
+
+    // ==========================================
+    // CONCEPTOS
+    // ==========================================
+
+    const products = (cot.conceptos || []).map((item: any) => ({
+      cliente: cot.cliente,
+
+      obra: cot.obra,
+
+      direccion: cot.direccion,
+
+      concepto: item.concepto,
+
+      cantidad: item.cantidad,
+
+      precioUnitario: item.precioUnitario,
+    }));
+
+    // ==========================================
+    // NOTAS
+    // ==========================================
+
+    const notas = cot.notas || "";
+
+    // ==========================================
+    // FECHA
+    // ==========================================
+
+    let fecha = "";
+
+    // Fecha como Timestamp de Firestore
+
+    if (cot.fecha?.toDate) {
+      fecha = cot.fecha.toDate().toLocaleDateString("es-MX", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+    }
+
+    // Fecha como string o Date
+    else if (cot.fecha) {
+      fecha = new Date(cot.fecha).toLocaleDateString("es-MX", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+    }
+
+    // Si no existe fecha
+    else {
+      fecha = new Date().toLocaleDateString("es-MX", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+    }
+
+    // ==========================================
+    // FOLIO
+    // ==========================================
+
+    const cotizacion = cot.folio || cot.id || "";
+
+    // ==========================================
+    // GENERAR PDF
+    // ==========================================
+
+    generatePDFSinIVA(products, cotizacion, fecha, notas);
+  }
   // =========================================================
   // ACTUALIZAR COTIZACIÓN
   // =========================================================

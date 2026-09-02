@@ -40,7 +40,7 @@ const routes: Routes = [
         data: {
           title: "PRESUPUESTOS",
           subtitle: "Agregar cotización",
-          description: "Ingresa los datos correspondoentes, el PDF se descargará con o Sin IVA",
+          description: "Ingresa los datos correspondientes, el PDF se descargará SIN IVA",
           icon: "bi-hammer"
         }
       },

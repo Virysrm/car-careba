@@ -37,6 +37,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
 
@@ -85,18 +86,23 @@
                 <td>$ {{ cot.total | number: "1.2-2" }}</td>
 
                 <td>
-                  <button class="btn btn-link text-body-tertiary p-0" (click)="irAEditar(cot)">
+                  <button class="btn btn-link text-body-tertiary p-0" title="Editar" (click)="irAEditar(cot)">
                     <i class="bi bi-pencil-square fs-5"></i>
                   </button>
                 </td>
                 <td>
-                  <button class="btn btn-link text-body-tertiary p-0" (click)="generarPDFDesdeBD(cot)">
+                  <button class="btn btn-link text-body-tertiary p-0" title="Descarga con IVA" (click)="generarPDFConIVADesdeBD(cot)">
+                    <i class="bi bi-file-earmark-check-fill fs-5"></i>
+                  </button>
+                </td>
+                <td>
+                  <button class="btn btn-link text-body-tertiary p-0" title="Descarga sin IVA"(click)="generarPDFSinIVADesdeBD(cot)">
                     <i class="bi bi-file-earmark-arrow-down-fill fs-5"></i>
                   </button>
                 </td>
 
                 <td>
-                  <button type="button" class="btn btn-link text-body-tertiary p-0" (click)="eliminarCotizacion(cot)">
+                  <button type="button" class="btn btn-link text-body-tertiary p-0" title="Eliminar" (click)="eliminarCotizacion(cot)">
                     <i class="bi bi-trash3"></i>
                   </button>
                 </td>
