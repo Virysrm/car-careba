@@ -6,6 +6,9 @@ import { SalesreusedComponent } from "./reuse-careba/salesreused/salesreused.com
 import { UsersComponent } from "./settings/users/users.component";
 import { FormularyComponent } from "./careba/budget/formulary/formulary.component";
 import { IniciosComponent } from "./dashboard/inicios.component";
+import { CustomersComponent } from "./careba/directory/customers/customers.component";
+import { SuppliersComponent } from "./careba/directory/suppliers/suppliers.component";
+import { StaffComponent } from "./careba/directory/staff/staff.component";
 
 
 const routes: Routes = [
@@ -21,7 +24,7 @@ const routes: Routes = [
       },
 
       // =========================
-      // COTIZACIONES
+      // COTIZACIONES - budget
       // =========================
       {
         path: "list",
@@ -37,6 +40,42 @@ const routes: Routes = [
       {
         path: "formulary",
         component: FormularyComponent,
+        data: {
+          title: "PRESUPUESTOS",
+          subtitle: "Agregar cotización",
+          description: "Ingresa los datos correspondientes, el PDF se descargará SIN IVA",
+          icon: "bi-hammer"
+        }
+      },
+
+      // =========================
+      // DIRECTORIO - directory
+      // =========================
+      {
+        path: "customers",
+        component: CustomersComponent,
+        data: {
+          title: "DIRECTORIO",
+          subtitle: "Lista de Clientes Registrados",
+          description: "Desgloce de Información de Cada Cliente que se le otorga un Presupuesto",
+          icon: "bi-hammer"
+        }
+      },
+
+      {
+        path: "suppliers",
+        component: SuppliersComponent,
+        data: {
+          title: "PRESUPUESTOS",
+          subtitle: "Agregar cotización",
+          description: "Ingresa los datos correspondientes, el PDF se descargará SIN IVA",
+          icon: "bi-hammer"
+        }
+      },
+
+      {
+        path: "staff",
+        component: StaffComponent,
         data: {
           title: "PRESUPUESTOS",
           subtitle: "Agregar cotización",

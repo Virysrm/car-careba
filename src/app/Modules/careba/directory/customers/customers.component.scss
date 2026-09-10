@@ -1,0 +1,457 @@
+@use "src/styles" as *;
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* TABLE */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: center;
+  font-size: 12px;
+  color: #353535;
+  padding: 10px;
+}
+
+td {
+  padding: 10px 8px;
+  border-top: 1px solid #eee;
+  color: #999696;
+  font-size: 11px;
+}
+
+td strong {
+  font-size: 12px;
+  color: #777777;
+  font-weight: 500;
+}
+
+td small {
+  font-size: 11px;
+  color: #999696;
+}
+
+.direccion-col {
+  width: 180px;
+  min-width: 180px;
+  max-width: 180px;
+}
+
+.author-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-cell img {
+  border-radius: 50%;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* 🔥 scroll horizontal */
+}
+
+.table-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+/* BADGES */
+
+.badge {
+  padding: 5px 10px;
+  font-size: 11px;
+  color: white;
+}
+
+.new {
+  background: #81ff8a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #64965e,
+    #81ff8a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #64965e,
+    #81ff8a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.exist {
+  background: #fdc830; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #f37335,
+    #fdc830
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #f37335,
+    #fdc830
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* PROGRESS */
+
+.progress {
+  background: #eee;
+  height: 6px;
+  border-radius: 4px;
+}
+
+.progress-bar {
+  background: #3498db;
+  height: 6px;
+  border-radius: 4px;
+}
+
+.progress-bar.red {
+  background: #e74c3c;
+}
+
+/* FRANJA AZUL */
+.header-bg {
+  background: #1e3a47;
+  height: 350px;
+  padding: 20px;
+  color: white;
+  border-radius: 0 0 20px 6px;
+}
+
+/* CONTENIDO SUBE SOBRE LA FRANJA */
+.content {
+  margin-top: -60px;
+  padding: 20px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* TOPBAR TEXTO BLANCO */
+.header-bg small {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.header-bg h2 {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  /* reduce padding general */
+  th,
+  td {
+    padding: 3px 3px;
+    font-size: 9px;
+  }
+
+  td strong {
+    font-size: 10px;
+  }
+
+  /* reduce aún más encabezados */
+  th {
+    font-size: 9px;
+  }
+
+  /* badges más compactos */
+  .badge {
+    padding: 3px 3px;
+    font-size: 9px;
+  }
+
+  /* botones más pequeños */
+  .btn {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  /* evita columnas demasiado anchas */
+  table {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 8px;
+  }
+
+  .card {
+    padding: 10px;
+    margin: 0;
+  }
+  .main {
+    flex: 1;
+    min-width: 0;
+    padding: 0px;
+    background: transparent;
+  }
+  .header-bg {
+    background: #1e3a47;
+    height: 350px;
+    padding: 10px;
+    color: white;
+    border-radius: 0 0 20px 6px;
+  }
+}
+
+/*Lo que se queda*/
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-icon {
+  margin-left: 4px;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
+/* ========================================
+   CARD PRINCIPAL
+======================================== */
+
+.card {
+  background: #fff;
+  //padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.dashboard-wrapper {
+  width: 100%;
+  padding: 15px;
+  background: #f5f6f8;
+}
+
+.dashboard-card-main {
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-card-main .card-body {
+  padding: 15px;
+}
+
+/* CENTRAR EN PANTALLA */
+section {
+  //min-height: 100vh;
+  align-items: center;
+}
+
+/* CARD MÁS LIMPIO */
+.card {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* INPUT TIPO LÍNEA */
+.input-line {
+  border: none !important;
+  border-bottom: 2px solid #ccc !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding-left: 0;
+  background: transparent;
+}
+
+.input-line:focus {
+  border-bottom: 2px solid #0d6efd !important;
+  box-shadow: none !important;
+}
+
+/* LABEL MÁS ELEGANTE */
+label {
+  font-size: 13px;
+  color: #555;
+}
+
+/* BOTONES MÁS PRO */
+.btn-enviar {
+    font-weight: 600;
+    padding: 10px 26px;
+    border-radius: 10px;
+background-color: #a4a2a2;
+    border-color: #a4a2a2;    
+    color: #fff;
+
+    box-shadow: 0 6px 14px rgba(25, 135, 84, 0.25);
+
+    transition: .25s;
+}
+
+.btn-enviar:hover {
+background-color: #aa6c3c;
+    border-color: #aa6c3c;
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+.btn-enviar:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   STATUS COMO INPUT-LINE
+======================================== */
+
+.status-select {
+  width: 100% !important;
+}
+
+/* Quitar apariencia de caja de Angular Material */
+:host ::ng-deep .status-select .mat-mdc-text-field-wrapper {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Contenedor interno */
+:host ::ng-deep .status-select .mat-mdc-form-field-flex {
+  padding: 0 !important;
+}
+
+/* Altura */
+:host ::ng-deep .status-select .mat-mdc-form-field-infix {
+  min-height: auto !important;
+  padding: 8px 0 !important;
+}
+
+/* Línea inferior */
+:host ::ng-deep .status-select .mat-mdc-text-field-wrapper {
+  border-bottom: 2px solid #ccc !important;
+}
+
+/* Línea azul al seleccionar */
+:host ::ng-deep .status-select.mat-focused .mat-mdc-text-field-wrapper {
+  border-bottom: 2px solid #0d6efd !important;
+}
+
+/* Quitar línea propia de Material */
+:host ::ng-deep .status-select .mdc-line-ripple {
+  display: none !important;
+}
+
+/* Label */
+:host ::ng-deep .status-select .mat-mdc-floating-label {
+  font-size: 13px !important;
+  color: #555 !important;
+}
+
+/* Texto del Status */
+:host ::ng-deep .status-select .mat-mdc-select-value {
+  color: #333 !important;
+  font-size: 16px !important;
+}
+
+/* Flecha */
+:host ::ng-deep .status-select .mat-mdc-select-arrow {
+  color: #777 !important;
+}
+
+/* Elimina espacio inferior */
+:host ::ng-deep .status-select .mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+/* Label más pequeño */
+.status-select .mat-mdc-floating-label {
+  font-size: 12px;
+}
+
+/* Fondo del panel (dropdown) */
+.mat-mdc-select-panel {
+  background-color: #ffffff !important; /* blanco */
+}
+
+/* Opciones normales */
+.mat-mdc-option {
+  color: #333 !important;
+  font-size: 14px;
+}
+
+/* Opción al pasar el mouse */
+.mat-mdc-option:hover {
+  background-color: #e8f5e9 !important; /* verde clarito */
+}
+
+/* Opción seleccionada */
+.mat-mdc-option.mdc-list-item--selected {
+  background-color: #c8e6c9 !important; /* verde suave */
+  color: #1b5e20 !important;
+}
+
+/* Check (palomita) */
+.mat-pseudo-checkbox {
+  color: #2e7d32 !important;
+}
+
+/* Texto del select */
+.mat-mdc-select-value {
+  color: #1b5e20 !important;
+}
+
+//Simbolo $
+.input-money {
+  position: relative;
+}
+
+.input-money span {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  color: #777;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.input-money .input-line {
+  padding-left: 15px;
+}
+
+.cliente-card {
+    width: 100%;
+    box-sizing: border-box;
+
+    border: 1px solid #dad1d1;
+    border-radius: 8px;
+
+    background: #fff;
+
+    padding: 20px;
+}
+
+.cliente-card .row {
+    width: 100%;
+}
+
+.cliente-card .form-control,
+.cliente-card mat-form-field {
+    width: 100%;
+}
