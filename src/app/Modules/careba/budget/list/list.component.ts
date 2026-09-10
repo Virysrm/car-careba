@@ -18,28 +18,23 @@ export class ListComponent implements OnInit {
   sortColumn: string = "";
   paginaActual: number = 1;
   registrosPorPagina: number = 10;
-
-  // =========================================================
-  // CONSTRUCTOR
-  // =========================================================
+  cotizacionEliminada = "";
+  cotizacionPendiente: any = null;
+  // MODAL
+  mostrarModalExito = false;
+  mensajeExito = "";
+  showDeleteModal = false;
 
   constructor(
     private cotizacionesDbService: CotizacionesDbService,
     private router: Router,
   ) {}
 
-  // =========================================================
-  // INICIO
-  // =========================================================
-
   ngOnInit(): void {
     this.obtenerCotizaciones();
   }
 
-  // =========================================================
   // OBTENER COTIZACIONES DE FIRESTORE
-  // =========================================================
-
   obtenerCotizaciones(): void {
     this.cotizacionesDbService.obtenerCotizaciones().subscribe({
       next: (data: any[]) => {
@@ -125,8 +120,8 @@ export class ListComponent implements OnInit {
 
     return isNaN(fechaConvertida) ? 0 : fechaConvertida;
   }
-  // ORDENAR COTIZACIONES
 
+  // ORDENAR COTIZACIONES
   ordenarCotizaciones = ({ target }: any) => {
     this.sortColumn = target.value;
 
@@ -238,14 +233,7 @@ export class ListComponent implements OnInit {
     this.paginaActual = 1;
   };
 
-  // =========================================================
   // ORDENAR DESDE LOS ENCABEZADOS
-  // =========================================================
-  // Puedes seguir utilizando:
-  // (click)="nar('cliente')"
-  // (click)="nar('direccion')"
-  // =========================================================
-
   nar(columna: string): void {
     this.sortColumn = columna;
 
@@ -253,10 +241,7 @@ export class ListComponent implements OnInit {
       let valorA = a[columna] ?? "";
       let valorB = b[columna] ?? "";
 
-      // ==========================================
       // FECHA DE FIRESTORE
-      // ==========================================
-
       if (valorA?.toDate) {
         valorA = valorA.toDate().getTime();
       }
@@ -265,10 +250,7 @@ export class ListComponent implements OnInit {
         valorB = valorB.toDate().getTime();
       }
 
-      // ==========================================
       // FECHA COMO STRING
-      // ==========================================
-
       if (typeof valorA === "string" && valorA.includes("/")) {
         const partesA = valorA.split("/");
 
@@ -289,10 +271,7 @@ export class ListComponent implements OnInit {
         }
       }
 
-      // ==========================================
       // TEXTO
-      // ==========================================
-
       if (typeof valorA === "string") {
         valorA = valorA.toLowerCase().trim();
       }
@@ -301,10 +280,7 @@ export class ListComponent implements OnInit {
         valorB = valorB.toLowerCase().trim();
       }
 
-      // ==========================================
       // COMPARACIÓN
-      // ==========================================
-
       return valorA.toString().localeCompare(valorB.toString(), "es", {
         numeric: true,
         sensitivity: "base",
@@ -315,10 +291,7 @@ export class ListComponent implements OnInit {
     this.paginaActual = 1;
   }
 
-  // =========================================================
   // IR A EDITAR COTIZACIÓN
-  // =========================================================
-
   irAEditar(cot: any): void {
     console.log("Voy a editar:", cot);
 
@@ -328,11 +301,7 @@ export class ListComponent implements OnInit {
       },
     });
   }
-
-  // =========================================================
   // GENERAR PDF DESDE FIRESTORE
-  // =========================================================
-
   generarPDFConIVADesdeBD(cot: any): void {
     // ==========================================
     // VALIDAR COTIZACIÓN
@@ -416,48 +385,30 @@ export class ListComponent implements OnInit {
   }
 
   generarPDFSinIVADesdeBD(cot: any): void {
-    // ==========================================
     // VALIDAR COTIZACIÓN
-    // ==========================================
-
     if (!cot) {
       console.error("No se recibió la cotización.");
 
       return;
     }
 
-    // ==========================================
     // CONCEPTOS
-    // ==========================================
-
     const products = (cot.conceptos || []).map((item: any) => ({
       cliente: cot.cliente,
-
       obra: cot.obra,
-
       direccion: cot.direccion,
-
       concepto: item.concepto,
-
       cantidad: item.cantidad,
-
       precioUnitario: item.precioUnitario,
     }));
 
-    // ==========================================
     // NOTAS
-    // ==========================================
-
     const notas = cot.notas || "";
 
-    // ==========================================
     // FECHA
-    // ==========================================
-
     let fecha = "";
 
     // Fecha como Timestamp de Firestore
-
     if (cot.fecha?.toDate) {
       fecha = cot.fecha.toDate().toLocaleDateString("es-MX", {
         day: "2-digit",
@@ -484,47 +435,30 @@ export class ListComponent implements OnInit {
       });
     }
 
-    // ==========================================
     // FOLIO
-    // ==========================================
-
     const cotizacion = cot.folio || cot.id || "";
 
-    // ==========================================
     // GENERAR PDF
-    // ==========================================
-
     generatePDFSinIVA(products, cotizacion, fecha, notas);
   }
-  // =========================================================
+  
   // ACTUALIZAR COTIZACIÓN
-  // =========================================================
-
   editarCotizacion(cot: any): void {
-    // ==========================================
     // VALIDAR ID
-    // ==========================================
-
     if (!cot?.id) {
       console.error("La cotización no tiene ID.");
 
       return;
     }
 
-    // ==========================================
     // DATOS ACTUALIZADOS
-    // ==========================================
-
     const dataActualizada = {
       ...cot,
 
       cliente: cot.cliente + " (Editado)",
     };
 
-    // ==========================================
     // ACTUALIZAR FIRESTORE
-    // ==========================================
-
     this.cotizacionesDbService
       .actualizarCotizacion(cot.id, dataActualizada)
 
@@ -537,13 +471,7 @@ export class ListComponent implements OnInit {
       });
   }
 
-  // ==========================================
   // ELIMINAR
-  // ==========================================
-  cotizacionEliminada = "";
-  cotizacionPendiente: any = null;
-
-  showDeleteModal = false;
   eliminarCotizacion(cot: any): void {
     if (!cot?.id) {
       //"Si cot no tiene un ID, detén el proceso."
@@ -581,21 +509,11 @@ export class ListComponent implements OnInit {
     this.cotizacionPendiente = null;
   }
 
-  // ============================================================
-  // MODAL
-  // ============================================================
-
-  mostrarModalExito = false;
-  mensajeExito = "";
-
   cerrarModalExito() {
     this.mostrarModalExito = false;
   }
 
-  // =========================================================
-  // COTIZACIONES PAGINADAS
-  // =========================================================
-
+  // PAGINACIÓN
   get cotizacionesPaginadas(): any[] {
     const inicio = (this.paginaActual - 1) * this.registrosPorPagina;
 
@@ -604,29 +522,21 @@ export class ListComponent implements OnInit {
     return this.cotizaciones.slice(inicio, fin);
   }
 
-  // =========================================================
   // TOTAL DE PÁGINAS
-  // =========================================================
-
   get totalPaginas(): number {
     return Math.ceil(this.cotizaciones.length / this.registrosPorPagina);
   }
 
-  // =========================================================
   // PÁGINAS VISIBLES
-  // =========================================================
-
   get paginasVisibles(): number[] {
     const total = this.totalPaginas;
 
     // No existen páginas
-
     if (total === 0) {
       return [];
     }
 
     // Máximo 3 páginas
-
     if (total <= 3) {
       return Array.from(
         {
@@ -636,53 +546,35 @@ export class ListComponent implements OnInit {
       );
     }
 
-    // ==========================================
     // INICIO
-    // ==========================================
-
     if (this.paginaActual <= 2) {
       return [1, 2, 3];
     }
 
-    // ==========================================
     // FINAL
-    // ==========================================
-
     if (this.paginaActual >= total - 1) {
       return [total - 2, total - 1, total];
     }
 
-    // ==========================================
     // CENTRO
-    // ==========================================
-
     return [this.paginaActual - 1, this.paginaActual, this.paginaActual + 1];
   }
 
-  // =========================================================
   // CAMBIAR PÁGINA
-  // =========================================================
-
   cambiarPagina(pagina: number): void {
     if (pagina >= 1 && pagina <= this.totalPaginas) {
       this.paginaActual = pagina;
     }
   }
 
-  // =========================================================
   // PÁGINA ANTERIOR
-  // =========================================================
-
   paginaAnterior(): void {
     if (this.paginaActual > 1) {
       this.paginaActual--;
     }
   }
 
-  // =========================================================
   // PÁGINA SIGUIENTE
-  // =========================================================
-
   paginaSiguiente(): void {
     if (this.paginaActual < this.totalPaginas) {
       this.paginaActual++;
