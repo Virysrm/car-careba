@@ -30,10 +30,12 @@
                 <th class="sortable">Cliente</th>
                 <th class="sortable direccion-col">Dirección</th>
                 <th class="sortable">Origen</th>
-                <th class="sortable">Fecha</th>
+                <th class="sortable">Alta</th>
                 <th class="sortable">Modificación</th>
                 <th class="sortable">Total Carpintería</th>
                 <th class="sortable">Total con IVA</th>
+                <th class="sortable">Status</th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -83,7 +85,21 @@
                   }}
                 </td>
                 <td>$ {{ cot.subtotal | number: "1.2-2" }}</td>
-                <td>$ {{ cot.total | number: "1.2-2" }}</td>
+                <td>$ {{ cot.total | number: "1.2-2" }}</td>                
+                <td>
+                  <span class="badge" [ngClass]="{
+                      new: cot.statusProceso?.toLowerCase().includes('nuevo'),
+                      exist: cot.statusProceso === 'PasandoExcel',
+                    }">
+                    {{
+                    cot.statusProceso?.toLowerCase().includes("nuevo")
+                    ? "Aceptado"
+                    : cot.statusProceso === "PasandoExcel"
+                    ? "Pendiente"
+                    : cot.statusProceso
+                    }}
+                  </span>
+                </td>
 
                 <td>
                   <button class="btn btn-link text-body-tertiary p-0" title="Editar" (click)="irAEditar(cot)">

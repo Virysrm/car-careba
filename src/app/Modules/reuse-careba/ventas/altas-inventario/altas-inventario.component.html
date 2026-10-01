@@ -1,0 +1,309 @@
+<section class="form-card-container">
+    <!-- CAPA 1: DELIMITACIÓN -->
+    <div class="form-card-border">
+        <!-- CAPA 2: DEGRADADO -->
+        <div class="form-card-gradient">
+            <!-- CONTENEDOR GRID -->
+            <div class="row">
+                <!-- ========================= -->
+                <!-- COLUMNA IZQUIERDA - 6 -->
+                <!-- ========================= -->
+                <div class="col-md-4">
+                    <div id="linea-contenidos">
+                        <aside class="steps">
+                            <div class="step" [class.active]="step === 1" [class.completed]="step > 1">
+                                <span>1</span>
+                                <p>Información del producto</p>
+                            </div>
+
+                            <div class="step" [class.active]="step === 2" [class.completed]="step > 2">
+                                <span>2</span>
+                                <p>Imágenes para el Catálogo</p>
+                            </div>
+
+                            <div class="step" [class.active]="step === 3" [class.completed]="step > 3">
+                                <span>3</span>
+                                <p>Costos</p>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+
+                <!-- ========================= -->
+                <!-- COLUMNA DERECHA - 6 -->
+                <!-- ========================= -->
+                <div class="col-md-4">
+                    <div class="form-card-content">
+                        <form [ngStyle]="{ display: step == 1 ? 'block' : 'none' }" [formGroup]="formInventario"
+                            autocomplete="off">
+                            <!-- ENCABEZADO -->
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="fw-bold m-0 text-black">Nuevo Producto</h4>
+
+                                <div class="d-flex align-items-center gap-2">
+                                    <label for="fecha" class="fw-bold text-black mb-0">
+                                        Fecha:
+                                    </label>
+                                    <span class="text-black">
+                                        {{
+                                        formInventario.get("fecha")?.value | date: "dd/MM/yyyy"
+                                        }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- INFORMACIÓN DEL PRODUCTO -->
+                            <div class="col-md-12 mb-3">
+                                <div class="cliente-card">
+                                    <!-- ID Producto -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <input type="text" id="identificadorRegistro" class="form-control"
+                                                formControlName="identificadorRegistro" placeholder="ID" />
+                                        </div>
+                                    </div>
+
+                                    <!-- PRODUCTO + MEDIDAS -->
+                                    <div class="row align-items-end">
+
+                                        <!-- PRODUCTO -->
+                                        <div class="col-md-7 mb-3">
+                                            <mat-form-field appearance="fill" class="w-100">
+                                                <mat-label>Producto</mat-label>
+
+                                                <input matInput type="text" formControlName="producto"
+                                                    placeholder="Ej. Mesa de noche" />
+                                            </mat-form-field>
+                                        </div>
+
+                                        <!-- MEDIDAS -->
+                                        <div class="col-md-5 mb-3">
+                                            <mat-form-field appearance="fill" class="w-100">
+                                                <mat-label>Medidas</mat-label>
+
+                                                <input matInput type="text" formControlName="medidas"
+                                                    placeholder="Ej. 120 x 80 x 75 cm" />
+                                            </mat-form-field>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- DESCRIPCIÓN -->
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                            <mat-form-field appearance="fill" class="w-100">
+                                                <mat-label>Descripción</mat-label>
+
+                                                <textarea matInput formControlName="descripcion" rows="2"
+                                                    placeholder="Características el producto"></textarea>
+
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <label class="fw-bold text-black mb-2">Categoría</label>
+                                    <mat-form-field appearance="fill" class="status-select w-100 mb-3">
+                                        <mat-select formControlName="categoria">
+                                            <mat-option value="Sillas"> Sillas </mat-option>
+                                            <mat-option value="Libreros"> Libreros </mat-option>
+                                            <mat-option value="Cocinas"> Cocinas </mat-option>
+                                            <mat-option value="Recámaras"> Recámaras </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <label class="fw-bold text-black mb-2">Condición del Producto</label>
+                                    <mat-form-field appearance="fill" class="status-select w-100">
+                                        <mat-select formControlName="condicion">
+                                            <mat-option value="Nuevo"> Nuevo </mat-option>
+                                            <mat-option value="Excelente"> Excelente </mat-option>
+                                            <mat-option value="Muy Bueno"> Muy Bueno </mat-option>
+                                            <mat-option value="Bueno"> Bueno </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <!-- <div class="input-data form-group col-12 col-md-6">
+                                        <select aria-describedby="churchFieldError" formControlName="iglesia" required
+                                            class="custom-select">
+                                            <option value="" disabled selected>Selecciona una Iglesia...</option>
+                                            <option class="text-black" *ngFor="let iglesia of iglesias| async">
+                                                {{iglesia.nombre}}</option>
+                                        </select>
+
+                                        <small
+                                            *ngIf="contactForm.controls['iglesia'].invalid && contactForm.controls['iglesia'].touched"
+                                            id="churchFieldError" class="text-alert">
+                                            Campo obligatorio
+                                        </small>
+                                    </div> -->
+                                </div>
+                            </div>
+
+                            <!-- BOTONES -->
+                            <div class="button">
+                                <button type="button" class="btn btn-next" [disabled]="formSended" (click)="nextStep()">
+                                    <span>Siguiente</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <form [ngStyle]="{ display: step === 2 ? 'block' : 'none' }" class="secondForm"
+                            [formGroup]="formImgInventario">
+                            ```
+                            <!-- ========================= -->
+                            <!-- ENCABEZADO -->
+                            <!-- ========================= -->
+
+                            <h2 class="media-title">Imágenes</h2>
+
+                            <!-- SUBTÍTULO -->
+                            <label class="media-label"> Alta de Imágenes del Producto </label>
+
+                            <!-- ========================= -->
+                            <!-- CONTENEDOR DE IMÁGENES -->
+                            <!-- ========================= -->
+
+                            <div class="product-images-container">
+                                <!-- ========================= -->
+                                <!-- IMÁGENES CARGADAS -->
+                                <!-- ========================= -->
+
+                                <div class="product-image-wrapper"
+                                    *ngFor="let imagen of imagenesPreview; let i = index">
+                                    <img [src]="imagen" [alt]="'Imagen del producto ' + (i + 1)"
+                                        class="product-image" />
+
+                                    <!-- BOTÓN ELIMINAR -->
+                                    <button type="button" class="btn-remove-image" (click)="eliminarImagen(i)"
+                                        [disabled]="formSended">
+                                        ×
+                                    </button>
+                                </div>
+
+                                <!-- ========================= -->
+                                <!-- AGREGAR IMAGEN -->
+                                <!-- ========================= -->
+
+                                <label class="product-image-wrapper add-image" *ngIf="imagenesPreview.length < 7">
+                                    <input type="file" accept="image/png, image/jpeg, image/webp" multiple hidden
+                                        (change)="seleccionarImagenes($event)" />
+
+                                    <div class="add-image-content">
+                                        <span class="add-image-icon"> + </span>
+
+                                        <span class="add-image-text"> Agregar imagen </span>
+
+                                        <small> {{ imagenesPreview.length }} / 7 </small>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <!-- ========================= -->
+                            <!-- MENSAJE DE VALIDACIÓN -->
+                            <!-- ========================= -->
+
+                            <div class="text-danger mt-2" *ngIf="imagenesSeleccionadas.length === 0">
+                                Debes agregar al menos una imagen para continuar.
+                            </div>
+
+                            <!-- ========================= -->
+                            <!-- BOTONES -->
+                            <!-- ========================= -->
+
+                            <div class="buttons">
+                                <!-- ANTERIOR -->
+                                <button type="button" class="btn btn-previous" [disabled]="formSended"
+                                    (click)="backStep()">
+                                    <span> Anterior </span>
+                                </button>
+
+                                <!-- SIGUIENTE -->
+                                <button type="button" class="btn btn-next" [disabled]="formSended"
+                                    (click)="nextStep2()">
+                                    <span> Siguiente </span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <form [ngStyle]="{ display: step == 3 ? 'block' : 'none' }" class="secondForm"
+                            [formGroup]="formPrecioInventario">
+                            <!-- ENCABEZADO -->
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="fw-bold m-0 text-black">Costos</h4>
+                            </div>
+
+                            <!-- INFORMACIÓN DEL PRODUCTO -->
+                            <div class="col-md-12 mb-3">
+                                <div class="cliente-card">
+                                    <div class="row align-items-end">
+                                        <!-- PRODUCTO -->
+                                        <div class="col-md-7 mb-3">
+                                            ```
+                                            <div class="d-flex align-items-center gap-2">
+                                                <!-- LABEL -->
+                                                <label class="fw-bold mb-0"> Precio: </label>
+
+                                                <!-- SIGNO DE PESO -->
+                                                <span class="fw-bold text-black"> $ </span>
+
+                                                <!-- PRECIO -->
+                                                <mat-form-field appearance="fill" class="w-100">
+
+                                                    <input matInput type="text" formControlName="precio"
+                                                        inputmode="decimal" placeholder="0.00"
+                                                        (blur)="formatearPrecio()" class="text-center" />
+                                                </mat-form-field>
+
+                                                <!-- MONEDA -->
+                                                <span class="fw-bold text-black"> MXN </span>
+                                            </div>
+                                        </div>
+
+                                        <label class="fw-bold text-black mb-2">Condición del Producto</label>
+                                        <mat-form-field appearance="fill" class="status-select w-100">
+                                            <mat-select formControlName="existencia">
+                                                <mat-option value="Disponible"> Disponible </mat-option>
+                                                <mat-option value="Agotado"> Agotado </mat-option>
+                                                <mat-option value="Reservado"> Reservado </mat-option>
+                                                <mat-option value="No Disponible"> No Disponible </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BOTONES -->
+                            <div class="buttons">
+                                <button type="button" class="btn btn-previous" [disabled]="formSended"
+                                    (click)="backStep2()">
+                                    <span>Anterior</span>
+                                </button>
+
+                                <button type="button" class="btn btn-primary btn-enviar">
+                                    <span>Enviar</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (mostrarModalExito) {
+<div class="modal-overlay">
+    <div class="modal-exito text-black">
+        <div class="modal-icono modal-icono-exito">
+            <i class="bi bi-check-lg"></i>
+        </div>
+
+        <h2>¡Éxito!</h2>
+
+        <p>{{ mensajeExito }}</p>
+
+        <button type="button" class="btn-modal btn-modal-aceptar" (click)="cerrarModalExito()">
+            Aceptar
+        </button>
+    </div>
+</div>
+}

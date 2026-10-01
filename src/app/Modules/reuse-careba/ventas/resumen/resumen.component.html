@@ -1,0 +1,80 @@
+<section class="form-card-container">
+  <!-- CAPA 1: DELIMITACIÓN -->
+  <div class="form-card-border">
+    <!-- CAPA 2: DEGRADADO -->
+    <div class="form-card-gradient">
+      <!-- CAPA 3: FORMULARIO -->
+      <div class="form-card-content">
+        <section id="controls">
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div class="form-group mb-4">
+                <label style="font-weight: bold" class="text-black">Ordenar por:</label>
+                <select class="form-control" >
+                  <option value="" selected disabled>Seleccione</option>
+                  <option value="cliente">Cliente</option>
+                  <option value="direccion">Dirección</option>
+                  <option value="fecha">Fecha</option>
+                  <option value="fechaModificacion">Fecha Modificación</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th class="sortable">#</th>
+                <th class="sortable">Identificador</th>
+                <th class="sortable">Fecha</th>
+                <th class="sortable">Status</th>
+                <th class="sortable">Cliente</th>
+                <th class="sortable">Producto</th>
+                <th class="sortable">Ganancia</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody class="text-center">
+              <tr >
+                <td class="text-center">1</td>
+                <td> RC001 </td>
+                <td>01/01/2026</td>
+                <td>Pagado</td>
+                <td>Viridiana Ramirez Moysen</td>
+                <td>Mesita de Noche</td>                
+                <td> $ 1000.00 MXN
+                </td>
+
+                <td>
+                  <button class="btn btn-link text-body-tertiary p-0" title="Detalles de la Venta">
+                    <i class="bi bi-pencil-square fs-5"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination-container">
+          <!-- Anterior -->
+          <button class="page-dot">
+            &lt;&lt;
+          </button>
+
+          <!-- Páginas -->
+          <button >
+          </button>
+
+          <!-- Siguiente -->
+          <button class="page-dot">
+            &gt;&gt;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

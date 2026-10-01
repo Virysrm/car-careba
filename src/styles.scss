@@ -508,3 +508,29 @@ html {
     transform: scale(1);
   }
 }
+
+/* BOTONES MÁS PRO */
+.btn-enviar {
+    font-weight: 600;
+    padding: 10px 26px;
+    border-radius: 10px;
+background-color: #a4a2a2;
+    border-color: #a4a2a2;    
+    color: #fff;
+
+    box-shadow: 0 6px 14px rgba(25, 135, 84, 0.25);
+
+    transition: .25s;
+}
+
+.btn-enviar:hover {
+background-color: #aa6c3c;
+    border-color: #aa6c3c;
+    color: #fff;
+
+    transform: translateY(-1px);
+}
+
+.btn-enviar:active {
+    transform: translateY(0);
+}

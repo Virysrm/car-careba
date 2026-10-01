@@ -303,28 +303,27 @@
 
             @if (showVentas) {
             <div class="submenu">
-              <!-- HISTORIAL -->
 
-              <a routerLink="" class="submenu-item">
-                <img src="assets/img/icons/menu/listas.svg" alt="Historial" width="15" height="15" />
+              <!-- VENTAS -->
 
-                <span> Historial </span>
-              </a>
+              <a routerLink="resumen" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Resumen" width="15" height="15" />
 
-              <!-- PRODUCTOS -->
-
-              <a routerLink="" class="submenu-item">
-                <img src="assets/img/icons/menu/add.svg" alt="Productos" width="15" height="15" />
-
-                <span> Productos </span>
+                <span> Resumen </span>
               </a>
 
               <!-- INVENTARIOS -->
 
-              <a routerLink="" class="submenu-item">
-                <img src="assets/img/icons/menu/add.svg" alt="Inventarios" width="15" height="15" />
+              <a routerLink="inventario" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Inventario" width="15" height="15" />
 
-                <span> Inventarios </span>
+                <span> Productos </span>
+              </a>
+
+              <a routerLink="altas-inventario" class="submenu-item">
+                <img src="assets/img/icons/menu/add.svg" alt="Add Producto" width="15" height="15" />
+
+                <span> Add Producto </span>
               </a>
             </div>
             }

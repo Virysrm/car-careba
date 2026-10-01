@@ -14,7 +14,12 @@
                 Fecha:
               </label>
 
-              <input type="date" id="fecha" class="form-control" formControlName="fecha" />
+              <input
+                type="date"
+                id="fecha"
+                class="form-control"
+                formControlName="fecha"
+              />
             </div>
           </div>
 
@@ -23,40 +28,53 @@
               <!-- STATUS -->
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <div class="col-md-7 mb-3">
-                    <mat-form-field appearance="fill" class="status-select">
-                      <mat-select formControlName="statusProceso">
-                        <mat-label>Status</mat-label>
-                        <mat-option value="Nuevo"> Nuevo </mat-option>
+                  <mat-form-field appearance="fill" class="status-select w-100">
+                    <!-- <mat-label>Estatus del proceso</mat-label> -->
 
-                        <mat-option value="PasandoExcel">
-                          Pasando de Excel
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
+                    <mat-select formControlName="statusProceso">
+                      <mat-option value=""> Seleccione un estado del registro </mat-option>
+
+                      <mat-option value="Nuevo"> Nuevo </mat-option>
+
+                      <mat-option value="PasandoExcel">
+                        Pasando de Excel
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
-
               <!-- CLIENTE + OBRA -->
               <div class="row align-items-end">
                 <!-- CLIENTE -->
                 <div class="col-md-7 mb-3">
-                  <input type="text" class="form-control input-line" placeholder="Nombre del Cliente"
-                    formControlName="cliente" />
+                  <input
+                    type="text"
+                    class="form-control input-line"
+                    placeholder="Nombre del Cliente"
+                    formControlName="cliente"
+                  />
                 </div>
 
                 <!-- OBRA -->
                 <div class="col-md-5 mb-3">
-                  <input type="text" class="form-control input-line" placeholder="Obra" formControlName="obra" />
+                  <input
+                    type="text"
+                    class="form-control input-line"
+                    placeholder="Obra"
+                    formControlName="obra"
+                  />
                 </div>
               </div>
 
               <!-- DIRECCIÓN -->
               <div class="row">
                 <div class="col-md-12 mb-3">
-                  <input type="text" class="form-control input-line" placeholder="Dirección"
-                    formControlName="direccion" />
+                  <input
+                    type="text"
+                    class="form-control input-line"
+                    placeholder="Dirección"
+                    formControlName="direccion"
+                  />
                 </div>
               </div>
             </div>
@@ -64,19 +82,30 @@
 
           <!-- CONCEPTOS -->
           <div formArrayName="conceptos">
-            <div *ngFor="let item of conceptos.controls; let i = index" [formGroupName]="i"
-              class="border rounded p-3 mb-3">
+            <div
+              *ngFor="let item of conceptos.controls; let i = index"
+              [formGroupName]="i"
+              class="border rounded p-3 mb-3"
+            >
               <div class="mb-3">
                 <label class="fw-bold">Concepto</label>
-                <textarea class="form-control input-line" formControlName="concepto" rows="1">
+                <textarea
+                  class="form-control input-line"
+                  formControlName="concepto"
+                  rows="1"
+                >
                 </textarea>
               </div>
 
               <div class="row">
                 <div class="col-md-4 mb-3">
                   <label class="fw-bold">Cantidad</label>
-                  <input type="number" class="form-control input-line text-center" formControlName="cantidad"
-                    (input)="calcularImporte(i)" />
+                  <input
+                    type="number"
+                    class="form-control input-line text-center"
+                    formControlName="cantidad"
+                    (input)="calcularImporte(i)"
+                  />
                 </div>
 
                 <div class="col-md-4 mb-3">
@@ -85,8 +114,14 @@
                   <div class="input-money">
                     <span>$</span>
 
-                    <input type="text" class="form-control input-line text-center" formControlName="precioUnitario"
-                      inputmode="decimal" (input)="calcularImporte(i)" (blur)="formatearPrecio(i)" />
+                    <input
+                      type="text"
+                      class="form-control input-line text-center"
+                      formControlName="precioUnitario"
+                      inputmode="decimal"
+                      (input)="calcularImporte(i)"
+                      (blur)="formatearPrecio(i)"
+                    />
                   </div>
                 </div>
 
@@ -96,22 +131,34 @@
                   <div class="input-money">
                     <span>$</span>
 
-                    <input type="text" class="form-control input-line text-center" [value]="
-        conceptos.at(i).get('importe')?.value
-          | number:'1.2-2'
-      " readonly />
+                    <input
+                      type="text"
+                      class="form-control input-line text-center"
+                      [value]="
+                        conceptos.at(i).get('importe')?.value | number: '1.2-2'
+                      "
+                      readonly
+                    />
                   </div>
                 </div>
               </div>
 
-              <button type="button" class="btn btn-danger btn-sm" (click)="eliminarConcepto(i)"
-                *ngIf="conceptos.length > 1">
+              <button
+                type="button"
+                class="btn btn-danger btn-sm"
+                (click)="eliminarConcepto(i)"
+                *ngIf="conceptos.length > 1"
+              >
                 Eliminar
               </button>
             </div>
 
             <div class="d-flex justify-content-end mt-2 mb-3">
-              <button type="button" class="btn btn-outline-primary btn-enviar btn-sm" (click)="agregarConcepto()">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-enviar btn-sm"
+                (click)="agregarConcepto()"
+              >
                 + Agregar concepto
               </button>
             </div>
@@ -120,97 +167,96 @@
           <div class="row">
             <div class="col-md-7 mb-3">
               <label class="fw-bold">NOTAS</label>
-              <textarea class="form-control input-line" formControlName="notas" rows="1">
+              <textarea
+                class="form-control input-line"
+                formControlName="notas"
+                rows="1"
+              >
               </textarea>
             </div>
 
             <div class="col-md-5">
-
               <!-- ========================= -->
               <!-- SUBTOTAL E IVA -->
               <!-- ========================= -->
 
               <div class="border rounded">
-
                 <!-- SUBTOTAL -->
                 <div class="mb-3 p-2">
-
-                  <label class="fw-bold">
-                    Subtotal
-                  </label>
+                  <label class="fw-bold"> Subtotal </label>
 
                   <div class="input-money">
-
                     <span>$</span>
 
-                    <input type="text" class="form-control text-end input-line" [value]="
-            (formCotizaciones.get('subtotal')?.value || 0)
-              | number:'1.2-2'
-          " readonly />
-
+                    <input
+                      type="text"
+                      class="form-control text-end input-line"
+                      [value]="
+                        formCotizaciones.get('subtotal')?.value || 0
+                          | number: '1.2-2'
+                      "
+                      readonly
+                    />
                   </div>
-
                 </div>
-
 
                 <!-- IVA -->
                 <div class="mb-3 p-2">
-
-                  <label class="fw-bold">
-                    IVA
-                  </label>
+                  <label class="fw-bold"> IVA </label>
 
                   <div class="input-money">
-
                     <span>$</span>
 
-                    <input type="text" class="form-control text-end input-line" [value]="
-            (formCotizaciones.get('iva')?.value || 0)
-              | number:'1.2-2'
-          " readonly />
-
+                    <input
+                      type="text"
+                      class="form-control text-end input-line"
+                      [value]="
+                        formCotizaciones.get('iva')?.value || 0
+                          | number: '1.2-2'
+                      "
+                      readonly
+                    />
                   </div>
-
                 </div>
-
               </div>
-
 
               <!-- ========================= -->
               <!-- TOTAL -->
               <!-- ========================= -->
 
               <div class="mb-3 border rounded p-2">
-
-                <label class="fw-bold">
-                  Total
-                </label>
+                <label class="fw-bold"> Total </label>
 
                 <div class="input-money">
-
                   <span>$</span>
 
-                  <input type="text" class="form-control text-end fw-bold input-line" [value]="
-          (formCotizaciones.get('total')?.value || 0)
-            | number:'1.2-2'
-        " readonly />
-
+                  <input
+                    type="text"
+                    class="form-control text-end fw-bold input-line"
+                    [value]="
+                      formCotizaciones.get('total')?.value || 0
+                        | number: '1.2-2'
+                    "
+                    readonly
+                  />
                 </div>
-
               </div>
-
             </div>
           </div>
 
           <div class="d-flex justify-content-end gap-2 mt-3">
-            <button class="btn btn-primary btn-enviar"  (click)="onGeneratePDFSinIVA()">Guardar y descargar PDF</button>
+            <button
+              class="btn btn-primary btn-enviar"
+              (click)="onGeneratePDFSinIVA()"
+            >
+              Guardar y descargar PDF
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </section>
-
 
 @if (mostrarModalExito) {
   <div class="modal-overlay">

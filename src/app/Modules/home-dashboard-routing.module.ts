@@ -2,13 +2,17 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./menu/home.component";
 import { ListComponent } from "./careba/budget/list/list.component";
-import { SalesreusedComponent } from "./reuse-careba/salesreused/salesreused.component";
+import { VentasComponent } from "./reuse-careba/ventas/ventas.component";
 import { UsersComponent } from "./settings/users/users.component";
 import { FormularyComponent } from "./careba/budget/formulary/formulary.component";
 import { IniciosComponent } from "./dashboard/inicios.component";
 import { CustomersComponent } from "./careba/directory/customers/customers.component";
 import { SuppliersComponent } from "./careba/directory/suppliers/suppliers.component";
 import { StaffComponent } from "./careba/directory/staff/staff.component";
+import { ResumenComponent } from "./reuse-careba/ventas/resumen/resumen.component";
+import { InventarioComponent } from "./reuse-careba/ventas/inventario/inventario.component";
+import { AltasInventarioComponent } from "./reuse-careba/ventas/altas-inventario/altas-inventario.component";
+import { DetallesVentasComponent } from "./reuse-careba/ventas/detalles-ventas/detalles-ventas.component";
 
 
 const routes: Routes = [
@@ -88,12 +92,42 @@ const routes: Routes = [
       // VENTAS
       // =========================
       {
-        path: "salesused",
-        component: SalesreusedComponent,
+        path: "resumen",
+        component: ResumenComponent,
         data: {
-          title: "VENTAS",
+          title: "Ventas",
           subtitle: "Ventas realizadas de REUSO CAREBA y otros Servicios",
-          description: "Desgloce de ingresos por otros canales de Venta y Srvicio",
+          description: "Desgloce de todas las compras de muebles del catálogo",
+          icon: "bi-grid-fill"
+        }
+      },
+      {
+        path: "detalles-ventas",
+        component: DetallesVentasComponent,
+        data: {
+          title: "Información de Cada Venta",
+          subtitle: "Detalles del Pedido",
+          description: "Informativo",
+          icon: "bi-grid-fill"
+        }
+      },
+            {
+        path: "inventario",
+        component: InventarioComponent,
+        data: {
+          title: "Inventario",
+          subtitle: "Productos en lista para su venta en linea",
+          description: "Cunsulta todos los detalles de los productos en lista",
+          icon: "bi-grid-fill"
+        }
+      },
+      {
+        path: "altas-inventario",
+        component: AltasInventarioComponent,
+        data: {
+          title: "Información del Producto",
+          subtitle: "Alta de Cada Producto en el Sistema",
+          description: "Descripción  y Vista de cada Producto",
           icon: "bi-grid-fill"
         }
       },

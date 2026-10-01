@@ -1,0 +1,85 @@
+<section class="form-card-container">
+    <!-- CAPA 1: DELIMITACIÓN -->
+    <div class="form-card-border">
+        <!-- CAPA 2: DEGRADADO -->
+        <div class="form-card-gradient">
+            <!-- CAPA 3: FORMULARIO -->
+            <div class="form-card-content">
+                <section id="controls">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="form-group mb-4">
+                                <label style="font-weight: bold" class="text-black">Ordenar por:</label>
+                                <select class="form-control">
+                                    <option value="" selected disabled>Seleccione</option>
+                                    <option value="cliente">Cliente</option>
+                                    <option value="direccion">Dirección</option>
+                                    <option value="fecha">Fecha</option>
+                                    <option value="fechaModificacion">Fecha Modificación</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="sortable">#</th>
+                                <th class="sortable">Identificador</th>
+                                <th class="sortable">Producto</th>
+                                <th></th>
+                                <th class="sortable">Categoría</th>
+                                <th class="sortable">Precio Unitario</th>
+                                <th class="sortable">Cantidad</th>
+                                <th class="sortable">Condición</th>
+                                <th class="sortable">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-center">
+                            <tr>
+                                <td>1</td>
+                                <td>PRC0001</td>
+                                <td>
+                                    <img src="/assets/img/photos/reused/buro2.jpg" alt="Mesita de Noche" width="60"
+                                        height="60" class="rounded object-fit-cover"> 
+                                </td>
+                                <td>Mesita de Noche</td>
+                                <td>Mesas</td>
+                                <td>$1,500.00 MXN</td>
+                                <td>1</td>
+                                <td>En Buen Estado</td>
+                                <td>En Stock</td>
+
+                                <td>
+                                    <button class="btn btn-link text-body-tertiary p-0" title="Editar">
+                                        <i class="bi bi-pencil-square fs-5"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-container">
+                    <!-- Anterior -->
+                    <button class="page-dot">
+                        &lt;&lt;
+                    </button>
+
+                    <!-- Páginas -->
+                    <button>
+                    </button>
+
+                    <!-- Siguiente -->
+                    <button class="page-dot">
+                        &gt;&gt;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
