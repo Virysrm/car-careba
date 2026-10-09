@@ -38,6 +38,9 @@ export class AltasInventarioComponent {
   public step: number = 1;
   imagenesPreview: string[] = [];
   imagenesSeleccionadas: File[] = [];
+  authService: any;
+  contactForm: any;
+  healthForm: any;
 
   constructor(
     private form: FormBuilder,
@@ -129,7 +132,7 @@ export class AltasInventarioComponent {
   }
 
   // =====================================================
-  // SELECCIONAR IMÁGENES
+  // IMÁGENES
   // =====================================================
 
   seleccionarImagenes(event: Event): void {
@@ -198,9 +201,6 @@ export class AltasInventarioComponent {
 
     input.value = "";
   }
-  // =====================================================
-  // ELIMINAR IMAGEN
-  // =====================================================
 
   eliminarImagen(index: number): void {
     // Eliminar archivo
@@ -215,6 +215,7 @@ export class AltasInventarioComponent {
     // Actualizar validación
     this.formImgInventario.get("img")?.updateValueAndValidity();
   }
+
   // FORMATEAR PRECIO
   formatearPrecio(): void {
     const control = this.formPrecioInventario.get("precio");
@@ -263,9 +264,97 @@ export class AltasInventarioComponent {
   }
 
   // GENERAR ID del Producto
+  private limpiarArchivos(valor: any): any {
+    if (
+      valor instanceof File ||
+      valor instanceof Blob ||
+      valor instanceof FileList
+    ) {
+      return undefined;
+    }
 
+    if (Array.isArray(valor)) {
+      return valor
+        .map((item) => this.limpiarArchivos(item))
+        .filter((item) => item !== undefined);
+    }
+
+    if (valor !== null && typeof valor === "object") {
+      const resultado: { [key: string]: any } = {};
+
+      for (const [clave, contenido] of Object.entries(valor)) {
+        const limpio = this.limpiarArchivos(contenido);
+
+        if (limpio !== undefined) {
+          resultado[clave] = limpio;
+        }
+      }
+
+      return resultado;
+    }
+
+    return valor;
+  }
+
+  // CON BD
+  async sendRegister() {
+    if (
+      this.formInventario.valid &&
+      this.formImgInventario.valid &&
+      this.formPrecioInventario.valid
+    ) {
+      this.formSended = true;
+
+      try {
+        // 1. Subir las imágenes a Firebase Storage
+        const imagenesUrl = await this.inventarioReusoDbService.subirImagenes(
+          this.imagenesSeleccionadas,
+        );
+
+        // 2. Obtener todos los datos de los formularios
+        const datosFormulario = {
+          ...this.formInventario.getRawValue(),
+          ...this.formImgInventario.getRawValue(),
+          ...this.formPrecioInventario.getRawValue(),
+        };
+
+        // 3. Eliminar archivos del objeto que se guardará
+        const datosLimpios = this.limpiarArchivos(datosFormulario);
+
+        // 4. Agregar las URL de las imágenes
+        const datosInventario = {
+          ...datosLimpios,
+          imagenes: imagenesUrl,
+        };
+
+        // 5. Guardar el producto en Firestore
+        console.log("Datos que se enviarán a Firestore:", datosInventario);
+
+        await this.inventarioReusoDbService.crearInventarioReuso(
+          datosInventario,
+        );
+
+        this.sendedSuccess = true;
+      } catch (error) {
+        console.error("Error al guardar el inventario:", error);
+        this.sendedSuccess = false;
+
+        alert(
+          "Ocurrió un problema al guardar el producto. Inténtalo más tarde.",
+        );
+      } finally {
+        this.formSended = false;
+      }
+    } else {
+      this.formInventario.markAllAsTouched();
+      this.formImgInventario.markAllAsTouched();
+      this.formPrecioInventario.markAllAsTouched();
+    }
+  }
+
+  // =====================================================
   // CAMBIAR ENTRE SECCIONES DEL ALTA
-
+  // =====================================================
   nextStep(): void {
     if (this.formInventario.valid) {
       this.step = 2;
@@ -284,6 +373,7 @@ export class AltasInventarioComponent {
       this.formImgInventario.markAllAsTouched();
     }
   }
+
   backStep(): void {
     this.step = 1;
   }

@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { AppComponent } from "../app.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -14,8 +13,7 @@ import { ServiciosComponent } from "./servicios/servicios.component";
 import { LoaderComponent } from "../shared/loader/loader.component";
 
 @NgModule({
-  declarations: [
-    ],
+  declarations: [],
   imports: [
     LoaderComponent,
     CommonModule,
@@ -30,7 +28,6 @@ import { LoaderComponent } from "../shared/loader/loader.component";
     ServiciosComponent,
     FooterComponent
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: []
 })
 export class ReusedCarebaModule {}

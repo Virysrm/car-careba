@@ -1,14 +1,31 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { InicioComponent } from './components/inicio/inicio.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { UsComponent } from './components/us/us.component';
+import { ReusedComponent } from './components/reused/reused.component';
+import { AttainmentComponent } from './components/attainment/attainment.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { WorksComponent } from './components/works/works.component';
+
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { TerminosCondicionesComponent } from './shared/terminos-condiciones/terminos-condiciones.component';
+import { PoliticaPrivacidadComponent } from './shared/politica-privacidad/politica-privacidad.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,19 +34,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ContactComponent } from './components/contact/contact.component';
-import { UsComponent } from './components/us/us.component';
-import { ReusedComponent } from './components/reused/reused.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { AttainmentComponent } from './components/attainment/attainment.component';
-import { GalleryComponent } from './components/gallery/gallery.component';
-import { WorksComponent } from './components/works/works.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
-import { TerminosCondicionesComponent } from './shared/terminos-condiciones/terminos-condiciones.component';
-import { PoliticaPrivacidadComponent } from './shared/politica-privacidad/politica-privacidad.component';
-import { LoaderComponent } from './shared/loader/loader.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +52,8 @@ import { LoaderComponent } from './shared/loader/loader.component';
     TerminosCondicionesComponent,
     PoliticaPrivacidadComponent
   ],
-  imports: [ /*cuando tiene standalone se alojan aqui*/
+
+  imports: [
     BrowserModule,
     LoaderComponent,
     AppRoutingModule,
@@ -60,10 +68,13 @@ import { LoaderComponent } from './shared/loader/loader.component';
     NavbarComponent,
     ReactiveFormsModule
   ],
-  providers: [
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
-  ],
+
+providers: [
+  provideFirebaseApp(() => initializeApp(environment.firebase)),
+  provideFirestore(() => getFirestore()),
+  provideStorage(() => getStorage())
+],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
