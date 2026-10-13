@@ -69,41 +69,6 @@ td small {
   background: #ccc;
   border-radius: 4px;
 }
-/* BADGES */
-
-.badge {
-  padding: 5px 10px;
-  font-size: 11px;
-  color: white;
-}
-
-.new {
-  background: #81ff8a; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #64965e,
-    #81ff8a
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #64965e,
-    #81ff8a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.exist {
-  background: #fdc830; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    #f37335,
-    #fdc830
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    #f37335,
-    #fdc830
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
 
 /* PROGRESS */
 
@@ -225,4 +190,59 @@ td small {
   margin-left: 4px;
   vertical-align: middle;
   opacity: 0.6;
+}
+
+.imagen-inventario {
+  width: 60px;
+  height:60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.badge {
+  padding: 5px 10px;
+  font-size: 11px;
+  color: white;
+}
+
+.nuevo {
+  background-color: #d1fae5;
+  color: #065f46 !important;
+}
+
+.excelente {
+  background-color: #dbeafe;
+  color: #1d4ed8 !important;
+}
+
+.muyBueno {
+  background-color: #fef3c7;
+  color: #92400e !important;
+}
+
+.bueno {
+  background-color: #f3e8ff;
+  color: #6b21a8 !important;
+}
+
+.disponible {
+  background-color: #d4edda;
+  color: #155724 !important;
+}
+
+.agotado {
+  background-color: #f8d7da;
+  color: #721c24 !important;
+}
+
+.reservado {
+  background-color: #fff3cd;
+  color: #856404 !important;
+}
+
+.noDisponible {
+  background-color: #e2e3e5;
+  color: #383d41 !important;
 }

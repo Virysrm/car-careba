@@ -12,6 +12,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { InventarioReusoDbService } from "src/app/services/inventarioReuso-db.service";
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: "app-altas-inventario",
@@ -26,6 +27,7 @@ import { InventarioReusoDbService } from "src/app/services/inventarioReuso-db.se
   templateUrl: "./altas-inventario.component.html",
   styleUrl: "./altas-inventario.component.scss",
 })
+
 export class AltasInventarioComponent {
   @ViewChild("formBox") formBox!: ElementRef;
   today: Date = new Date();
@@ -45,9 +47,9 @@ export class AltasInventarioComponent {
   constructor(
     private form: FormBuilder,
     private inventarioReusoDbService: InventarioReusoDbService,
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { this.generarIdentificadorRegistro(); }
 
   // FORMULARIO PRINCIPAL - PRODUCTO
   public formInventario: FormGroup = this.form.group({
@@ -69,8 +71,13 @@ export class AltasInventarioComponent {
   // FORMULARIO 3 - PRECIO DEL PRODUCTO
   public formPrecioInventario: FormGroup = this.form.group({
     precio: ["", Validators.required],
+    cantidad: ["", Validators.required],
     existencia: ["", Validators.required],
   });
+
+  generarIdentificador(consecutivo: number): string {
+    return `P${String(consecutivo).padStart(4, "0")}RC`;
+  }
 
   obtenerFechaActual(): string {
     const hoy = new Date();
@@ -127,14 +134,7 @@ export class AltasInventarioComponent {
     return fecha;
   }
 
-  cerrarModalExito() {
-    this.mostrarModalExito = false;
-  }
-
-  // =====================================================
   // IMÁGENES
-  // =====================================================
-
   seleccionarImagenes(event: Event): void {
     const input = event.target as HTMLInputElement;
 
@@ -145,33 +145,21 @@ export class AltasInventarioComponent {
     // Convertimos FileList a arreglo
     const archivos = Array.from(input.files);
 
-    // ============================================
-    // MÁXIMO 7 IMÁGENES
-    // ============================================
-
+    // MÁXIMO 7 IMÁGENES 
     const espaciosDisponibles = 7 - this.imagenesSeleccionadas.length;
-
     const archivosPermitidos = archivos.slice(0, espaciosDisponibles);
 
     archivosPermitidos.forEach((archivo: File) => {
-      // ========================================
       // VALIDAR QUE SEA UNA IMAGEN
-      // ========================================
 
       if (!archivo.type.startsWith("image/")) {
         return;
       }
 
-      // ========================================
       // GUARDAR ARCHIVO
-      // ========================================
-
       this.imagenesSeleccionadas.push(archivo);
 
-      // ========================================
       // CREAR VISTA PREVIA
-      // ========================================
-
       const reader = new FileReader();
 
       reader.onload = (e: ProgressEvent<FileReader>) => {
@@ -183,22 +171,14 @@ export class AltasInventarioComponent {
       reader.readAsDataURL(archivo);
     });
 
-    // ============================================
-    // ACTUALIZAR FORMULARIO
-    // ============================================
 
+    // ACTUALIZAR FORMULARIO
     this.formImgInventario.get("img")?.setValue(this.imagenesSeleccionadas);
 
-    // ============================================
     // ACTUALIZAR VALIDACIÓN
-    // ============================================
-
     this.formImgInventario.get("img")?.updateValueAndValidity();
 
-    // ============================================
     // LIMPIAR INPUT
-    // ============================================
-
     input.value = "";
   }
 
@@ -263,7 +243,6 @@ export class AltasInventarioComponent {
     });
   }
 
-  // GENERAR ID del Producto
   private limpiarArchivos(valor: any): any {
     if (
       valor instanceof File ||
@@ -328,16 +307,24 @@ export class AltasInventarioComponent {
         };
 
         // 5. Guardar el producto en Firestore
-        console.log("Datos que se enviarán a Firestore:", datosInventario);
+        //console.log("Datos que se enviarán a Firestore:", datosInventario);
 
-        await this.inventarioReusoDbService.crearInventarioReuso(
-          datosInventario,
-        );
+        const identificadorGenerado =
+          await this.inventarioReusoDbService.crearInventarioConsecutivo(
+            datosInventario
+          );
+
+        this.formInventario.patchValue({
+          identificadorRegistro: identificadorGenerado,
+        });
 
         this.sendedSuccess = true;
+        this.mensajeExito = "El producto se registró correctamente.";
       } catch (error) {
         console.error("Error al guardar el inventario:", error);
-        this.sendedSuccess = false;
+        // Mostrar modal de éxito
+        this.sendedSuccess = true;
+        this.mostrarModalExito = true;
 
         alert(
           "Ocurrió un problema al guardar el producto. Inténtalo más tarde.",
@@ -352,9 +339,33 @@ export class AltasInventarioComponent {
     }
   }
 
-  // =====================================================
-  // CAMBIAR ENTRE SECCIONES DEL ALTA
-  // =====================================================
+  async generarIdentificadorRegistro(): Promise<void> {
+    const productos = await firstValueFrom(
+      this.inventarioReusoDbService.obtenerInventarioReuso()
+    );
+
+    let ultimo = 0;
+
+    productos.forEach((producto: any) => {
+      const coincidencia = /^P(\d+)RC$/.exec(
+        producto.identificadorRegistro ?? ''
+      );
+
+      if (coincidencia) {
+        ultimo = Math.max(ultimo, Number(coincidencia[1]));
+      }
+    });
+
+    const siguiente = ultimo + 1;
+
+    const identificador = `P${String(siguiente).padStart(4, '0')}RC`;
+
+    this.formInventario.patchValue({
+      identificadorRegistro: identificador
+    });
+  }
+
+  // CAMBIAR ENTRE SECCIONES DEL ALTA 
   nextStep(): void {
     if (this.formInventario.valid) {
       this.step = 2;
@@ -380,5 +391,9 @@ export class AltasInventarioComponent {
 
   backStep2(): void {
     this.step = 2;
+  }
+
+  cerrarModalExito() {
+    this.mostrarModalExito = false;
   }
 }
