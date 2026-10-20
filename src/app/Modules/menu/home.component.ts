@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
 
   menuAbierto: string | null = null;
   showCareba: boolean = false;
-  showDirectorio: boolean = false;
+  showClientes: boolean = false;
+  showProveedores: boolean = false;
+  showPersonal: boolean = false;
   showPresupuestos: boolean = false;
   showContactoCareba: boolean = false;
   showFinanzas: boolean = false;
