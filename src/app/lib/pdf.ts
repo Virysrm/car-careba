@@ -98,6 +98,7 @@ const generatePDF = (
     ...products.map((product) => [
       {
         text: product.concepto,
+        alignment: "left",
         border: [false, false, false, false],
         fontSize: 8,
       },
@@ -117,7 +118,7 @@ const generatePDF = (
       //importe
       {
         text: `$ ${(product.cantidad * product.precioUnitario).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-        alignment: "right",
+        alignment: "center",
         border: [false, false, false, false],
         fontSize: 8,
       },
@@ -271,7 +272,7 @@ const generatePDF = (
   content.push({
     table: {
       headerRows: 1,
-      widths: ["*", "auto", "auto", "auto"],
+      widths: ["*", 40, "auto", 70],
       body: tableBody,
     },
     layout: {
